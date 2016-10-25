@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kazii</title>
+  <%= stylesheet_link_tag    'application.css', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application.js', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+
+ <nav class="navbar navbar-default">
+
+
+ <div class="container">
+       <div class="navbar-header">
+     <%= link_to "Kazii", root_path, class: "navbar-brand" %>
+     
+
+</div>
+
+<ul class="nav navbar-nav">
+
+<% if user_signed_in? %>
+
+<li><%= link_to "Sign out", destroy_user_session_path,method: :delete %></li>
+<li><%= link_to "List Your Service", new_job_path %></li>
+
+
+
+<% else %>
+
+<li><%= link_to "List Your Service", new_user_session_path %></li>
+<li><%= link_to "Sign in", user_session_path %></li>
+
+<% end %>
+</ul>
+
+
+
+
+</div>
+
+</nav>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+</body>
+</html>

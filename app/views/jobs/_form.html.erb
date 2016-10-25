@@ -1,0 +1,15 @@
+<%= simple_form_for(@job, html: {multipart: true}) do |f| %>
+	<%= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category" } %>
+	
+	
+	<%= f.input :title, label: "Job/Service Name" %>
+	<%= f.input :description, label: "Job/Service Description" %>
+	<%= f.input :company, label: "Your Company Name" %>
+	<%= f.input :url, label: "Contact:" %>
+	 <div class="field">
+    
+	<br>
+	<%= f.file_field :job_img %>
+	<%= f.button :submit %>
+
+<% end %>
