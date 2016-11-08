@@ -3,6 +3,33 @@
 <h2><%= @job.category.name %></h2>
 <p><%= @job.description %></p>
 <h2><%= @job.company %></h2>
+
+
 <%=link_to "Back", root_path, class: "btn btn-sm btn-default" %>
+
+
+<%= render @job.reviews %>
+<% if user_signed_in? %>
+
+<% if @job.user_id == current_user.id %>
+
 <%= link_to "Edit", edit_job_path(@job) ,class: "btn btn-sm btn-default"  %>
 <%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-default" %>
+
+
+<% end %>
+
+<% end %>
+<div><%= link_to "Add Review", new_job_review_path(@job) %> </div>
+
+<script>
+
+$('.review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+
+</script>
