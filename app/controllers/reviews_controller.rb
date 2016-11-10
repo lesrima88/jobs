@@ -21,8 +21,7 @@ def create
 end
 
 def edit
-	
-	end
+end
 
 def update
 	@review = Review.find(params[:id])
@@ -32,8 +31,15 @@ def update
 
 	else
 		render 'edit'
+	end
 end
+
+def destroy
+	@review.destroy
+	redirect_to job_path(@job)
+
 end
+
 private
 
 def review_params
@@ -49,3 +55,5 @@ def find_review
 	@review = Review.find(params[:id])
 
 end
+
+end 
