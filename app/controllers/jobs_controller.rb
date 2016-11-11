@@ -12,6 +12,13 @@ class JobsController < ApplicationController
 	end
 
 	def show
+		if @job.reviews.blank?
+			@average_review = 0
+		else
+			@average_review = @job.reviews.average(:rating).round(2)
+		end
+
+
 	end
 
 	def new
