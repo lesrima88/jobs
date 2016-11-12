@@ -7,6 +7,7 @@
 <h2><%= @job.title %></h2>
 <h2>Average Rating</h2>
 <div class="average-review-rating" data-score=<%= @average_review %>></div>
+<span>Based on <%= @job.reviews.count %>  reviews</span>
 <h2><%= @job.category.name %></h2>
 <p><%= @job.description %></p>
 <h2><%= @job.company %></h2>
