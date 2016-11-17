@@ -23,10 +23,12 @@ class JobsController < ApplicationController
 
 	def new
 		@job = current_user.jobs.build
+		@categories = Category.all.map{  |c|  [c.name, c.id] }
 	end
 
 	def create
 		@job = current_user.jobs.build(jobs_params)
+		@job.category_id = params[:category_id]
 
 		if @job.save
 			redirect_to @job
@@ -36,9 +38,11 @@ class JobsController < ApplicationController
 	end
 
 	def edit
+		@categories = Category.all.map{  |c|  [c.name, c.id] }
 	end
 
 	def update
+		@job.category_id = params[:category_id]
 		if @job.update(jobs_params)
 			redirect_to @job
 		else

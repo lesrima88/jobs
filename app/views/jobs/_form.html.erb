@@ -1,5 +1,5 @@
 <%= simple_form_for(@job, html: {multipart: true}) do |f| %>
-	<%= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category" } %>
+	<%=f.collection_select  :category_id, Category.all, :id, :name,label: "Choose a category"%>
 	
 	
 	<%= f.input :title, label: "Job/Service Name" %>
