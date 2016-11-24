@@ -11,9 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031110205) do
+ActiveRecord::Schema.define(version: 20161124114757) do
 
   create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,6 +39,7 @@ ActiveRecord::Schema.define(version: 20161031110205) do
     t.datetime "job_img_updated_at"
     t.string   "add_user_id_to_jobs"
     t.integer  "user_id"
+    t.integer  "city_id"
   end
 
   create_table "reviews", force: :cascade do |t|

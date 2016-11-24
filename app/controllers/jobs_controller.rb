@@ -24,11 +24,13 @@ class JobsController < ApplicationController
 	def new
 		@job = current_user.jobs.build
 		@categories = Category.all.map{  |c|  [c.name, c.id] }
+		@cities = City.all.map{  |c|  [c.name, c.id] }
 	end
 
 	def create
 		@job = current_user.jobs.build(jobs_params)
 		@job.category_id = params[:category_id]
+		@job.city_id = params[:city_id]
 
 		if @job.save
 			redirect_to @job

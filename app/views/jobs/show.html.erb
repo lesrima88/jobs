@@ -1,17 +1,29 @@
+<div class="row">
 
-
+<div class="col-md-4">
 
 <%= image_tag @job.job_img.url(:job_show) %>
+</div>
 
 
-<h2><%= @job.title %></h2>
+<div class="col-md-8">
+<h2 class="job-company"><%= @job.company %></h2>
+<h4 class="job-title"><%= @job.title %></h4>
+<p><%= @job.description %></p>
 <h2>Average Rating</h2>
 <div class="average-review-rating" data-score=<%= @average_review %>></div>
-<span>Based on <%= @job.reviews.count %>  reviews</span>
+<span class="number-of-reviews">Based on <%= @job.reviews.count %>  reviews</span>
 
-<p><%= @job.description %></p>
-<h2><%= @job.company %></h2>
 
+
+</div>
+</div>
+
+</div>
+
+<div class="row">
+
+<div clas="col-md-4">
 
 <%=link_to "Back", root_path, class: "btn btn-sm btn-default" %>
 
