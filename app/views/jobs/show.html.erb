@@ -10,6 +10,7 @@
 <h2 class="job-company"><%= @job.company %></h2>
 <h4 class="job-title"><%= @job.title %></h4>
 <p><%= @job.description %></p>
+<p><%= @job.url %><p>
 <h2>Average Rating</h2>
 <div class="average-review-rating" data-score=<%= @average_review %>></div>
 <span class="number-of-reviews">Based on <%= @job.reviews.count %>  reviews</span>
@@ -36,11 +37,14 @@
 <%= link_to "Edit", edit_job_path(@job) ,class: "btn btn-sm btn-default"  %>
 <%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-default" %>
 
+<% else %>
 
-<% end %>
-
-<% end %>
 <div><%= link_to "Add Review", new_job_review_path(@job) %> </div>
+
+<% end %>
+
+<% end %>
+
 
 <script>
 
