@@ -8,8 +8,10 @@
 
 <div class="col-md-8">
 <h2 class="job-company"><%= @job.company %></h2>
-<h4 class="job-title"><%= @job.title %></h4>
 <p><%= @job.description %></p>
+<p><%= @job.category.name if @job.category %></p>
+<p><%= @job.city.name if @job.city %></p>
+
 <p><%= @job.url %><p>
 <h2>Average Rating</h2>
 <div class="average-review-rating" data-score=<%= @average_review %>></div>

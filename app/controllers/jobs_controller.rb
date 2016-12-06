@@ -31,6 +31,7 @@ class JobsController < ApplicationController
 		@job = current_user.jobs.build(jobs_params)
 		@job.category_id = params[:category_id]
 		@job.city_id = params[:city_id]
+		
 
 		if @job.save
 			redirect_to @job
@@ -45,6 +46,7 @@ class JobsController < ApplicationController
 
 	def update
 		@job.category_id = params[:category_id]
+		@job.city_id = params[:city_id]
 		if @job.update(jobs_params)
 			redirect_to @job
 		else
@@ -60,7 +62,7 @@ class JobsController < ApplicationController
 	private
 
 	def jobs_params
-		params.require(:job).permit(:title, :description, :company, :url, :category_id, :job_img)
+		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :job_img)
 	end
 
 	def find_job 
