@@ -12,6 +12,8 @@ class JobsController < ApplicationController
 	end
 
 	def show
+
+
 		if @job.reviews.blank?
 			@average_review = 0
 		else
@@ -25,12 +27,15 @@ class JobsController < ApplicationController
 		@job = current_user.jobs.build
 		@categories = Category.all.map{  |c|  [c.name, c.id] }
 		@cities = City.all.map{  |c|  [c.name, c.id] }
+
+
+
 	end
 
 	def create
+
 		@job = current_user.jobs.build(jobs_params)
-		@job.category_id = params[:category_id]
-		@job.city_id = params[:city_id]
+		
 		
 
 		if @job.save
@@ -42,6 +47,7 @@ class JobsController < ApplicationController
 
 	def edit
 		@categories = Category.all.map{  |c|  [c.name, c.id] }
+		@cities = City.all.map{  |c|  [c.name, c.id] }
 	end
 
 	def update
