@@ -5,10 +5,17 @@ class JobsController < ApplicationController
 	def index
 		if params[:category].blank?
 			@jobs = Job.all.order("created_at DESC")
+			
 		else
 			@category_id = Category.find_by(name: params[:category]).id
-			@jobs = Job.where(category_id: @category_id).order("created_at DESC")
+			
+			@jobs = Job.where("name LIKE ?","%#{params[:search]}%")
+			
 		end
+	end
+
+	def search
+		@job = Job.search(params)
 	end
 
 	def show
@@ -22,6 +29,9 @@ class JobsController < ApplicationController
 
 
 	end
+
+
+	
 
 	def new
 		@job = current_user.jobs.build
@@ -68,7 +78,7 @@ class JobsController < ApplicationController
 	private
 
 	def jobs_params
-		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :job_img)
+		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :job_img, :search)
 	end
 
 	def find_job 

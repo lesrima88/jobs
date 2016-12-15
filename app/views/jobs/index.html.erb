@@ -1,3 +1,12 @@
+<h1>Find Job</h1>
+
+<%= form_tag search_jobs_path, method: :get do |f| %>
+<%= text_field_tag :search  %>
+<%= select_tag :category ,options_for_select(Category.all.map{ |c| [c.name, c.id]}) %>
+<%= submit_tag 'Search' %>
+<% end %>
+
+
 
 
 <% @jobs.each do |job| %>
