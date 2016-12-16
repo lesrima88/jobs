@@ -10,8 +10,9 @@ class Job < ActiveRecord::Base
 def self.search(params)
 
 jobs = Job.where(category_id: params[:category].to_i)
-jobs = Job.where("name like ? or description like ?", "%#{params[:search]}%", "%#{params[:search]}%") if params[:search].present?
-jobs = Job.where(params[:city_id]) if params[:city_id].present?
+
+jobs = Job.where(city_id: params[:city].to_i)
+jobs
 end
 
 end

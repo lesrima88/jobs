@@ -3,6 +3,7 @@ class JobsController < ApplicationController
 	before_action :authenticate_user!, only: [:new,  :edit]
 
 	def index
+
 		if params[:category].blank?
 			@jobs = Job.all.order("created_at DESC")
 			
@@ -15,7 +16,8 @@ class JobsController < ApplicationController
 	end
 
 	def search
-		@job = Job.search(params)
+		@jobs = Job.search(params)
+
 	end
 
 	def show
