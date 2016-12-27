@@ -16,7 +16,8 @@ class JobsController < ApplicationController
 	end
 
 	def search
-		@jobs = Job.search(params)
+		 @jobs = Job.search(params)
+
 
 	end
 
