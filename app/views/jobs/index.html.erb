@@ -1,4 +1,4 @@
-<h1>Find Job</h1>
+<h3>Find A Service In Your Area</h3>
 
 <%= form_tag search_jobs_path, method: :get do |f| %>
 
@@ -11,9 +11,13 @@
 
 
 
-<h2>Latest Jobs & Services</h2>
+
+<h3>Latest Services:</h3>
 <% @jobs.each do |job| %>
-<h1><%= link_to job.company, job_path(job) %></h1>
+<h3><%= link_to job.company, job_path(job) %></h3>
+
+
+
 
 
 

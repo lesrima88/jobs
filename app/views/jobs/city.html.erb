@@ -1,8 +1,4 @@
-<% if @jobs.empty? %>
 
-No records found !
-
-<% else %>
 
 <%  @jobs.each do |job| %>
 
@@ -10,7 +6,6 @@ No records found !
 
 <%= link_to job.company, job_path(job) %>
 
-<% end %>
 
 
 
