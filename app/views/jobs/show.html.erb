@@ -5,7 +5,7 @@
 <%= image_tag @job.job_img.url(:job_show) %>
 </div>
 
-
+<h3>Posted on </h3><%= @job.created_at.strftime(" %b %d, %Y") %>
 <div class="col-md-8">
 <h2 class="job-company"><%= @job.company %></h2>
 <p class="job-description"><%= @job.description %></p>
@@ -34,7 +34,9 @@
 <%= render @job.reviews %>
 <% if user_signed_in? %>
 
-<% if @job.user_id == current_user.id %>
+<% if @job.user_id == current_user.id || current_user.admin? %>
+
+
 
 <%= link_to "Edit", edit_job_path(@job) ,class: "btn btn-sm btn-default"  %>
 <%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-default" %>

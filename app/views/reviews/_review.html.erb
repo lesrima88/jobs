@@ -5,7 +5,7 @@
 
 <% if user_signed_in? %>
 
-<% if @job.user_id == current_user.id %>
+<% if @job.user_id != current_user.id %>
 
 <%= link_to "Edit", edit_job_review_path(review.job, review) %>
 <%= link_to "Delete", job_review_path(review.job, review),method: :delete, data: { confirm: "Are you sure?"} %>
