@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
 before_action :find_job
 before_action :find_review, only: [:edit, :update, :destroy]
 before_action :authenticate_user!, only: [:new,  :edit]
+before_action :has_reviewed, only: [:new]
 
 def new
 	@review = Review.new
@@ -43,6 +44,11 @@ def destroy
 end
 
 private
+
+
+def has_reviewed
+  redirect_to job_path(@job), notice: "You've already written a review for this job!" if current_user.reviews.exists?(job: @job)
+end
 
 def review_params
 	params.require(:review).permit(:rating, :comment)
