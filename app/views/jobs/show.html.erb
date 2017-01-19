@@ -13,6 +13,7 @@
 <p>City:</p><p><%= @job.city.name  %></p>
 
 <p><%= @job.url %><p>
+<p><%= @job.phone %><p>
 <h2>Average Rating</h2>
 <div class="average-review-rating" data-score=<%= @average_review %>></div>
 <span class="number-of-reviews">Based on <%= @job.reviews.count %>  reviews</span>
@@ -47,9 +48,7 @@
 
 <% end %>
 
-<% if current_user.admin? %>
 
-<%= link_to ,"Delete User" %>
 
 <% end %>
 
