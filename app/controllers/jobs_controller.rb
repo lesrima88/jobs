@@ -40,6 +40,7 @@ class JobsController < ApplicationController
 		@job = current_user.jobs.build
 		@categories = Category.all.map{  |c|  [c.name, c.id] }
 		@cities = City.all.map{  |c|  [c.name, c.id] }
+		@prices = Price.all.map{  |c|  [c.name, c.id] }
 
 
 
@@ -70,11 +71,13 @@ class JobsController < ApplicationController
 	def edit
 		@categories = Category.all.map{  |c|  [c.name, c.id] }
 		@cities = City.all.map{  |c|  [c.name, c.id] }
+		@prices = Price.all.map{  |c|  [c.name, c.id] }
 	end
 
 	def update
 		@job.category_id = params[:category_id]
 		@job.city_id = params[:city_id]
+		@job.price_id = params[:price_id]
 		if @job.update(jobs_params)
 			redirect_to @job
 		else
@@ -90,7 +93,7 @@ class JobsController < ApplicationController
 	private
 
 	def jobs_params
-		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :job_img, :search, :phone)
+		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :price_id,:job_img, :search, :phone)
 	end
 
 	def find_job 

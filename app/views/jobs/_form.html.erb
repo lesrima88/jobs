@@ -5,6 +5,9 @@
 	
 	<%= f.input :company,required: true,label: "Your Company Name" %>
 	<%= f.input :description,label: "Tell Us About Your Service" %>
+
+	<%=f.collection_select :price_id, Price.all, :id ,:name,:prompt=> "Pricing" %>
+
 	<%= f.input :url, label: "Website:" %>
 	<%= f.input :phone, required: true, label: "Enter your Phone number" %>
 	 <div class="field">
