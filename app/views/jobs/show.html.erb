@@ -30,6 +30,8 @@
 
 <div clas="col-md-4">
 
+<p>Share:<%= social_share_button_tag(@job.title) %></p>
+
 <%=link_to "Back", root_path, class: "btn btn-sm btn-default" %>
 
 
@@ -41,7 +43,7 @@
 
 
 <%= link_to "Edit", edit_job_path(@job) ,class: "btn btn-sm btn-default"  %>
-<%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-default" %>
+<%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure to permanently delete this post?" }, class: "btn btn-sm btn-default" %>
 
 <% else %>
 

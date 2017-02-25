@@ -1,16 +1,29 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   devise_for :users
 
+  resources :users
+
+
+  resources :conversations do
+  resources :messages
+end
+
+
+
+
   resources :jobs do
-  	resources :reviews
+    resources :reviews
 
-  	collection do
-  		get 'search'
+    collection do
+      get 'search'
 
-resources :conversations do
-	resources :messages
 
-  	end
+    end
   end
+
+ 
+
   root 'jobs#index'
 end

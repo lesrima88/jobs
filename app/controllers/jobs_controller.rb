@@ -4,6 +4,8 @@ class JobsController < ApplicationController
 
 	def index
 
+		
+
 		if params[:category].blank?
 			@jobs = Job.all.order("created_at DESC")
 			

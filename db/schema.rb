@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170206143013) do
+ActiveRecord::Schema.define(version: 20170223155422) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 20170206143013) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "facebooks", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -84,6 +96,18 @@ ActiveRecord::Schema.define(version: 20170206143013) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
 
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.boolean  "read",            default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+
   create_table "prices", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -114,6 +138,9 @@ ActiveRecord::Schema.define(version: 20170206143013) do
     t.datetime "updated_at",                             null: false
     t.string   "avatar"
     t.boolean  "admin",                  default: false
+    t.string   "username"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
