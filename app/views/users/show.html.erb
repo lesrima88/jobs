@@ -1,2 +1,11 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= full_name %></h1>
+
+
+
+<% @user.jobs.each do |job| %>
+
+
+<h3><%= link_to job.company, job_path(job) %></h3>
+
+<% end %>
+
