@@ -5,13 +5,12 @@
 <%= image_tag @job.job_img.url(:job_show) %>
 </div>
 
-<h3>Posted on </h3><%= @job.created_at.strftime(" %b %d, %Y") %>
+<h4>Posted on <%= @job.created_at.strftime(" %b %d, %Y") %></h4>
 <div class="col-md-8">
 <h2 class="job-company"><%= @job.company %></h2>
 <p class="job-description"><%= @job.description %></p>
-<p><%= @job.category.name  %></p>
-<p>City:</p><p><%= @job.city.name  %></p>
-<p><%= @job.price.name %></p>
+<p><%= @job.category.try(:name)%></p>
+<p> Location: <%= @job.city.try(:name) %></p>
 
 <p><%= @job.url %><p>
 <p><%= @job.phone %><p>

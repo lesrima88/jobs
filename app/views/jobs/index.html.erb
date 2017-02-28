@@ -15,7 +15,30 @@
 
 <h3><%= link_to job.company, job_path(job) %></h3>
 
+
 <%= image_tag (job.job_img.url :job_index) %>
+
+<p> Location: <%= job.city.try(:name) %></p>
+
+          
+<div class="average-review-rating" data-score=<%= @average_review %>></div>
+
+
+
+
+ <script>    
+    if($('#job').val() > 0){
+      for (i = 1; i <= $('#job').val(); i++) {
+        $('.average-review-rating-'+i).raty({
+          readOnly: true,
+          path: '/assets/',
+          score: function() {
+            return $(this).attr('data-score')
+          }      
+        });
+      };
+    }
+</script>
 
 
 

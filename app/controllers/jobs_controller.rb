@@ -15,6 +15,8 @@ class JobsController < ApplicationController
 			@jobs = Job.where("name LIKE ?","%#{params[:search]}%")
 			
 		end
+
+		
 	end
 
 	def search
