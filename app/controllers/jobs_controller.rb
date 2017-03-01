@@ -16,7 +16,10 @@ class JobsController < ApplicationController
 			
 		end
 
-		
+
+
+
+
 	end
 
 	def search
@@ -94,10 +97,11 @@ class JobsController < ApplicationController
 		redirect_to root_path
 	end
 
-	private
+	
+   private 
 
 	def jobs_params
-		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :price_id,:job_img, :search, :phone)
+		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :price_id,:job_img, :search, :phone, :review)
 	end
 
 	def find_job 

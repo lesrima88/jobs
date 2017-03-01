@@ -16,6 +16,7 @@
  <div class="container">
        <div class="navbar-header">
      <%= link_to "Kazii.io", root_path, class: "navbar-brand" %>
+
      
 
 </div>
@@ -25,7 +26,9 @@
 <% if user_signed_in? %>
 
 <li><%= link_to "List Your Service", new_job_path %></li>
+<li><%= link_to "My Profile", current_user %></li>
 <li><%= link_to "Sign out", destroy_user_session_path,method: :delete %></li>
+
 
 
 

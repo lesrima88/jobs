@@ -12,10 +12,11 @@
 <p><%= @job.category.try(:name)%></p>
 <p> Location: <%= @job.city.try(:name) %></p>
 
+
 <p><%= @job.url %><p>
 <p><%= @job.phone %><p>
 
-<h2>Average Rating</h2>
+<h4>Average Rating</h4>
 <div class="average-review-rating" data-score=<%= @average_review %>></div>
 <span class="number-of-reviews">Based on <%= @job.reviews.count %>  reviews</span>
 
