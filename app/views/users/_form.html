@@ -1,0 +1,18 @@
+<%= simple_form_for([@job, @job.reviews.build]) do |f| %>
+
+iv class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= simple_form_for(@user) do |f| %>
+      
+
+      <%= f.label :firstname %>
+      <%= f.text_field :firstname, class: 'form-control' %>
+
+       <%= f.label :lastname %>
+      <%= f.text_field :lastname, class: 'form-control' %>
+
+      <%= f.label :about  %>
+      <%= f.text_field :about, class: 'form-control'  %>
+
+
+      <% end %> 

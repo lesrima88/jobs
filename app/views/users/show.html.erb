@@ -1,17 +1,58 @@
 <h1><%= full_name %></h1>
+ 
+<% if @user == current_user %>
+
+<%= link_to "Edit Profile", edit_user_path(@user) ,class: "btn btn-sm btn-default"  %>
+<%= link_to "Edit Account", user_registration_path(@user) ,class: "btn btn-sm btn-default"  %>
+
+<% end %>
 
 
 
-<% @user.jobs.each do |job| %>
+
+<h1> Skills </h1>
+
+<li><%= @user.user.blank?? 'No post' : @user.user %></li>
 
 
 
-<h3><%= link_to job.company, job_path(job) %></h3>
+
+
+<h3> Jobs Posted </h3>
+
+
+<% @user.jobs.empty?? 'User Has not posted any jobs' : @user.jobs.take(05).each do |job| %>
+
+
+
+
+
+
+<h3><%= link_to job.company, job_path(job) %>listed on<%= job.created_at.strftime(" %b %d, %Y") %></h3>
+<p>City:<%= job.city.try(:name) %></p>
+
 
 <%= image_tag (job.job_img.url :job_index) %>
 
 
 
+<% end %> 
 
-<% end %>
+<h3> Reviews Posted </h3>
+
+
+
+ 
+
+  
+
+
+
+
+
+
+
+
+
+
 
