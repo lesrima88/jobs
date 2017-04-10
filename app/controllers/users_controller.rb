@@ -6,16 +6,7 @@ class UsersController < ApplicationController
 
 		
 
-		if params[:category].blank?
-			@jobs = Job.all.order("created_at DESC")
-			
-		else
-			@category_id = Category.find_by(name: params[:category]).id
-			
-			@jobs = Job.where("name LIKE ?","%#{params[:search]}%")
-			
-		end
-
+		
 
 
  end 

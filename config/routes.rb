@@ -10,9 +10,12 @@ Rails.application.routes.draw do
   resources :messages
 end
 
+  resources :users do
+    resources :reviews 
 
+  end 
 
-
+  
   resources :jobs do
     resources :reviews
 

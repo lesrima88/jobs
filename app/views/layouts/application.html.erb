@@ -24,10 +24,12 @@
 <ul class="nav navbar-nav navbar-right">
 
 <% if user_signed_in? %>
-
+<li><%= link_to "Welcome #{current_user.first_name}", current_user %> </li>
 <li><%= link_to "List Your Service", new_job_path %></li>
 <li><%= link_to "My Profile", current_user %></li>
 <li><%= link_to "Sign out", destroy_user_session_path,method: :delete %></li>
+
+
 
 
 
