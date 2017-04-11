@@ -36,6 +36,7 @@
 
 <h3><%= link_to job.company, job_path(job) %>listed on<%= job.created_at.strftime(" %b %d, %Y") %></h3>
 <p>City:<%= job.city.try(:name) %></p>
+<%= link_to "Delete", job_path(@user), method: :delete, data: { confirm: "Are you sure to permanently delete this job?" }, class: "btn btn-xs btn-danger" %>
 
 
 <%= image_tag (job.job_img.url :job_index) %>
