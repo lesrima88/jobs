@@ -55,17 +55,32 @@
 
 
 <%= link_to "Edit", edit_job_path(@job) ,class: "btn btn-md btn-primary"  %>
-<%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure to permanently delete this post?" }, class: "btn btn-md btn-danger" %>
+<%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure to permanently delete this listed service?" }, class: "btn btn-md btn-danger" %>
 
 <% else %>
 
 <div><%= link_to "Add Review", new_job_review_path(@job) %> </div>
 
-<% end %>
-
-
 
 <% end %>
+
+<% end %>
+
+<% if user_signed_in? %>
+
+<%- unless current_user.favorite_jobs.exists?(id: @job.id) -%>
+          <%= link_to 'Add to favorites', favorite_jobs_path(job_id: @job), method: :post %>
+          <%- else -%>
+          <%= link_to 'Remove from favorites', favorite_job_path(@job), method: :delete %>
+          <%- end -%>
+
+
+          <% end %>
+
+
+
+
+
 
 
 <script>

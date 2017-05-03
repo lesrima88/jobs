@@ -1,0 +1,36 @@
+Searching 862 files for "job path"
+
+0 matches across 0 files
+
+
+Searching 862 files for "facebook"
+
+/Users/ericlesrima/kazii/config/initializers/social_share_button.rb:
+    1  SocialShareButton.configure do |config|
+    2:   config.allow_sites = %w(twitter facebook  email linkedin )
+    3  end
+    4  
+
+~/kazii/db/development.sqlite3:
+    <binary>
+
+/Users/ericlesrima/kazii/db/schema.rb:
+   33    end
+   34  
+   35:   create_table "facebooks", force: :cascade do |t|
+   36      t.datetime "created_at", null: false
+   37      t.datetime "updated_at", null: false
+
+~/kazii/log/development.log:
+    <binary>
+
+~/kazii/tmp/cache/assets/sprockets/v3.0/ed/ed-nxfXjmrvz6NRymARq6NloNhyvmTe0UQiUOHJI7vE.cache:
+    <binary>
+
+~/kazii/tmp/cache/assets/sprockets/v3.0/Ha/HaWszGw49arwE9qXg2sfY4jwncbxI3rP9tGr57VWdOU.cache:
+    <binary>
+
+~/kazii/tmp/cache/assets/sprockets/v3.0/O5/O5NjyJV-YQ1pQfvwhY3907zqmhcIyit9pSelMndCjzQ.cache:
+    <binary>
+
+34 matches across 7 files

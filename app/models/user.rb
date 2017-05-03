@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	has_many :jobs
 	has_many :reviews
+	has_many :favorites
+    has_many :favorite_jobs, through: :favorites, source: :favorited, source_type: 'Job'
 
 
 		 has_attached_file :job_img, styles: { job_index: "100x100>", job_show: "300x300>" }, default_url: "/images/:style/missing.png"

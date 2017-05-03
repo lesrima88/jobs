@@ -1,9 +1,14 @@
+
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
 <h1><%= full_name %></h1>
  
 <% if @user == current_user %>
 
-<%= link_to "Edit Profile", edit_user_path(@user) ,class: "btn btn-sm btn-default"  %>
-<%= link_to "Account Settings", edit_user_registration_path(@user) ,class: "btn btn-sm btn-default"  %>
+<%= link_to "Edit Profile", edit_user_path(@user) ,class: "btn btn-sm btn-primary"  %>
+<%= link_to "Account Settings", edit_user_registration_path(@user) ,class: "btn btn-sm btn-danger"  %>
 
 
 <% end %>
@@ -35,17 +40,18 @@
 
 
 <h3><%= link_to job.company, job_path(job) %>listed on<%= job.created_at.strftime(" %b %d, %Y") %></h3>
-<p>City:<%= job.city.try(:name) %></p>
-<%= link_to "Delete", job_path(@user), method: :delete, data: { confirm: "Are you sure to permanently delete this job?" }, class: "btn btn-xs btn-danger" %>
-
 
 <%= image_tag (job.job_img.url :job_index) %>
+<p>City:<%= job.city.try(:name) %></p>
+<%= link_to "Delete Service", job_path(@user), method: :delete, data: { confirm: "The Listed Service will be permanently deleted from your profile & Listings,Are you Sure?" }, class: "btn btn-xs btn-danger" %>
+
+
 
 
 
 <% end %> 
 
-<h3> Reviews Posted </h3>
+<h3> Reviews Posted  </h3>
 
 
  

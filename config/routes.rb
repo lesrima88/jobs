@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :favorite_jobs, only: [:create, :destroy]
+
 
   resources :conversations do
   resources :messages
@@ -24,6 +26,8 @@ end
 
 
     end
+
+
   end
 
  
