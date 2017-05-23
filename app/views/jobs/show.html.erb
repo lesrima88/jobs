@@ -43,6 +43,7 @@
   <div class="col-md-6 col-md-offset-3">
   <br> </br>
 <p>Share:<%= social_share_button_tag(@job.title) %></p>
+<p>Report </p>
 
 
 
@@ -69,9 +70,9 @@
 <% if user_signed_in? %>
 
 <%- unless current_user.favorite_jobs.exists?(id: @job.id) -%>
-          <%= link_to 'Add to favorites', favorite_jobs_path(job_id: @job), method: :post %>
+          <%= link_to 'Add to favorites', favorite_jobs_path(job_id: @job),class: "btn btn-sm danger", method: :post  %>
           <%- else -%>
-          <%= link_to 'Remove from favorites', favorite_job_path(@job), method: :delete %>
+          <%= link_to 'Remove from favorites', favorite_job_path(@job), method: :delete ,class: "btn btn-sm warning"%>
           <%- end -%>
 
 

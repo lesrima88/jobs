@@ -1,0 +1,6 @@
+<%  @user.favourite_jobs.each do |job| %>
+
+<h3><%= link_to job.company, job_path(job) </h3>
+
+<%= image_tag (job.job_img.url :job_index) %>
+<p>City:<%= job.city.try(:name) %></p>
