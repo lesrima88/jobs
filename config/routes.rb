@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   get 'users/show'
+  get 'favorite_jobs/index'
 
   devise_for :users
 
   resources :users
 
-  resources :favorite_jobs, only: [:create, :destroy]
+  resources :favorite_jobs, only: [:create,:destroy] 
+
 
 
   resources :conversations do
@@ -30,7 +32,7 @@ end
 
   end
 
- 
+  
 
   root 'jobs#index'
 end

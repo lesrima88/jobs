@@ -20,12 +20,12 @@
 
 
 
- <div class="row">
+ 
 <% @jobs.take(06).each do |job| %>
 
 
 
-<div class="col-sm-4"><%= link_to job.company, job_path(job) %>
+<%= link_to job.company, job_path(job) %>
 
 
 <%= image_tag (job.job_img.url :job_index) %>
@@ -33,6 +33,6 @@
 <%= job.city.try(:name) %></div>
 
 
-</div>
+
 
 <% end %>
