@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'users/show'
   get 'favorite_jobs/index'
+  get 'users/favorite'
 
   devise_for :users
 

@@ -9,13 +9,8 @@
 
 <p><%= link_to "Edit Profile", edit_user_path(@user) ,class: "btn btn-sm btn-primary"  %></p>
 <p><%= link_to "Account Settings", edit_user_registration_path(@user) ,class: "btn btn-sm btn-danger"  %></p>
-<p><%= link_to "Favorite Services", favorite_jobs_index_path(@user) ,class: "btn btn-sm warning"  %></p>
+<p><%= link_to "Favorite Services", users_favorite_path(@user) ,class: "btn btn-sm warning"  %></p>
 
-<% @user.favorite_jobs.each do |job| %>
-
-<%= link_to job.company, job_path(job) %>
-
-<% end %>
 
 <% end %>
 

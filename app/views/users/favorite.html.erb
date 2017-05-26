@@ -1,0 +1,8 @@
+<% @current_user.favorite_jobs.each do |job| %>
+
+
+<%= link_to job.company, job_path(job) %>
+
+<%= image_tag (job.job_img.url :job_index) %>
+
+<% end %>
