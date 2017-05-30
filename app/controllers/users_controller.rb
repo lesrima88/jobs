@@ -14,7 +14,11 @@ end
 		
 
 
- 
+ def destroy
+
+		Favorite.where(favorited_id: @job.id, user_id: current_user.id).first.destroy
+    redirect_to @job, notice: 'Service succesfully removed from favorites'
+end 
 
 
 
@@ -48,7 +52,7 @@ private
 
 
 def user_params
-	params.require(:user).permit(:first_name, :last_name, :user, :job_id, :favorite_id)
+	params.require(:user).permit(:first_name, :last_name, :user, :job_id, :favorite_id, :user_id)
 end
 
  end 

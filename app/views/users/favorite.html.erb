@@ -1,8 +1,31 @@
-<% @current_user.favorite_jobs.each do |job| %>
 
 
-<%= link_to job.company, job_path(job) %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
 
-<%= image_tag (job.job_img.url :job_index) %>
+   
+ 
+  
+ 
+<% if @current_user.favorite_jobs.each do |job| %>
+  <%= link_to job.company, job_path(job) %>
 
+    <%= image_tag (job.job_img.url :job_index) %>
+<% end.empty? %>
+  You have not added any favorites.
 <% end %>
+
+
+  
+
+
+ 
+
+
+
+
+
+
+
+
+</div>

@@ -95,13 +95,16 @@ class JobsController < ApplicationController
 	def destroy
 		@job.destroy
 		redirect_to root_path
+
+		Favorite.where(favorited_id: @job.id, user_id: current_user.id).first.destroy
+    redirect_to @job, notice: 'Service succesfully removed from favorites'
 	end
 
 	
    private 
 
 	def jobs_params
-		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :price_id,:job_img, :search, :phone, :job_id)
+		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :price_id,:job_img, :search, :phone, :job_id, :favorite_id)
 	end
 
 	def find_job 

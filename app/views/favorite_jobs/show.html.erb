@@ -1,8 +1,0 @@
-<% @current_user.favorite_jobs.each do |job| %>
-
-<%= link_to 'Remove from favorites', favorite_job_path(@job), method: :delete ,class: "btn btn-sm warning"%>
-<%= link_to job.company, job_path(job) %>
-
-<%= image_tag (job.job_img.url :job_index) %>
-
-<% end %>
