@@ -2,12 +2,16 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'favorite_jobs/index'
   get 'users/favorite'
+  get 'conversations/index'
 
   devise_for :users
 
   resources :users
 
   resources :favorite_jobs, only: [:create,:destroy] 
+  resources :personal_messages, only: [:create]
+  resources :conversations, only: [:index, :show]
+  resources :personal_messages, only: [:new, :create]
 
 
 
@@ -32,6 +36,8 @@ end
 
 
   end
+
+  
 
   
 

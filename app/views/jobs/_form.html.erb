@@ -1,14 +1,14 @@
     <%= simple_form_for(@job, html: {multipart: true}) do |f| %>
-	<%=f.collection_select :category_id,Category.all, :id ,:name, {:prompt=> "Choose A Category" ,:required=> true} %>
-	<%=f.collection_select :city_id, City.all, :id ,:name,:prompt=> "Choose Your City" %>
+	<%=f.collection_select :category_id,Category.all, :id ,:name, {:prompt=> "Select Category" ,:required=> true} %>
+	<%=f.collection_select :city_id, City.all, :id ,:name,:prompt=> "Select City" %>
 	
 	
 	<%= f.input :company,required: true,label: "Your Company Name" %>
-	<%= f.input :description,label: "Tell Us About Your Service" %>
+	<%= f.input :description,required: true,label: "Tell Us About Your Service" %>
 
 	<%=f.collection_select :price_id, Price.all, :id ,:name,:prompt=> "Pricing" %>
 
-	<%= f.input :url, label: "Website:" %>
+	<%= f.input :url, required: false,label: "Website:" %>
 	<%= f.input :phone, required: true, label: "Enter your Phone number" %>
 	 <div class="field">
     

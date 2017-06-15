@@ -2,8 +2,9 @@
 <html>
 <head>
   <title>Kazii</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track':  'reload' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -25,7 +26,7 @@
 
 <% if user_signed_in? %>
 <li><%= link_to "Welcome #{current_user.first_name}" %> </li>
-
+<li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
 

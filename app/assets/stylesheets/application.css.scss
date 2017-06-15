@@ -294,23 +294,3 @@ p.alert, p.notice {
 
 }
 
-
-/* Signup/Login form styles */
-
-.signup-form {
-	@include background-tile;
-
-	h2 {
-		margin-top: 0;
-	}
-
-}
-
-.login-form {
-	@include background-tile;
-
-	h2 {
-		margin-top: 0;
-	}
-
-}

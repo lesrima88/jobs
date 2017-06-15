@@ -6,16 +6,27 @@
     <%= form_for(@user) do |f| %>
       
 
+      
+  <div class="field">
+
       <%= f.label :first_name %>
       <%= f.text_field :first_name, class: 'form-control' %>
+
+      </div>
+
+      <div class="field">
 
        <%= f.label :last_name %>
       <%= f.text_field :last_name, class: 'form-control' %>
 
+      </div>
+
+         <div class="field">
+
       <%= f.label :Skills %>
       <%= f.text_field :user, class: 'form-control' %>
 
-      
+      </div>
 
       
 

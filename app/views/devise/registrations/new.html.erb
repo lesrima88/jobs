@@ -9,18 +9,28 @@
 
   <div class="field">
 
-  <%= f.label :first_name %><br />
+  <%= f.label :first_name, required: true %><br />
   <%= f.text_field :first_name, autofocus: true %>
 
   </div>
 
   <div class="field">
 
-  <%= f.label :last_name %><br />
+
+
+  <%= f.label :last_name, required: true %><br />
   <%= f.text_field :last_name, autofocus: true %>
 
   </div>
+  <br>
 
+   
+    <div class="form-group">
+        <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
+        <div class="col-sm-6">
+            <%= f.file_field :avatar %>
+        </div>
+    </div>
 
   <div class="form-inputs">
 
