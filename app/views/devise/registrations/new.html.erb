@@ -1,36 +1,29 @@
-
+<br /><br />
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-<h2>Sign up</h2>
+  <div class="col-md-12">
+    <div class="login-page">
+      <div class="form" style="padding-top:5px;">
+        <div class="special register-form">
+         <h2 style="margin-bottom:15px;">Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
 
-  <div class="field">
+  <div class= "form-group"> 
 
   <%= f.label :first_name, required: true %><br />
   <%= f.text_field :first_name, autofocus: true %>
 
   </div>
 
-  <div class="field">
-
-
-
+  <div class="form-group">
   <%= f.label :last_name, required: true %><br />
   <%= f.text_field :last_name, autofocus: true %>
 
   </div>
   <br>
 
-   
-    <div class="form-group">
-        <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
-        <div class="col-sm-6">
-            <%= f.file_field :avatar %>
-        </div>
-    </div>
 
   <div class="form-inputs">
 
@@ -40,7 +33,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.submit "Sign up" %>
   </div>
 <% end %>
 

@@ -2,18 +2,23 @@
 	<%=f.collection_select :category_id,Category.all, :id ,:name, {:prompt=> "Select Category" ,:required=> true} %>
 	<%=f.collection_select :city_id, City.all, :id ,:name,:prompt=> "Select City" %>
 	
-	
+	<div class
 	<%= f.input :company,required: true,label: "Your Company Name" %>
 	<%= f.input :description,required: true,label: "Tell Us About Your Service" %>
+	</div>
 
 	<%=f.collection_select :price_id, Price.all, :id ,:name,:prompt=> "Pricing" %>
 
 	<%= f.input :url, required: false,label: "Website:" %>
 	<%= f.input :phone, required: true, label: "Enter your Phone number" %>
+
+	</div>
 	 <div class="field">
     
 	<br>
+	<div class 
 	<%= f.file_field :job_img %>
 	<%= f.button :submit %>
+	</div>
 
 <% end %>
