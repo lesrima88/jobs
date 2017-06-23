@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170601104511) do
+ActiveRecord::Schema.define(version: 20170623124342) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170601104511) do
     t.integer  "receiver_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "received_id"
   end
 
   add_index "conversations", ["author_id", "receiver_id"], name: "index_conversations_on_author_id_and_receiver_id", unique: true

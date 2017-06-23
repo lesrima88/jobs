@@ -30,7 +30,8 @@ gem 'devise', '~> 4.1', '>= 4.1.1'
 gem 'rake','12.0.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'social-share-button'
-
+gem 'rails_admin', '~> 0.8.1'
+gem "rails_admin_import", "~> 1.2"
 
 
 # Use ActiveModel has_secure_password
