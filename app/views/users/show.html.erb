@@ -5,6 +5,11 @@
 
 <h1><%= full_name %></h1>
 
+ <h1>
+        <%= gravatar_for @user %>
+        
+      </h1>
+
 <li><%= link_to 'send a message', new_personal_message_path(receiver_id: @user) %></li>
  
 <% if @user == current_user %>

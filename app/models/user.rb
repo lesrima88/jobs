@@ -19,7 +19,9 @@ has_many :personal_messages, dependent: :destroy
          :recoverable, :rememberable, :trackable, :validatable
 
 
-
+def admin?
+   self.roles.include?(:admin)
+end
   
 
 

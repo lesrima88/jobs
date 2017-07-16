@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Kazii</title>
+   
+  <title>Kazii </title>
+  
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track':  'reload' %>
+  
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 
 
- <nav class="navbar navbar-default">
-
-
+ <nav class="navbar navbar-default navbar-fixed-top">
  <div class="container">
+   <ul class= "nav navbar-nav navbar-right">
+   <li><%= link_to "Log in", user_session_path %></li>
+   </ul>
+
+
+
        <div class="navbar-header">
-     <%= link_to "Kazii.io", root_path, class: "navbar-brand" %>
+
+     
+     <%= link_to "Kazii.io" , root_path , class: "navbar-brand" %>  
+     <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+      
+      
+
+   
 
      
 
 </div>
+
+
 
 <ul class="nav navbar-nav navbar-left">
 
@@ -38,16 +54,20 @@
           <li><%= link_to "View Profile", current_user %></li>
           <li><%= link_to "Account Settings", edit_user_registration_path(@user)%></li>
           <li><%= link_to "Favorites" ,  users_favorite_path(@user) %></li>
-          
 
           
 
-          </ul>
+          
+
+          
        
       </li>
 
 
 <li><%= link_to "Log out", destroy_user_session_path,method: :delete %></li>
+
+
+
 
 
 
@@ -61,13 +81,21 @@
 
 <li><%= link_to "List Your Service", new_user_session_path %></li>
 
-<ul class="nav navbar-nav navbar-right">
 
 
-<li><%= link_to "Log in", user_session_path %></li>
+
+
 </ul>
+</li>
+</ul>
+</div>
+</nav>
+
+
+
 
 <% end %>
+
 
 
 

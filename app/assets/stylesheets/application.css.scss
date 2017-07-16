@@ -1,3 +1,4 @@
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -20,6 +21,36 @@
 
 /* Variables, mixins, etc.. */
 
+
+
+browse {
+	
+	margin: 0, auto;
+}
+
+
+.search-button {
+	
+
+font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  backgroundcolor: #4286f4;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  allignment: center;
+
+
+
+
+
+}
+
 @mixin background-tile {
 	box-sizing: border-box;
 	background-color: #fff;
@@ -39,6 +70,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Ubuntu', sans-serif;
 	font-weight: 300;
+
 }
 
 p.alert, p.notice {
@@ -51,6 +83,7 @@ p.alert, p.notice {
 .navbar {
 	font-family: 'Ubuntu', sans-serif;
 	text-transform: uppercase;
+
 }
 .navbar-default {
 	background-color: #fff;
@@ -68,8 +101,11 @@ p.alert, p.notice {
 	.navbar-header {
 
 		.navbar-brand {
+			font-family: 'Raleway', sans-serif;
 			color: #222;
+			font-color: #333;
 			letter-spacing: 1.4px;
+
 		}
 
 	}
@@ -292,5 +328,20 @@ p.alert, p.notice {
 
 	}
 
+}
+
+
+.form action {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
 }
 
