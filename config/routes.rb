@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'requests/index'
+
+  get 'requests/show'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'users/show'
   get 'favorite_jobs/index'
@@ -14,17 +18,22 @@ Rails.application.routes.draw do
   resources :conversations, only: [:index, :show]
   resources :personal_messages, only: [:new, :create]
 
-
+  
+  
 
   resources :conversations do
   resources :messages
-end
+   end
 
   resources :users do
     resources :reviews 
 
   end 
 
+  resources :jobs do
+  resources :comments
+  end 
+  
   
   resources :jobs do
     resources :reviews
