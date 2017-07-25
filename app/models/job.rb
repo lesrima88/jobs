@@ -1,4 +1,6 @@
 class Job < ActiveRecord::Base
+	extend FriendlyId
+	friendly_id :company, use: :slugged
 	belongs_to :user
 	belongs_to :price 
 	belongs_to :category

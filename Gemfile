@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '4.2.8'
+
 # Use sqlite3 as the database for Active Record
 
 # Use SCSS for stylesheets
@@ -34,6 +35,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'social-share-button'
 gem 'rails_admin', '~> 0.8.1'
 gem "rails_admin_import", "~> 1.2"
+gem 'friendly_id', '~> 5.1'
 
 
 # Use ActiveModel has_secure_password

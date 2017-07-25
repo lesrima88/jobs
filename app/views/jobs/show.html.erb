@@ -8,7 +8,7 @@
   <div class="col-md-6 col-md-offset-3">
 <h4>Posted on <%= @job.created_at.strftime(" %b %d, %Y") %></h4>
 <div class="col-md-8">
-<h2 class="job-company"><%= @job.company %></h2>
+<h2 class="job-company"><%= @job.title %></h2>
 <p class="job-description"><%= @job.description %></p>
 <p><%= @job.category.try(:name)%></p>
 <p> Location: <%= @job.city.try(:name) %></p>
@@ -49,8 +49,8 @@
 
 
 <%= render @job.reviews %>
-<% = render @job.comments %>
-<%= render 'comments/form' %>
+<%= render @job.comments %>
+
 <% if user_signed_in? %>
 
 <% if @job.user_id == current_user.id || current_user.admin? %>
@@ -62,7 +62,9 @@
 
 <% else %>
 
+
 <div><%= link_to "Add Review", new_job_review_path(@job) %> </div>
+<%= render 'comments/form' %>
 
 
 <% end %>

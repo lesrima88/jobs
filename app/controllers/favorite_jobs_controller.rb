@@ -30,7 +30,7 @@ class FavoriteJobsController < ApplicationController
    private
   
   def set_job
-    @job = Job.find(params[:user_id] || params[:id] )
+    @job = Job.friendly.find(params[:user_id] || params[:id] )
 
   end
 

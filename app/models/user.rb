@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :jobs
+  has_many :requests
 	has_many :reviews
 	has_many :favorites
     has_many :favorite_jobs, through: :favorites, source: :favorited, source_type: 'Job'

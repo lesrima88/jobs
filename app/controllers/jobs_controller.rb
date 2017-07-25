@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-	before_action :find_job, only: [:show, :edit, :update, :destroy]
+	before_action :set_job, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, only: [:new,  :edit]
 
 	def index
@@ -107,7 +107,7 @@ class JobsController < ApplicationController
 		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :price_id,:job_img, :search, :phone, :job_id, :favorite_id)
 	end
 
-	def find_job 
-		@job = Job.find(params[:id])
+	def set_job 
+		@job = Job.friendly.find(params[:id])
 	end
 end
