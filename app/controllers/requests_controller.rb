@@ -5,19 +5,14 @@ class RequestsController < ApplicationController
   	@requests = Request.all
   end
 
+  def new
+  	@requests = Request.new
+  end
 
-
-
-  def create
-
-		@request = current_user.requests.build(requests_params)
-
-		if @request.save
-			redirect_to @request
-		else
-			render "New"
-		end
 
   def show
-  end
+	@requests = Request.find(params[:id])
+  end 
+
+ 
 end

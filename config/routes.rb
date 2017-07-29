@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'requests/show'
 
+  get 'requests/new'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'users/show'
   get 'favorite_jobs/index'
