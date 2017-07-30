@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170730171421) do
+ActiveRecord::Schema.define(version: 20170730172907) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -34,16 +34,6 @@ ActiveRecord::Schema.define(version: 20170730171421) do
   end
 
   add_index "comments", ["job_id"], name: "index_comments_on_job_id"
-
-  create_table "conversations", force: :cascade do |t|
-    t.integer  "author_id"
-    t.integer  "receiver_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "received_id"
-  end
-
-  add_index "conversations", ["author_id", "receiver_id"], name: "index_conversations_on_author_id_and_receiver_id", unique: true
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "user_id"
@@ -90,29 +80,6 @@ ActiveRecord::Schema.define(version: 20170730171421) do
   end
 
   add_index "jobs", ["slug"], name: "index_jobs_on_slug", unique: true
-
-  create_table "messages", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "conversation_id"
-    t.integer  "user_id"
-    t.boolean  "read",            default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
-
-  create_table "personal_messages", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "conversation_id"
-    t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "personal_messages", ["conversation_id"], name: "index_personal_messages_on_conversation_id"
-  add_index "personal_messages", ["user_id"], name: "index_personal_messages_on_user_id"
 
   create_table "prices", force: :cascade do |t|
     t.string   "name"
