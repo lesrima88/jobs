@@ -29,7 +29,7 @@
 
 <ul class="nav navbar-nav navbar-left">
 <% if user_signed_in? %>
-  <li><%= link_to "Welcome #{current_user.first_name}" %> </li>
+  <li><%= link_to "Welcome #{current_user.username}" %> </li>
     <li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></li>
 </ul>
 

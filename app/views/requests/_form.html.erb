@@ -1,0 +1,27 @@
+
+
+<%= simple_form_for(@request, html: {multipart: true}) do |f| %>
+<%=f.collection_select :category_id,Category.all, :id ,:name, {:prompt=> "Select Category" ,:required=> true} %>
+<%=f.collection_select :city_id, City.all, :id ,:name,:prompt=> "Select City" %>
+
+</div>
+ <div class="field">
+<%= f.input :title, required: true, label: "Title of your Request e.g looking for a cleaner" %>
+</div>
+<div class= "field">
+<%= f.input :body, required: true, label: "Describe your request in detail,your location" %>
+</div>
+<div class= "field">
+<%= f.input :price, required: true,label: "Enter your Budget"%>
+</div>
+
+<div class>
+<%= f.input :contact,required: true, label: "Enter your phone Number"%>
+
+</div>
+
+<div class= "field">
+<%= f.button :submit, :class => "button" %>
+</div>
+ 
+ <% end %>

@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :requests
+
   resources :favorite_jobs, only: [:create,:destroy] 
   resources :personal_messages, only: [:create]
   resources :conversations, only: [:index, :show]

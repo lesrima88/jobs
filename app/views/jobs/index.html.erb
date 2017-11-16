@@ -4,7 +4,7 @@
  
   <h1><i class="fa fa-wrench" aria-hidden="true"></i>
  Welcome!</h1>
-  <p>...</p>
+  <p>work</p>
   <p><%= link_to " Sign Up", new_user_registration_path, class: "btn btn-primary btn-lg fa fa-user" %><p>
 
 </div>
@@ -27,24 +27,28 @@
 
 
 <h3>Recent Services:</h3>
-
-
-
-
-
- 
 <% @jobs.take(06).each do |job| %>
 
-
-
 <%= link_to job.company, job_path(job) %>
-
 
 <%= image_tag (job.job_img.url :job_index) %>
 
 <%= job.city.try(:name) %></div>
+<%-#link_to Browse all services', jobs_all_path-%>
 
 
 </div>
+
+<h3>Recent Requests</h3>:
+<%-# @requests.take(06).each do |request|-%>
+<%-# link_to request.title, request_path(request)-%>
+<%-# image_tag (request.request_img.url :request_index) -%>
+<%-#request.price -%>
+
+<%-# request.city.try(:name) -%>
+
+
+
+<%-#link_to 'Browse all requests', request_all_path-%>
 
 <% end %>

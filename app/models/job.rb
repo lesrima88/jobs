@@ -11,7 +11,8 @@ class Job < ActiveRecord::Base
     has_many :comments 
 
 	 has_attached_file :job_img, styles: { job_index: "100x100>", job_show: "300x300>" }, default_url: "/images/style/missing.jpg"
-  validates_attachment_content_type :job_img, content_type: /\Aimage\/.*\z/	
+  validates_attachment_content_type :job_img, content_type: /\Aimage\/.*\z/
+  validates_presence_of :title, :description, :price_id,  :phone 	
 
 
 
