@@ -1,24 +1,26 @@
 <h1>Requests#show</h1>
 <p><h4>Posted on <%= @request.created_at.strftime(" %b %d, %Y") %></h4></p>
 
+<% @request.city %>
 <%= @request.title %>
 
 <%= @request.body %>
 
 <%= @request.price %>
-<%= @request.phone %>
+<%= @request.contact %>
 
 <%-# link_to("Seller's Profile", @request.user) %>
 
-<= @request.city %>
+
 
 <% if user_signed_in? %>
 
-<% if @job.request_id == current_user.id || current_user.admin? %>
-  
+<% if @request.user_id == current_user.id %>
+
+
 <%= link_to "Edit", edit_request_path(@request) ,class: "btn btn-md btn-primary"  %>
 <%= link_to "Delete", request_path(@request), method: :delete, data: { confirm: "Are you sure to permanently delete this listed request?" }, class: "btn btn-md btn-danger" %>
 
 <% end %>
-
 <% end %>
+

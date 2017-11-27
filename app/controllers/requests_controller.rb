@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-	before_action :find_request, only: [:show, :edit, :update, :destroy]
+	before_action :set_request, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, only: [:new,  :edit]
   def index
   	@requests = Request.all
@@ -11,6 +11,10 @@ class RequestsController < ApplicationController
 	@cities = City.all.map{  |c|  [c.name, c.id] }
   end
 
+  def search
+     @requests = Request.search(params)
+  end 
+
   def create
 
   	@request = current_user.requests.build(request_params)
@@ -18,7 +22,7 @@ class RequestsController < ApplicationController
 
 		respond_to do |format|
 			if @request.save
-				format.html { redirect_to request_path, notice: 'Your Request is now live!'}
+				format.html { redirect_to @request, notice: 'Your Request is now live!'}
 
 					else 
 			 format.html { render :new}
@@ -46,7 +50,7 @@ class RequestsController < ApplicationController
    
    def update
    	@requests = Request.find(params[:id])
-   	 if @requests.update(params.require(:request).permit(:title, :body, :price))
+   	 if @requests.update(params.require(:request).permit(:title, :body, :contact,:budget))
         format.html { redirect_to requests_path, notice: 'Your Request was successfully updated.' }
        
       else
@@ -59,4 +63,14 @@ class RequestsController < ApplicationController
    	@requests.destroy
    	redirect_to root_path 
    end
+
+     private 
+
+	def request_params
+		params.require(:request).permit(:title, :body, :budget, :category_id, :city_id, :search, :contact, :request_id)
+	end
+
+	def set_request 
+		@request = Request.find(params[:id])
+	end
 end

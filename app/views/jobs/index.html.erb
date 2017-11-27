@@ -38,17 +38,17 @@
 
 
 </div>
-
 <h3>Recent Requests</h3>:
-<%-# @requests.take(06).each do |request|-%>
-<%-# link_to request.title, request_path(request)-%>
+<% @requests.each do |request|%>
+<%= link_to request.title, request_path(request) %>
 <%-# image_tag (request.request_img.url :request_index) -%>
 <%-#request.price -%>
+<%-#request.body -%>
 
 <%-# request.city.try(:name) -%>
 
 
 
 <%-#link_to 'Browse all requests', request_all_path-%>
-
+<% end %>
 <% end %>

@@ -8,6 +8,7 @@ class JobsController < ApplicationController
 
 		if params[:category].blank?
 			@jobs = Job.all.order("created_at DESC")
+			@requests = Request.all.order("created_at DESC")
 			
 		else
 			@category_id = Category.find_by(name: params[:category]).id

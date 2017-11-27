@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171116134354) do
+ActiveRecord::Schema.define(version: 20171126091810) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(version: 20171116134354) do
     t.integer  "user_id"
     t.integer  "city_id"
     t.integer  "category_id"
+    t.integer  "price_id"
+    t.string   "budget"
   end
 
   add_index "requests", ["slug"], name: "index_requests_on_slug", unique: true

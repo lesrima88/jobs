@@ -1,9 +1,9 @@
 class Request < ActiveRecord::Base
 	belongs_to :user
-	belongs_to :price 
+	
 	belongs_to :category
 	belongs_to :city
-	validates_presence_of :title, :body, :price
+	validates_presence_of :title, :body, :budget ,:contact 
 	has_many :favorites, as: :favorited
     has_many :fans, through: :favorites, source: :user
     has_many :comments 
