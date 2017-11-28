@@ -49,14 +49,17 @@ class RequestsController < ApplicationController
   end 
    
    def update
+   	@request.category_id = params[:category_id]
+	@request.city_id = params[:city_id]
+		
    	@requests = Request.find(params[:id])
    	 if @requests.update(params.require(:request).permit(:title, :body, :contact,:budget))
-        format.html { redirect_to requests_path, notice: 'Your Request was successfully updated.' }
-       
+   	 	respond_to do |format| 
+        format.html { redirect_to @request, notice: 'Your Request was successfully updated.' }
+      end 
       else
         format.html { render :edit }
-        
-      end
+      end 
    end
 
    def destroy

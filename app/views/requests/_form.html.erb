@@ -6,10 +6,10 @@
 
 </div>
  <div class="field">
-<%= f.input :title, required: true, label: "Title of your Request e.g looking for a cleaner" %>
+<%= f.input :title, required: true, label: "Title of your Request " , placeholder: "eg looking for a cleaner"%>
 </div>
 <div class= "field">
-<%= f.input :body, required: true, label: "Describe your request in detail,your location" %>
+<%= f.input :body, required: true, label: "Describe your request in detail",placeholder: "eg i'm hosting a party for the weekend and i need someone to cleanup afterwords" %>
 </div>
 <div class= "field">
 <%= f.input :budget, as: :integer ,required: true,label: "Set your Budget for this Request"%>
@@ -18,7 +18,7 @@
 KSH
 
 <div class>
-<%= f.input :contact, as: :integer, required: true, label: "Enter your phone Number"%>
+<%= f.input :contact, as: :integer, required: true, label: "Enter your phone Number",placeholder: "eg 0722-456-456"%>
 
 </div>
 
