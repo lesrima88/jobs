@@ -1,5 +1,10 @@
 <h1>Your conversations</h1>
 
-<div id="conversations">
-  <%= render @conversations %>
+ <% @conversations.each do |conversation| %>
+  
+<div>
+
+<%= link_to conversation.subject, conversation_path(conversation) %> 
 </div>
+
+<% end %>

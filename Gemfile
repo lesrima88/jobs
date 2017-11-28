@@ -36,6 +36,7 @@ gem 'social-share-button'
 gem 'rails_admin', '~> 0.8.1'
 gem "rails_admin_import", "~> 1.2"
 gem 'friendly_id', '~> 5.1'
+gem 'mailboxer' 
 
 
 # Use ActiveModel has_secure_password

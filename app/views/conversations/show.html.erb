@@ -1,15 +1,19 @@
-<h1>Chatting with <%= @conversation.with(current_user).name %></h1>
+<h1><%= @conversation.subject %></h1>
 
-<div id="conversation-main">
-  <div id="conversation-body">
-    <%= render @conversation.personal_messages %>
-  </div>
-
-  <%= form_for @personal_message do |f| %>
-    <%= hidden_field_tag 'conversation_id', @conversation.id %>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-
-    <%= f.submit %>
-  <% end %>
+<% @conversation.receipts_for(current_user).each do |receipt| %>
+<div>
+ <div><%= receipt.message.sender.first_name %> commented:</div>
+   <p><%= receipt.message.body %></p>
 </div>
+
+<% end %>
+
+<%= form_tag conversation_messages_path(@conversation), method: :post do %>
+	<div>
+	<%= text_area_tag :body %>
+	</div>
+
+	<%= submit_tag %>
+
+
+<% end %>
