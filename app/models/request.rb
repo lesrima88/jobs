@@ -1,6 +1,7 @@
 class Request < ActiveRecord::Base
 	belongs_to :user
 	
+	
 	belongs_to :category
 	belongs_to :city
 	validates_presence_of :title, :body, :budget ,:contact 

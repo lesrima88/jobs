@@ -18,9 +18,8 @@ Rails.application.routes.draw do
   resources :requests
 
   resources :favorite_jobs, only: [:create,:destroy] 
-  resources :personal_messages, only: [:create]
-  resources :conversations, only: [:index, :show]
-  resources :personal_messages, only: [:new, :create]
+ 
+ 
 
   
   

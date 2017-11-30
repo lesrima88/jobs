@@ -20,6 +20,11 @@
 
 <%= link_to "Edit", edit_request_path(@request) ,class: "btn btn-md btn-primary"  %>
 <%= link_to "Delete", request_path(@request), method: :delete, data: { confirm: "Are you sure to permanently delete this listed request?" }, class: "btn btn-md btn-danger" %>
+  
+ <% else %> 
+
+ 
+ <%= link_to "Message This User", new_conversation_path(:recipient_id => @request.user.id), class: "btn btn-large btn-primary" %>
 
 <% end %>
 <% end %>

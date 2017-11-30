@@ -34,10 +34,6 @@ class RequestsController < ApplicationController
 
 		
 		
-
-
-
-
   def show
 	@requests = Request.find(params[:id])
   end 
@@ -48,7 +44,7 @@ class RequestsController < ApplicationController
 
   end 
    
-   def update
+  def update
    	@request.category_id = params[:category_id]
 	@request.city_id = params[:city_id]
 		
@@ -62,12 +58,12 @@ class RequestsController < ApplicationController
       end 
    end
 
-   def destroy
+  def destroy
    	@requests.destroy
    	redirect_to root_path 
-   end
+  end
 
-     private 
+  private 
 
 	def request_params
 		params.require(:request).permit(:title, :body, :budget, :category_id, :city_id, :search, :contact, :request_id)

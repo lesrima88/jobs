@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
 def admin?
    self.roles.include?(:admin)
 end
+
+def name
+  "User #{id}"
+  end 
   
 
 def mailboxer_email(object)
