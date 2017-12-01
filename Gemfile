@@ -37,6 +37,7 @@ gem 'rails_admin', '~> 0.8.1'
 gem "rails_admin_import", "~> 1.2"
 gem 'friendly_id', '~> 5.1'
 gem 'mailboxer' 
+gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
 
 
 # Use ActiveModel has_secure_password
