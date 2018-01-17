@@ -1,6 +1,6 @@
 <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
 <div class="form-group">
-  <%= f.label :recipients %>
+  
   <%= hidden_field_tag(:recipient_id, "#{@user.id}") %></div>
 <div class="form-group">
   <%= f.label :subject %>

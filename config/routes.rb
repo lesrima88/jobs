@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'requests/show'
 
   get 'requests/new'
+  get 'jobs/all'
 
   get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
 
@@ -19,10 +20,19 @@ Rails.application.routes.draw do
   get 'users/favorite'
 
   get 'conversations/index'
+  get 'jobs/search' => 'jobs#search', as: 'search_jobs'
 
-  devise_for :users
+
+   
+
+
+  
+
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :users
+  resources :jobs
 
   resources :requests
 
@@ -50,7 +60,14 @@ Rails.application.routes.draw do
 
   resources :jobs do
   resources :comments
+
+
+
+    
   end 
+
+  
+  
   
   
   resources :jobs do
@@ -58,16 +75,17 @@ Rails.application.routes.draw do
 
     collection do
       get 'search'
+   
 
 
     end
-
-
   end
 
-  
+
 
   
-
   root 'jobs#index'
+
+
 end
+

@@ -8,11 +8,11 @@ class RequestsController < ApplicationController
   def new
   	@request = current_user.requests.build
   	@categories = Category.all.map{  |c|  [c.name, c.id] }
-	@cities = City.all.map{  |c|  [c.name, c.id] }
+	  @cities = City.all.map{  |c|  [c.name, c.id] }
   end
 
   def search
-     @requests = Request.search(params)
+
   end 
 
   def create
@@ -35,41 +35,41 @@ class RequestsController < ApplicationController
 		
 		
   def show
-	@requests = Request.find(params[:id])
+	@requests = Request.friendly.find(params[:id])
   end 
   
 
   def edit 
-  	@requests = Request.find(params[:id])
+  	@categories = Category.all.map{  |c|  [c.name, c.id] }
+    @cities = City.all.map{  |c|  [c.name, c.id] }
+
 
   end 
    
   def update
    	@request.category_id = params[:category_id]
-	@request.city_id = params[:city_id]
+	  @request.city_id = params[:city_id]
 		
-   	@requests = Request.find(params[:id])
-   	 if @requests.update(params.require(:request).permit(:title, :body, :contact,:budget))
-   	 	respond_to do |format| 
-        format.html { redirect_to @request, notice: 'Your Request was successfully updated.' }
-      end 
+   	 if @request.update(request_params)
+   	 	redirect_to @request, notice: 'Your Request was successfully updated.' 
+      
       else
-        format.html { render :edit }
+        render "Edit"
       end 
    end
 
   def destroy
-   	@requests.destroy
-   	redirect_to root_path 
+   	@request.destroy
+   	redirect_to root_path , notice: 'Your listing was successfully removed.'
   end
 
   private 
 
 	def request_params
-		params.require(:request).permit(:title, :body, :budget, :category_id, :city_id, :search, :contact, :request_id)
+		params.require(:request).permit(:title, :body, :budget, :category_id, :city_id, :search, :contact, :request_id, :image)
 	end
 
 	def set_request 
-		@request = Request.find(params[:id])
+		@request = Request.friendly.find(params[:id]) 
 	end
 end

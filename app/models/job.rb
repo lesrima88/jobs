@@ -1,5 +1,9 @@
 class Job < ActiveRecord::Base
 	extend FriendlyId
+
+	has_attached_file :image, styles: { medium: "300x", thumb: "50x" }, default_url: "missing"
+	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
 	friendly_id :company, use: :slugged
 	belongs_to :user
 	belongs_to :price 
@@ -9,21 +13,39 @@ class Job < ActiveRecord::Base
 	has_many :favorites, as: :favorited
     has_many :fans, through: :favorites, source: :user
     has_many :comments 
+   
 
-	 has_attached_file :job_img, styles: { job_index: "100x100>", job_show: "300x300>" }, default_url: "/images/style/missing.jpg"
-  validates_attachment_content_type :job_img, content_type: /\Aimage\/.*\z/
-  validates_presence_of :title, :description, :price_id,  :phone 	
-
-
+	
+  
 
 
-def self.search(params)
 
-jobs = Job.where(category_id: params[:category].to_i)
 
-jobs = Job.where(city_id: params[:city].to_i)
-jobs
+def self.search(search)
+	if search
+		where(["title LIKE ?", "%#{search}%"])
+	else
+		all
+
+	end
+
+
+#def self.search(search)
+	#if search
+		#where(["title LIKE ?","%#{search}%"])
+	#else
+		#all
+
+	#end
+
+
+	#def self.search search
+  #joins(:request).where("title LIKE ? OR job.title LIKE ?", "%{search}%", "%#{search}%")
+
+
 end
+
+
 
 end
 

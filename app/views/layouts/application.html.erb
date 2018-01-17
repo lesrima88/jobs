@@ -23,22 +23,33 @@
 
    </div>
 
+   <% flash.each do |key, value| %>
+    <div class="text-center <%= flash_class(key) %>">
+      <%= value %>
+    </div>
+<% end %>
+
 
 
 
 
 <ul class="nav navbar-nav navbar-left">
+
+
 <% if user_signed_in? %>
-  <li><%= link_to "Welcome #{current_user.username}" %> </li>
-    <li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb)) %></li>
-</ul>
+
+
+
+ 
+    <%#= image_tag(current_user.image) %>
+    </ul>
 
   <ul class="nav navbar-nav navbar-right">
     <li><%= link_to "List Your Service", new_job_path %></li>
     <li><%= link_to "Request a task", requests_new_path %></li>
    
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= "Hello, #{current_user.name}" %> Your Account
         <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "View Profile", current_user %></li>
@@ -57,6 +68,8 @@
     <li><%= link_to "Log in", user_session_path %></li>
     <li><%= link_to "List Your Service", new_user_session_path %></li>
     <li><%= link_to "Request a task", requests_new_path %></li>
+    <li><%= link_to "Browse all requests", requests_index_path %></li>
+
    
   </li>
   </ul>
@@ -91,9 +104,9 @@
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-
+<div class= "container">
 <%= yield %>
-
+</div>
 </body>
 </html>
 

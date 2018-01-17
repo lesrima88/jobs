@@ -1,23 +1,44 @@
+
+
 <% if @jobs.empty? %>
 
-<h3>No Results Found</h3>
-<h2><%= link_to "Be the first to List Your Service In this Area", new_job_path %>
-
+<h1>No Services Found</h1>
+<h3><%= link_to "Be the first to List Your Service In this Area", new_job_path %></h3>
 
 
 <% else %>
+<h1> Search Results </h1>
 
-<%  @jobs.each do |job| %>
+<tbody>
+
+  <h3> Services </h3>
+  
+   <% @jobs.each do |job| %>
+
+     <tr>
+        <td><%= link_to job.title, job %></td>
+        <p><%= job.city.try(:name) %><br></p>
+     
+       
+
+
+    
+    <% end %>
+    <% end %>
+
+    <% @requests.each do |request| %>
+
+    <h3> Requests </h3>
+
+     <tr>
+        <td><%= link_to request.title, request %></td>
+        <td><%= @request.body %></td>
+        <br><%= request.city.try(:name) %><br>
 
 
 
-<%= link_to job.company, job_path(job) %>
 
-<% end %>
+    <% end %>
 
-
-
-
-
-
-<% end %> 
+   </tr>
+ </tbody>

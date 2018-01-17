@@ -1,54 +1,83 @@
 
-<div class="container">
+  <br>
+  <br>
  <div class="jumbotron">
  
   <h1><i class="fa fa-wrench" aria-hidden="true"></i>
  Welcome!</h1>
   <p>work</p>
+
+
   <p><%= link_to " Sign Up", new_user_registration_path, class: "btn btn-primary btn-lg fa fa-user" %><p>
 
 </div>
-</div>
-<div class="indexcontent">
 
-<div class="browse">
-<h3>Browse A Service In Your Area</h3>
+
+
+
+
+
+<center><h3>Browse A Service In Your Area</h3>
 
 <%= form_tag search_jobs_path, method: :get do |f| %>
 
-<%= select_tag(:category ,options_for_select(Category.all.map{ |c| [c.name, c.id]}),:prompt=>"Select A Service",class: "indexdropdown" )%>
-
-<%= select_tag(:city, options_for_select(City.all.map{ |c|[c.name, c.id]}), :prompt=>"Select Your City") %>
 
 
-<%= submit_tag 'Search', class: "btn-custom" %>
+
+    <p>
+        <%= text_field_tag :search, params[:search], :size=>"50", class: "form control",  placeholder: "Search for a service or Request" %>
+        <%= submit_tag "Search", name: nil  , class: "btn btn-default" %>
+   </p>
+
+
+
+
+
 <% end %>
-</div>
+</center>
+
+<br>
+<br>
+
+<h4>Latest Services</h4>
+<br>
+<div class="row">
+	<% @jobs.take(06).each do |job| %>
+ 		<div class="col-md-3">
+ 			<div class="thumbnail">
+      			<%= image_tag job.image.url %>
+      			<div class="caption">
+       			 <h3><%= link_to job.title, job_path(job) %></h3>
+
+        			<p><%= job.city.try(:name) %><br></p>
+        			
+      			</div>
+    		</div>
+  		</div>
+   <% end %>
+  </div>
+
+  <br>
 
 
-<h3>Recent Services:</h3>
-<% @jobs.take(06).each do |job| %>
 
-<%= link_to job.company, job_path(job) %>
-
-<%= image_tag (job.job_img.url :job_index) %>
-
-<%= job.city.try(:name) %></div>
-<%-#link_to Browse all services', jobs_all_path-%>
+<%= link_to "View all Services", jobs_all_path , class: "btn btn-link" %>
 
 
-</div>
+
 <h3>Recent Requests</h3>:
-<% @requests.each do |request|%>
-<%= link_to request.title, request_path(request) %>
-<%-# image_tag (request.request_img.url :request_index) -%>
-<%-#request.price -%>
-<%-#request.body -%>
 
-<%-# request.city.try(:name) -%>
+<div class="row"> 
+<% @requests.take(06).each do |request|%><br>
+ <div class="col-md-3">
+ <div class = "thumbnail">
+<%= link_to request.title, request_path(request) %><br>
+<p><%= image_tag(request.user.image)%></p>
 
-
-
-<%-#link_to 'Browse all requests', request_all_path-%>
+<p><%= request.body %></p>
+<br><%= request.city.try(:name) %><br>
+</div>
+</div>
 <% end %>
-<% end %>
+</div>
+<%= link_to "View all Requests", requests_index_path %>

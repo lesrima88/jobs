@@ -1,6 +1,8 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+
+
   
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -14,6 +16,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.omniauth :facebook, "123545291784621", "289c1b52690e5ce86be5cc29cf19bde0", callback_url: "http://localhost:3000/users/auth/facebook/callback"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -107,6 +110,7 @@ Devise.setup do |config|
   # algorithm), the cost increases exponentially with the number of stretches (e.g.
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
   config.stretches = Rails.env.test? ? 1 : 11
+
 
   # Set up a pepper to generate the hashed password.
   # config.pepper = '624aed0a889fa62f4866320cef900884b155ed4e4fad9b3e75564cf1dc5939ac89cf0307b4f4ea5027736d3d3b826650fbf775837085d831db9c5eefea0597e2'

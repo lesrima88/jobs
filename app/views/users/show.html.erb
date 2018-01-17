@@ -50,7 +50,7 @@
 
 <h3><%= link_to job.company, job_path(job) %>listed on<%= job.created_at.strftime(" %b %d, %Y") %></h3>
 
-<%= image_tag (job.job_img.url :job_index) %>
+<%= image_tag job.image.url %>
 <p>City:<%= job.city.try(:name) %></p>
 <%= link_to "Delete Service", job_path(@user), method: :delete, data: { confirm: "The Listed Service will be permanently deleted from your profile & Listings,Are you Sure?" }, class: "btn btn-xs btn-danger" %>
 

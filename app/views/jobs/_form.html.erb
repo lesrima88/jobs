@@ -1,38 +1,46 @@
-    
-  
-   <div class= "form-group"> 
-  <div class="col-md-6">
-  <div class="panel panel-primary">
-  <div class="panel-heading">Post New Service</div>
-  <div class="panel-body">
 
-  <%= stylesheet_link_tag "test" %>
+
+ 
   
     <%= simple_form_for(@job, html: {multipart: true}) do |f| %>
 	<%=f.collection_select :category_id,Category.all, :id ,:name, {:prompt=> "Select Category" ,:required=> true} %>
 	<%=f.collection_select :city_id, City.all, :id ,:name,:prompt=> "Select City" %>
 	
 	
-   <div class= "field">
+  <div class="form-group">
 	<%= f.input :title,required: true,label: "Your Business Name" %>
-	<%= f.text_field :title, autofocus: true %>
-	<%= f.label :description,required: true,label: "Tell Us About Your Service" %>
-	<%= f.text_field :description, autofocus: true %>
+	
+	</div>
+
+	<div class="form-group">
+	<%= f.input :description,required: true,label: "Tell Us About Your Service" %>
 	</div>
      
 
 
-  
+    <div class="form-group">
 	<%=f.collection_select :price_id, Price.all, :id ,:name,:prompt=> "Select Pricing" %>
-
-	<%= f.label :url, required: false,label: "Website:" %>
-	<%= f.text_field :url, required: false,label: "Website:" %>
-
-	<%= f.input :phone, required: true, label: "Enter your Phone number" %>
-	<%= f.file_field :job_img %>
-	<div class="action">
-	<%= f.button :submit, :class => "button" %>
 	</div>
+	
+
+	<div class="form-group">
+        <%= f.input :url, required: false,label: "Website:" %>
+	    
+
+	</div>
+
+	
+
+	<div class= "form-group">
+	<%= f.input :phone, as: :integer, required: true, label: "Enter your phone Number",placeholder: "eg 0722-456-456"%>
+   </div>
+	<%= f.file_field :image %>
+	<div class="action">
+	
+
+	<%= button_tag(type: "submit", class: "btn btn-primary") do %>
+  	<span><i class="glyphicon glyphicon-wrench"></i> List Service</span>
+	<% end %> 
 
 	</div>
 	</div>

@@ -1,8 +1,9 @@
-<h1>Requests#show</h1>
+<h3><%= @request.title %></h3>
 <p><h4>Posted on <%= @request.created_at.strftime(" %b %d, %Y") %></h4></p>
+<p>Requested by <%= @request.user.name %></p>
+<p><%= image_tag (@request.user.image) %></p>
+<% @request.city%>
 
-<% @request.city %>
-<%= @request.title %>
 
 <%= @request.body %>
 
@@ -13,9 +14,9 @@
 
 
 
-<% if user_signed_in? %>
+<%-if user_signed_in? %>
 
-<% if @request.user_id == current_user.id %>
+<%if @request.user_id == current_user.id %>
 
 
 <%= link_to "Edit", edit_request_path(@request) ,class: "btn btn-md btn-primary"  %>
@@ -24,7 +25,13 @@
  <% else %> 
 
  
- <%= link_to "Message This User", new_conversation_path(:recipient_id => @request.user.id), class: "btn btn-large btn-primary" %>
+ <%= link_to "Send Message", new_conversation_path(:recipient_id => @request.user.id), class: "btn btn-large btn-primary"%>
+ <span class="glyphicon glyphicon-envelope"></span>
+
+
+<%#= link_to :recipient_id => @request.user.id(type: "submit", class: "btn btn-primary") do %>
+  <span><i class="glyphicon glyphicon-wrench"></i> Send Message </span>
+ 
 
 <% end %>
 <% end %>

@@ -1,27 +1,26 @@
+
 <div class="row">
+	<div class="col-md-6">
+	<div class="thumbnail">
+	<%= image_tag @job.image.url %> 
+	</div>
+	s</div>
+	<div class="col-md-6">
+	<h3><%= @job.title %></h3>
+	<p>Posted on <%= @job.created_at.strftime(" %b %d, %Y") %></p>
+	<p><%= @job.description %></p>
+	<p><%= @job.category.try(:name)%></p>
+    <p>Location: <%= @job.city.try(:name) %></p>
+    <p><%= @job.url %><p>
+	<p><%= @job.phone %><p>
+	<p>Posted by <%= @job.user.name %></p>
+	<%= image_tag(@job.user.image)%>
+	<p><%= link_to("Seller's Profile", @job.user) %><p>
 
-<div class="col-md-4">
-
-<%= image_tag @job.job_img.url(:job_show) %>
+	</div>
 </div>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-<h4>Posted on <%= @job.created_at.strftime(" %b %d, %Y") %></h4>
-<div class="col-md-8">
-<h2 class="job-company"><%= @job.title %></h2>
-<p class="job-description"><%= @job.description %></p>
-<p><%= @job.category.try(:name)%></p>
-<p> Location: <%= @job.city.try(:name) %></p>
 
 
-
-<p><%= @job.url %><p>
-<p><%= @job.phone %><p>
-
-
-
-
-<%= link_to("Seller's Profile", @job.user) %>
 
 
 
@@ -36,12 +35,7 @@
 
 </div>
 
-<div class="row">
 
-<div clas="col-md-6">
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  <br> </br>
 <p>Share:<%= social_share_button_tag(@job.title) %></p>
 <p>Report </p>
 
@@ -49,11 +43,11 @@
 
 
 <%= render @job.reviews %>
-<%= render @job.comments %>
+
 
 <% if user_signed_in? %>
 
-<% if @job.user_id == current_user.id || current_user.admin? %>
+<% if @job.user_id == current_user.id %>
 
 
 
@@ -63,8 +57,9 @@
 <% else %>
 
 
+<%= link_to "Message This User", new_conversation_path(:recipient_id => @job.user.id), class: "btn btn-large btn-primary" %>
 <div><%= link_to "Add Review", new_job_review_path(@job) %> </div>
-<%= render 'comments/form' %>
+
 
 
 <% end %>

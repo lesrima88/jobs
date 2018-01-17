@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 	end 
 		
 
+
 		
 
 
@@ -40,6 +41,8 @@ class UsersController < ApplicationController
  	end 
 
 
+
+
 	private 
 
 
@@ -48,5 +51,6 @@ class UsersController < ApplicationController
 	params.require(:user).permit(:first_name, :last_name, :user, :job_id, :favorite_id, :user_id)
 	end
 
+ 
  end 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128094127) do
+ActiveRecord::Schema.define(version: 20171220123904) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -77,6 +77,10 @@ ActiveRecord::Schema.define(version: 20171128094127) do
     t.string   "phone"
     t.integer  "price_id"
     t.string   "slug"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "jobs", ["slug"], name: "index_jobs_on_slug", unique: true
@@ -147,8 +151,8 @@ ActiveRecord::Schema.define(version: 20171128094127) do
     t.string   "title"
     t.integer  "price"
     t.text     "body"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "slug"
     t.integer  "contact"
     t.integer  "user_id"
@@ -156,6 +160,10 @@ ActiveRecord::Schema.define(version: 20171128094127) do
     t.integer  "category_id"
     t.integer  "price_id"
     t.string   "budget"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "requests", ["slug"], name: "index_requests_on_slug", unique: true
@@ -192,6 +200,10 @@ ActiveRecord::Schema.define(version: 20171128094127) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "username"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.text     "image"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

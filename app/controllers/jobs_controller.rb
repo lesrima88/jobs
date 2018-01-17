@@ -3,35 +3,21 @@ class JobsController < ApplicationController
 	before_action :authenticate_user!, only: [:new,  :edit]
 
 	def index
-
-		
-
-		if params[:category].blank?
 			@jobs = Job.all.order("created_at DESC")
 			@requests = Request.all.order("created_at DESC")
-			
-		else
-			@category_id = Category.find_by(name: params[:category]).id
-			
-			@jobs = Job.where("name LIKE ?","%#{params[:search]}%")
-			
+			#@jobs = Job.search(params[:search])
+
 		end
 
-
-
-
-
-	end
-
-	def search
-		 @jobs = Job.search(params)
-
+	def all
+		@jobs = Job.all
 
 	end
+
+	
 
 	def show
-
-
+      	
 		if @job.reviews.blank?
 			@average_review = 0
 		else
@@ -41,10 +27,19 @@ class JobsController < ApplicationController
 
 	end
 
+	def search
+    	@jobs = Job.search(params[:search])
+		@requests = Request.search(params[:search])
+
+
+    end
+
 
 	
 
 	def new
+		
+
 		@job = current_user.jobs.build
 		@categories = Category.all.map{  |c|  [c.name, c.id] }
 		@cities = City.all.map{  |c|  [c.name, c.id] }
@@ -53,6 +48,8 @@ class JobsController < ApplicationController
 
 
 	end
+
+
 
 
 	
@@ -87,7 +84,7 @@ class JobsController < ApplicationController
 		@job.city_id = params[:city_id]
 		@job.price_id = params[:price_id]
 		if @job.update(jobs_params)
-			redirect_to @job
+			redirect_to @job, notice: 'Your listing was successfully updated.'
 		else
 			render "Edit"
 		end
@@ -95,9 +92,12 @@ class JobsController < ApplicationController
 
 	def destroy
 		@job.destroy
-		redirect_to root_path
+		redirect_to root_path, notice: 'Your listing was successfully removed.'
+	end
 
-		Favorite.where(favorited_id: @job.id, user_id: current_user.id).first.destroy
+	def favdestroy
+
+	Favorite.where(favorited_id: @job.id, user_id: current_user.id).first.destroy
     redirect_to @job, notice: 'Service succesfully removed from favorites'
 	end
 
@@ -105,10 +105,10 @@ class JobsController < ApplicationController
    private 
 
 	def jobs_params
-		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :price_id,:job_img, :search, :phone, :job_id, :favorite_id)
+		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :price_id,:image, :search, :phone, :job_id, :favorite_id)
 	end
 
 	def set_job 
-		@job = Job.friendly.find(params[:id])
+		@job = Job.friendly.find(params[:id]) rescue nil
 	end
 end

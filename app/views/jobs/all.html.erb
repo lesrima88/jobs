@@ -1,0 +1,16 @@
+<div class="row">
+	<% @jobs.take(06).each do |job| %>
+ 		<div class="col-md-3">
+ 			<div class="thumbnail">
+      			<%= image_tag job.image.url %>
+      			<div class="caption">
+       			 <h3><%= link_to job.company, job_path(job) %></h3>
+        			<p><%= job.city.try(:name) %><br></p>
+        			
+      			</div>
+    		</div>
+  		</div>
+   <% end %>
+  </div>
+
+  <br>

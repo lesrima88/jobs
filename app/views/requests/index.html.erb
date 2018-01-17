@@ -1,11 +1,26 @@
 
-<h1>Recent Requests</h1>
+<h1>Requests</h1>
 
-<% @requests.all.each do |request| %>
+<div class="row">
+	<% @requests.all.each do |request| %>
+	<div class="col-md-3">
+		<div class="thumbnail">
+      			<%= image_tag request.image.url %>
+      			<div class="caption">
+					<%= link_to request.title, request_path(request) %>
+						
 
-<%= link_to request.title, request_path(request) %>
-<%-# request.city %>
-<%-# request.city.try(:name) -%>
-
-
+		
+      			</div>
+    		</div>
+  		</div>
+  	</div>
 <% end %>
+
+
+
+
+<br>
+
+	
+       			 
