@@ -63,6 +63,13 @@ class RequestsController < ApplicationController
    	redirect_to root_path , notice: 'Your listing was successfully removed.'
   end
 
+  def complete
+    @request = Request.find(params[:id])
+    @request.update_attribute(:completed_at, Time.now)
+    redirect_to root_path
+  end 
+
+
   private 
 
 	def request_params
@@ -72,4 +79,6 @@ class RequestsController < ApplicationController
 	def set_request 
 		@request = Request.friendly.find(params[:id]) 
 	end
+
+
 end

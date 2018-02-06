@@ -10,11 +10,16 @@ class UsersController < ApplicationController
 		
 
 
- 	def destroy
+ 	#def destroy
 
-		Favorite.where(favorited_id: @job.id, user_id: current_user.id).first.destroy
-    	redirect_to @job, notice: 'Service succesfully removed from favorites'
-	end 
+		#Favorite.where(favorited_id: @job.id, user_id: current_user.id).first.destroy
+    	#redirect_to @job, notice: 'Service succesfully removed from favorites'
+	#
+def destroy
+	sign_out
+    redirect_to root_url
+end 
+
 
 
 

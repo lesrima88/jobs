@@ -12,6 +12,8 @@
  * file per style scope.
  *
  *= require social-share-button
+ *= require font-awesome
+
 
  */
 @import url(http://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,500); 
@@ -19,88 +21,177 @@
 @import "bootstrap";
 
 body {
+ background-color:#F5F5F1;
+ color: #333333;
+}
+
+
+
+.jumbotron {
+  
+  
   background-color: #fff;
-  color: #333;
-  margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  background-image: url("nairobisky.jpg") ;
+  
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 0;
+
+
+ 
+
+
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
-}
-
-a {
-  color: #000;
-
-  &:visited {
-    color: #666;
+ .dropdown-menu>li >a:hover, .dropdown-menu > li > a:focus {
+            background-image:none !important;
+ }
+ 
+.nav>li>a:focus, .nav>li>a:hover {
+        text-decoration: none;
+        background-color: #112f60;
   }
 
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
+
+.navbar .navbar-brand {
+	font-family: guardian-egyptt, georgia, serif;
+	font-weight: 400;
+	font-size: 30px;
 }
 
-th {
-  padding-bottom: 5px;
+
+
+.jumbotron p:last-child {
+
+  
 }
 
-td {
-  padding: 0 5px 7px;
+.jumbotron-heading {
+  font-weight: 400;
+  padding-top: 200rem;
+
+
+
+
+
+  
 }
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
+
+.form-actions {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
 }
 
-#notice {
-  color: green;
+
+.jumbotron h1 {
+
+
+  padding-top: 1rem;
+	
+	color:white;
+	
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+ }
+
+
+ .jumbotron p {
+
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+ 
+
+
+ }
+.navbar {
+    color: #FFFFFF;
+    background-color: #3A74DA;
+       margin-bottom: 0 !important;
+       -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+  
+
 }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+.col-md-3:nth-child(4n+1) {
+	clear: left;
 }
 
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px 7px 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
 
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px -7px 0;
-    background-color: #c00;
-    color: #fff;
-  }
-
-  ul li {
-    font-size: 12px;
-    list-style: square;
-  }
+.thumbnail img {
+    height:250px;
+    width:100%;
 }
 
-label {
-  display: block;
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    background-color: #3A74DA;
+}
+
+.form-control{
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+}
+
+.navbar a {
+    color: white;
+}
+
+navbar>a:hover{
+	background: rgba(255,255,255,.9);
+	color: black;
+}
+
+
+
+.jumbotron .container {
+  max-width: 40rem;
+
+}
+
+.for
+
+
+
+
+
+
+
+.album {
+  min-height: 50rem; /* Can be removed; just added for demo purposes */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #f7f7f7;
+}
+
+.card {
+  float: left;
+  width: 33.333%;
+  padding: .75rem;
+  margin-bottom: 2rem;
+  border: 0;
+}
+
+.card > img {
+  margin-bottom: .75rem;
+}
+
+.card-text {
+  font-size: 85%;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
 }
 
 

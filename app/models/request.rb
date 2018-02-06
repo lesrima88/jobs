@@ -15,11 +15,15 @@ class Request < ActiveRecord::Base
     has_many :fans, through: :favorites, source: :user
     has_many :comments 
 
+ def complete?
+ 	!completed_at.blank?
+ end
+
 
 
 def self.search(search)
 	if search
-		where(["title LIKE ?","%#{search}%"])
+		where(["title LIKE ? OR body LIKE ?", "%#{search}%" , "%#{search}%"])
 	else
 
 	end

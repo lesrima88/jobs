@@ -16,7 +16,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter' 
 gem 'pesapal'
 gem 'searchkick'
-
+gem 'impressionist'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-script-source', '1.8.0'

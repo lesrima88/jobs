@@ -6,28 +6,21 @@
     <div class="login-page">
       <div class="form" style="padding-top:5px;">
 
+      <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=136050860073615&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div class="special login-form">
         <h2 style="margin-bottom:15px;">Log in</h2>
         <%= stylesheet_link_tag "signup" %>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="field-wrap">
-    <%= f.email_field :email, autofocus: true, placeholder: "Email" %>
-    </div>
-
-    <%= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
-    <p class="message" style="margin-top:0px; float:middle;"><%= link_to "Forgot your password?", new_password_path(resource_name) %></p><br />
-    <% if devise_mapping.rememberable? -%>
-    <div class="message" style="margin-top:0px; text-align:left;">
-     <div style="width:20px; display:inline-block;"><%= f.check_box :remember_me %></div>Remember me
-
-  </div>
-  <% end -%>
-
-  <div class="actions" style="margin-top:10px;">
-    <%= f.button :submit, "Log in", class: "btn button btn-success" %>
-
-  </div>
+  
   <p class="message" style="margin-bottom:-15px;"><a> <%= render "devise/shared/links" %></a></p>
 <% end %>
 

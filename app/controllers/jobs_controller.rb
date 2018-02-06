@@ -1,7 +1,8 @@
 class JobsController < ApplicationController
 	before_action :set_job, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, only: [:new,  :edit]
-
+	impressionist :actions=>[:show]
+	
 	def index
 			@jobs = Job.all.order("created_at DESC")
 			@requests = Request.all.order("created_at DESC")
@@ -23,6 +24,9 @@ class JobsController < ApplicationController
 		else
 			@average_review = @job.reviews.average(:rating).round(2)
 		end
+
+
+	impressionist(@job)
 
 
 	end

@@ -1,21 +1,28 @@
-
+<div class= "container">
 <div class="row">
 	<div class="col-md-6">
 	<div class="thumbnail">
 	<%= image_tag @job.image.url %> 
 	</div>
-	s</div>
+	</div>
 	<div class="col-md-6">
 	<h3><%= @job.title %></h3>
 	<p>Posted on <%= @job.created_at.strftime(" %b %d, %Y") %></p>
+
 	<p><%= @job.description %></p>
 	<p><%= @job.category.try(:name)%></p>
     <p>Location: <%= @job.city.try(:name) %></p>
     <p><%= @job.url %><p>
 	<p><%= @job.phone %><p>
 	<p>Posted by <%= @job.user.name %></p>
+	<p>Member since <%= @job.user.created_at.strftime(" %b %d, %Y") %></p>
 	<%= image_tag(@job.user.image)%>
 	<p><%= link_to("Seller's Profile", @job.user) %><p>
+
+	<p>
+    Views: <%= @job.impressionist_count %>
+
+	</p>
 
 	</div>
 </div>
@@ -34,10 +41,12 @@
 </div>
 
 </div>
-
-
+<br>
+<div class= "container">
 <p>Share:<%= social_share_button_tag(@job.title) %></p>
+<br>
 <p>Report </p>
+</div>
 
 
 
@@ -69,7 +78,7 @@
 <% if user_signed_in? %>
 
 <%- unless current_user.favorite_jobs.exists?(id: @job.id) -%>
-          <%= link_to 'Add to favorites', favorite_jobs_path(job_id: @job),class: "btn btn-sm danger", method: :post  %>
+          <%= link_to 'Add to favorites', favorite_jobs_path(@job),class: "btn btn-sm danger", method: :post  %>
           <%- else -%>
           <%= link_to 'Remove from favorites', favorite_job_path(@job), method: :delete ,class: "btn btn-sm warning"%>
           <%- end -%>
@@ -78,7 +87,7 @@
           <% end %>
 
 
-
+</div>
 
 
 
@@ -104,3 +113,4 @@ $('.review-rating').raty({
 		}
 	});
 </script>
+

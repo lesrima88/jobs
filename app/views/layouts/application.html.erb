@@ -2,26 +2,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-   
-  <title>Kazii</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <title>Kazii</title> 
   
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  
   <%= javascript_include_tag 'application', 'data-turbolinks-track':  'reload' %>
-  
   <%= csrf_meta_tags %>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+
+
 </head>
 <body>
 
 
 
- <nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar">
  <div class="container">
+
   <div class="navbar-header">
-    <%= link_to " Kazii.io" , root_path , class: "navbar-brand" %>  
+
+
+    <%= link_to " Kazi" , root_path , class: "navbar-brand" %> 
+
+
+
+
+
+  
+
      
 
    </div>
+      
 
    <% flash.each do |key, value| %>
     <div class="text-center <%= flash_class(key) %>">
@@ -33,11 +50,11 @@
 
 
 
-<ul class="nav navbar-nav navbar-left">
+
+
 
 
 <% if user_signed_in? %>
-
 
 
  
@@ -45,8 +62,8 @@
     </ul>
 
   <ul class="nav navbar-nav navbar-right">
-    <li><%= link_to "List Your Service", new_job_path %></li>
-    <li><%= link_to "Request a task", requests_new_path %></li>
+    <li><%= link_to new_job_path do %><i class= "fa fa-wrench" ></i> List your service<% end %></li>
+    <li><%= link_to requests_new_path do %><i class= "far fa-handshake" ></i> Request a task<% end %></li>
    
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= "Hello, #{current_user.name}" %> Your Account
@@ -65,14 +82,17 @@
  
    
    <ul class="nav navbar-nav navbar-right">
-    <li><%= link_to "Log in", user_session_path %></li>
-    <li><%= link_to "List Your Service", new_user_session_path %></li>
-    <li><%= link_to "Request a task", requests_new_path %></li>
-    <li><%= link_to "Browse all requests", requests_index_path %></li>
+    <li><%= link_to user_session_path do %><i class= "fa fa-user-plus" %></i> Log In<% end %></li>
+    <li><%= link_to new_job_path do %><i class= "fa fa-wrench" ></i> List your service<% end %></li>
+    <li><%= link_to requests_new_path do %><i class= "far fa-handshake" ></i> Request a task<% end %></li>
+
 
    
-  </li>
+  
   </ul>
+
+
+
 
 
 
@@ -98,15 +118,14 @@
 
 
 
-</div>
 
-</nav>
-
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<div class= "container">
 <%= yield %>
-</div>
+
+
+
+
+
+
 </body>
 </html>
 

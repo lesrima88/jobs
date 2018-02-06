@@ -34,7 +34,8 @@ Rails.application.routes.draw do
   resources :users
   resources :jobs
 
-  resources :requests
+  resources :requests 
+
 
   resources :favorite_jobs, only: [:create,:destroy] 
 
@@ -52,6 +53,13 @@ Rails.application.routes.draw do
     post :untrash
    end
    end
+
+
+   resources :requests do
+    member do
+      patch :complete
+    end
+  end
 
   resources :users do
     resources :reviews 
