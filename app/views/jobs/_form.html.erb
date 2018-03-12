@@ -1,61 +1,42 @@
 
 
- 
-  
+
     <%= simple_form_for(@job, html: {multipart: true}) do |f| %>
 	<%=f.collection_select :category_id,Category.all, :id ,:name, {:prompt=> "Select Category" ,:required=> true} %>
 	<%=f.collection_select :city_id, City.all, :id ,:name,:prompt=> "Select City" %>
 	
-	
-  <div class="form-group">
 	<%= f.input :title,required: true,label: "Your Business Name" %>
 	
-	</div>
-
-	<div class="form-group">
-	<%= f.input :description,required: true,label: "Tell Us About Your Service" %>
-	</div>
-     
-
-
-    <div class="form-group">
-	<%=f.collection_select :price_id, Price.all, :id ,:name,:prompt=> "Select Pricing" %>
-	</div>
 	
 
-	<div class="form-group">
+
+	<%= f.input :description,required: true,label: "Tell Us About Your Service" %>
+
+
+
+    <h5>Choose Pricing:</h5>
+	<%=f.collection_select :price_id, Price.all, :id ,:name,:prompt=> "Select Pricing" %>
+
+	
+
+
         <%= f.input :url, required: false,label: "Website:" %>
 	    
 
-	</div>
+
 
 	
 
-	<div class= "form-group">
-	<%= f.input :phone, as: :integer, required: true, label: "Enter your phone Number",placeholder: "eg 0722-456-456"%>
-   </div>
-	<%= f.file_field :image %>
-	<div class="action">
+	
+	<%= f.input :phone, as: :integer, required: true, label: "Enter your phone Number",placeholder: "eg 0722456456"%>
+  
+   <h5> Upload Image </h5>
+	<%= f.file_field :image, label: "Ayoo" %>
 	
 
 	<%= button_tag(type: "submit", class: "btn btn-primary") do %>
   	<span><i class="glyphicon glyphicon-wrench"></i> List Service</span>
 	<% end %> 
-
-	</div>
-	</div>
-	</div>
-	</div>
-
-	
-	
-
-    
-	
-
-	
-	</div>
-
 
 
 <% end %>

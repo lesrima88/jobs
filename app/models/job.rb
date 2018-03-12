@@ -20,13 +20,15 @@ class Job < ActiveRecord::Base
 
 	
   
+	   
+	validates_presence_of :title , :description, :price_id, :phone, :category_id, :city_id
 
-
+	
 
 
 def self.search(search)
 	if search
-		where(["title LIKE ? OR description LIKE ?", "%#{search}%" , "%#{search}%"])
+		where(["title LIKE ? OR description LIKE ?", "%{search}%" , "%{search}%"])
 	else
 		all
 

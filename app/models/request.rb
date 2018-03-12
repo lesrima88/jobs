@@ -15,6 +15,13 @@ class Request < ActiveRecord::Base
     has_many :fans, through: :favorites, source: :user
     has_many :comments 
 
+
+
+   validates_presence_of :title , :body, :category_id, :city_id
+   validates :budget, presence: true , numericality: true
+   validates :contact, presence: true , numericality: true, length:{minimum: 8, maximum: 10}
+
+
  def complete?
  	!completed_at.blank?
  end

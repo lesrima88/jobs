@@ -1,7 +1,7 @@
 <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
 <div class="form-group">
   
-  <%= hidden_field_tag(:recipient_id, "#{@user.id}") %></div>
+ <%= hidden_field_tag(:recipient_id, "#{@user.id}") %></div>
 <div class="form-group">
   <%= f.label :subject %>
   <%= f.text_field :subject, placeholder: "Subject", class: "form-control" %>

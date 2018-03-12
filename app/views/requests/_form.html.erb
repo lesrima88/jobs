@@ -1,8 +1,14 @@
 
 
+<br>
 <%= simple_form_for(@request, html: {multipart: true}) do |f| %>
+<div class="container">
 <%=f.collection_select :category_id,Category.all, :id ,:name, {:prompt=> "Select Category" ,:required=> true} %>
 <%=f.collection_select :city_id, City.all, :id ,:name,:prompt=> "Select City" %>
+
+<br>
+<br>
+
 
 
  <div class="form-group">
@@ -15,6 +21,8 @@
 
 <div class= "field">
 <%= f.input :budget, as: :integer ,required: true,label: "Set your Budget for this Request"%>
+<%= number_with_delimiter(@number, :delimiter => ',') %>
+
 
 </div>
 

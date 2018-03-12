@@ -1,26 +1,56 @@
 
-<h1>Requests</h1>
 
-<div class="row">
-	<% @requests.all.each do |request| %>
-	<div class="col-md-3">
-		<div class="thumbnail">
-      			<%= image_tag request.image.url %>
-      			<div class="caption">
-					<%= link_to request.title, request_path(request) %>
-						
 
-		
-      			</div>
-    		</div>
-  		</div>
-  	</div>
+
+<div class="container">
+<center>
+<div class="browse">
+
+<h3>Browse A Service In Your Area</h3>
+
+<%= form_tag search_jobs_path, method: :get do |f| %>
+
+<%= select_tag(:category ,options_for_select(Category.all.map{ |c| [c.name, c.id]}),:prompt=>"Select A Service",class: "indexdropdown" )%>
+
+<%= select_tag(:city, options_for_select(City.all.map{ |c|[c.name, c.id]}), :prompt=>"Select Your City") %>
+
+
+<%= submit_tag 'Search', class: "btn-custom" %>
 <% end %>
-
-
-
+</div>
+</div>
+</center>
 
 <br>
+<div class="container">
+<div class="panel panel-default">
+ <div class="panel-body">
+<table class="table table-striped">
+    
+<th>Requested by</th>
+<th>Category</th>
+<th>Title</th>
+<th>Description</th>
+<th>City</th>
+<th>Price</th>
+<th></th>
 
-	
-       			 
+
+<% @requests.take(12).each do |request| %>
+<tr>
+<td><%= image_tag request.user.image, :class=> "img-circular" %></td>
+<td><%= request.category.try(:name)%></td>
+<td><%= request.title %></td>
+<td><%= request.body %></td>
+<td><%= request.city.try(:name) %></td>
+<td><%= request.budget %></td>
+<td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-primary" %></td>
+</tr>
+</div>
+</div>
+
+
+<% end %>
+</table>
+</div>
+

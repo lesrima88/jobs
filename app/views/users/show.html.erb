@@ -1,59 +1,43 @@
+<div class = "container">
+<br>
+<p><%= image_tag @user.image %></p>
+<%= @user.name %>
+<p>Member since <%= @user.created_at.strftime(" %b %d, %Y") %></p>
+</div>
+
+<br>
+<div class="container">
+<% if @user == current_user %> 
+<h4>Your Listings:</h4>
+<% else %>
+<h4>Jobs posted by <% @user.name %>
+<% end %>
+<table class="table table-borderless">
+<th></th>
+<th>Category</th>
+<th>Title</th>
+<th>City</th>
+
+<th></th>
 
 
+<% @user.jobs.empty?? 'User Has not posted any jobs' : @user.jobs.take(12).each do |job| %>
+<tr>
+<td><%= image_tag job.image, :class=> "img-circular" %></td>
+<td><%= job.category.try(:name)%></td>
+<td><%= job.description %></td>
+<td><%= job.city.try(:name) %></td>
 
-
-<h1><%= @user.username %></h1>
-
-
-
-
- 
+<td><%= link_to "View Service" , job_path(job), class: "btn btn-md btn-primary" %></td>
 <% if @user == current_user %>
+<td><%= link_to "Delete Service", job_path(@user), method: :delete, data: { confirm: "The Listed Service will be permanently deleted from your profile & Listings,Are you Sure?" }, class: "btn btn-md btn-danger" %></td>
 
-<p><%= link_to "Edit Profile", edit_user_path(@user) ,class: "btn btn-sm btn-primary"  %></p>
-<p><%= link_to "Account Settings", edit_user_registration_path(@user) ,class: "btn btn-sm btn-danger"  %></p>
-<p><%#= link_to "Favorite Services", users_favorite_path(@user) ,class: "btn btn-sm warning"  %></p>
-
-
-
-
+</tr>
 
 
 <% end %>
-
-
-
-
-
-
-
-
-<h3> Services Posted by <%= @user.name %></h3>
-
-
-<% @user.jobs.empty?? 'User Has not posted any jobs' : @user.jobs.take(05).each do |job| %>
-
-
-
-
-
-
-<h3><%= link_to job.title, job_path(job) %> </h3>
-
-<%= image_tag job.image.url %>
-<p><%= job.city.try(:name) %></p>
-     <p>listed on<%= job.created_at.strftime(" %b %d, %Y") %></p>
-
-<%= link_to "View Service", job_path(job), class: "btn btn-xs btn-danger" %>
-<% if @user == current_user %>
-<%= link_to "Delete Service", job_path(@user), method: :delete, data: { confirm: "The Listed Service will be permanently deleted from your profile & Listings,Are you Sure?" }, class: "btn btn-xs btn-danger" %>
-
-
-
-
-
-<% end %> 
 <% end %>
+</table>
 
 <h3> Reviews Posted  </h3>
 

@@ -42,8 +42,6 @@ class RequestsController < ApplicationController
   def edit 
   	@categories = Category.all.map{  |c|  [c.name, c.id] }
     @cities = City.all.map{  |c|  [c.name, c.id] }
-
-
   end 
    
   def update
@@ -52,11 +50,12 @@ class RequestsController < ApplicationController
 		
    	 if @request.update(request_params)
    	 	redirect_to @request, notice: 'Your Request was successfully updated.' 
-      
       else
         render "Edit"
       end 
    end
+
+
 
   def destroy
    	@request.destroy
@@ -73,11 +72,11 @@ class RequestsController < ApplicationController
   private 
 
 	def request_params
-		params.require(:request).permit(:title, :body, :budget, :category_id, :city_id, :search, :contact, :request_id, :image)
+		params.require(:request).permit(:title, :body, :budget, :category_id, :city_id, :search, :contact, :request_id)
 	end
 
 	def set_request 
-		@request = Request.friendly.find(params[:id]) 
+		@request = Request.friendly.find(params[:id]) rescue nil 
 	end
 
 

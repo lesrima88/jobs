@@ -1,8 +1,10 @@
-
+<div class="container">
 
 <% if @jobs.empty? %>
 
-<h1>No Results Found</h1>
+<h3> No services Found </h3>
+
+
 
 
 
@@ -11,7 +13,7 @@
 
 <tbody>
 
-  <h3> Services </h3>
+  <h3> Services:! </h3>
   
    <% @jobs.each do |job| %>
 
@@ -28,11 +30,11 @@
 
     <% @requests.each do |request| %>
 
-    <h3> Requests </h3>
+    <h3> Requests: </h3>
 
      <tr>
         <td><%= link_to request.title, request %></td>
-        <td><%= @request.body %></td>
+        <td><%= request.body %></td>
         <br><%= request.city.try(:name) %><br>
 
 
@@ -42,3 +44,4 @@
 
    </tr>
  </tbody>
+ </div>
