@@ -21,8 +21,13 @@
 @import "bootstrap";
 
 body {
+
+ 
  background-color:#F5F5F5;
+ 
  color: #333333;
+
+
 }
 
 .thumbnail img {
@@ -32,6 +37,16 @@ body {
 
 
 
+.input-group{
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+}
+
+
+.panel {
+    border: 0;
+}
 
 
 .jumbotron {

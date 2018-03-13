@@ -39,23 +39,35 @@
 
 <br>
 <br>
+<br>
+<br>
 <center>
 <div class= "container">
 <div class="row">
+
+<div class="panel panel-default">
+
+<div class="panel-body">
+
 
 <%= form_tag search_jobs_path, method: :get do |f| %>
 <h3>Browse A Service In Your Area</h3>
 <div class="input-group">
 <%= text_field_tag :search, params[:search], :size=> "50", placeholder: "Search For A Service or Request", class: 'form-control' %>
  <span class="input-group-btn">
-<%= submit_tag "Search", class: 'btn btn-default' %>
+
+<%= submit_tag "Search", class: 'btn btn-primary' %>
+</div>
 </span>
   <% end %>
    
+<br>
+<br>
+<br>
 
 
-
-
+</div>
+</div>
 
 
 
@@ -69,10 +81,15 @@
 <br>
 <br>
 <div class= "container">
-<center>
+<div class="panel panel-primary">
+ 
 
-<h4>Latest Services</h4>
-</center>
+  <div class="panel-heading"><center>Latest Services</center></div>
+  <div class="panel-body">
+  
+  
+
+
 
 <div id="gallery">
 
@@ -94,18 +111,16 @@
      
   		</div>
    <% end %>
-
-
-  </div>
-  </div>
-
-
-  </div>
- <div class = "container">
-  <p align="right">
+   <p align="right">
 <%= link_to "...View all Services", jobs_all_path , class: "btn btn-link" %>
 </p>
-</div>
+
+
+  </div>
+  </div>
+  </div>
+
+  </div>
 
   <br>
 
@@ -114,15 +129,20 @@
 
 <br>
 <div class="container">
-<table class="table table-striped">
-<center>
 
-<h4>Latest Requests</h4>
-</center>
-<br>
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+
+  
+  <div class="panel-heading"><center>Latest Requests</center></div>
+ 
+
+<table class="table table-default">
+
+
 <th>Requested by</th>
 <th>Category</th>
-<th>Title</th>
+
 <th>Description</th>
 <th>Location</th>
 <th>Payout</th>
@@ -134,7 +154,7 @@
 <tr>
 <td><%= image_tag request.user.image, :class=> "img-circular"  %></td>
 <td><%= request.category.try(:name)%></td>
-<td><%= link_to request.title , request_path(request) %></td>
+
 <td><%= request.body %></td>
 <td><%= request.city.try(:name) %></td>
 <td><%= request.budget %></td>
@@ -143,19 +163,22 @@
 
 
 <% end %>
+
 </table>
+<p align="right">
+<%= link_to "...View all Requests", requests_index_path , class: "btn btn-link" %>
+</p>
 </div>
 </div>
 
 
   <br>
+  
+  
+  </div>
 
 
- <div class = "container">
- <p align="right">
-<%= link_to "View all Requests", requests_index_path , class: "btn btn-link" %>
-</p>
-</div>
+
 
 
 

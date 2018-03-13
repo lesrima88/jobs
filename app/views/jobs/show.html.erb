@@ -1,3 +1,6 @@
+<br>
+<br>
+<br>
 <div class= "container">
 <div class="row">
 
@@ -7,7 +10,10 @@
     
     
 	<%= image_tag @job.image.url %>
+
 	</div>
+
+
 	</div>
 	<div class="col-md-6">
     <br>
@@ -34,15 +40,42 @@
     Views: <%= @job.impressionist_count %>
 
 	</p>
+
+	<% if user_signed_in? %>
+
+<% if @job.user_id == current_user.id %>
+
+
+
+<%= link_to "Edit", edit_job_path(@job) ,class: "btn btn-md btn-primary"  %>
+<%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure to permanently delete this listed service?" }, class: "btn btn-md btn-danger" %>
+
+<% else %>
+
+
+<%= link_to "Message This User", new_conversation_path(:recipient_id => @job.user.id), class: "btn btn-large btn-primary" %>
+
+
+
+
+<% end %>
+
+<% end %>
+
 	<h4>Average Rating</h4>
 <div class="average-review-rating" data-score=<%= @average_review %>></div>
 <span class="number-of-reviews">Based on <%= @job.reviews.count %>  reviews</span>
+<% unless @job.user_id == current_user.id %>
+
+<div><%= link_to "Write A Review", new_job_review_path(@job) %> </div>
+<% end %>
+<p><%= social_share_button_tag(@job.title) %></p>
 	</center>
 	</div>
 	</div>
 
 
-
+<%= render @job.reviews %>
 
 
 
@@ -63,7 +96,7 @@
 </div>
 <br>
 <div class= "container">
-<p>Share:<%= social_share_button_tag(@job.title) %></p>
+
 <br>
 <p>Report </p>
 </div>
@@ -71,29 +104,9 @@
 
 
 
-<%= render @job.reviews %>
-
-
-<% if user_signed_in? %>
-
-<% if @job.user_id == current_user.id %>
-
-<div class="container">
-
-<%= link_to "Edit", edit_job_path(@job) ,class: "btn btn-md btn-primary"  %>
-<%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure to permanently delete this listed service?" }, class: "btn btn-md btn-danger" %>
-
-<% else %>
-
-
-<%= link_to "Message This User", new_conversation_path(:recipient_id => @job.user.id), class: "btn btn-large btn-primary" %>
-<div><%= link_to "Add Review", new_job_review_path(@job) %> </div>
 
 
 
-<% end %>
-
-<% end %>
 </div>
 
 <% if user_signed_in? %>
