@@ -1,26 +1,38 @@
 
+<div class="container">
 
+
+
+<div class="col-md-6 col-md-offset-3">
+
+<br>
+  <div class="panel panel-default">
+
+
+<div class="panel-body">
 
     <%= simple_form_for(@job, html: {multipart: true}) do |f| %>
 	<%=f.collection_select :category_id,Category.all, :id ,:name, {:prompt=> "Select Category" ,:required=> true} %>
 	<%=f.collection_select :city_id, City.all, :id ,:name,:prompt=> "Select City" %>
+
 	
+	<div class="form-group mb-3">
+	<br>
 	<%= f.input :title,required: true,label: "Your Business Name" %>
-	
-	
-
-
 	<%= f.input :description,required: true,label: "Tell Us About Your Service" %>
+	</div>
 
 
 
     <h5>Choose Pricing:</h5>
-	<%=f.collection_select :price_id, Price.all, :id ,:name,:prompt=> "Select Pricing" %>
+
+	<div><%=f.collection_select :price_id, Price.all, :id ,:name,:prompt=> "Select Pricing" %><div>
+	<br>
 
 	
 
 
-        <%= f.input :url, required: false,label: "Website:" %>
+     <%= f.input :url, required: false,label: "Website:" %>
 	    
 
 
@@ -32,11 +44,19 @@
   
    <h5> Upload Image </h5>
 	<%= f.file_field :image, label: "Ayoo" %>
-	
-
+	<br>
+<center>
 	<%= button_tag(type: "submit", class: "btn btn-primary") do %>
   	<span><i class="glyphicon glyphicon-wrench"></i> List Service</span>
 	<% end %> 
+	</center>
 
 
 <% end %>
+<div align="right"><%= link_to "Back", root_path %></div>
+
+</div>
+</div>
+</div>
+</div>
+

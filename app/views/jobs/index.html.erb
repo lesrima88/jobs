@@ -104,7 +104,14 @@
              <p><%= job.category.try(:name)%></p>
 
         			<p><%= job.city.try(:name) %><br></p>
-        			
+
+
+
+
+          
+               
+              <p><div class="average-review-rating" data-score=<%= job.average_review %>></div> <p>   
+              <span class="number-of-reviews">Based on <%= job.reviews.count %>  reviews</span>    			
       		
     	
         </div>
@@ -112,7 +119,7 @@
   		</div>
    <% end %>
    <p align="right">
-<%= link_to "...View all Services", jobs_all_path , class: "btn btn-link" %>
+<%= link_to "View all >", jobs_all_path , class: "btn btn-link" %>
 </p>
 
 
@@ -166,7 +173,7 @@
 
 </table>
 <p align="right">
-<%= link_to "...View all Requests", requests_index_path , class: "btn btn-link" %>
+<%= link_to "View all >", requests_index_path , class: "btn btn-link" %>
 </p>
 </div>
 </div>
@@ -179,6 +186,19 @@
 
 
 
+
+
+
+
+<script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
 
 
 

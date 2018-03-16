@@ -8,6 +8,8 @@ class JobsController < ApplicationController
 			@requests = Request.all.order("created_at DESC")
 			#@jobs = Job.search(params[:search])
 
+
+
 		end
 
 	def all
@@ -18,17 +20,16 @@ class JobsController < ApplicationController
 	
 
 	def show
-      	
+    
+
 		if @job.reviews.blank?
 			@average_review = 0
 		else
 			@average_review = @job.reviews.average(:rating).round(2)
+		
+
 		end
-
-
-	impressionist(@job)
-
-
+    
 	end
 
 	def search
@@ -53,35 +54,23 @@ class JobsController < ApplicationController
 
 	end
 
-
-
-
-	
-
 	def create
-
-		
-
-		@job = current_user.jobs.build(jobs_params)
-
-		
-		
-
-		
-		
-
-		if @job.save
+        @job = current_user.jobs.build(jobs_params)
+        if @job.save
 			redirect_to @job
 		else
 			render "New"
 		end
 	end
 
+
 	def edit
 		@categories = Category.all.map{  |c|  [c.name, c.id] }
 		@cities = City.all.map{  |c|  [c.name, c.id] }
 		@prices = Price.all.map{  |c|  [c.name, c.id] }
 	end
+
+
 
 	def update
 		@job.category_id = params[:category_id]
@@ -94,10 +83,15 @@ class JobsController < ApplicationController
 		end
 	end
 
+
+
 	def destroy
 		@job.destroy
 		redirect_to root_path, notice: 'Your listing was successfully removed.'
 	end
+
+
+
 
 	def favdestroy
 

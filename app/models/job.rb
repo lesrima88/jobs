@@ -23,7 +23,17 @@ class Job < ActiveRecord::Base
 	   
 	validates_presence_of :title , :description, :price_id, :phone, :category_id, :city_id
 
-	
+ def average_review
+  if reviews.blank?
+    @average_review = 0
+  else
+    @average_review = reviews.average(:rating).round(2)
+  end
+end
+
+
+
+
 
 
 def self.search(search)
@@ -38,6 +48,8 @@ def self.search(search)
 
 
 end
+
+
 
 
 

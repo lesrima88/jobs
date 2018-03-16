@@ -36,6 +36,17 @@ body {
 }
 
 
+.center_div{
+    margin: auto;
+    width:100% /* value of your choice which suits your alignment */
+}
+
+
+
+.panel-default > .panel-heading-custom {
+background: #ffffff;  }
+
+
 
 .input-group{
   -webkit-border-radius: 0;
