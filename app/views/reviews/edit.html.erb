@@ -1,3 +1,16 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default">
+			<div class="panel-body">
+
 <h1>Edit Review</h1>
 
 <%= simple_form_for([@job, @review]) do |f| %>
@@ -6,8 +19,10 @@
 
 </div>
   <%= f.input :comment %>
-  <%= f.button :submit %>
+  <%= f.button :submit , class: "btn btn-primary" %>
 <% end %>
+</div>
+</div>
 
 <script>
 	$('#rating-form').raty({

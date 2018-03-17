@@ -1,24 +1,41 @@
-<div class = "container">
 <br>
-<p><%= image_tag @user.image %></p>
+<br>
+<br>
+<div class = "container">
+<div class="col-md-10 col-md-offset-1">
+<br>
+<div class="panel panel-default">
+
+
+<div class="panel-body">
+<center>
+<p><%= image_tag @user.image, class: "img-circular" %></p>
 <%= @user.name %>
-<p>Member since <%= @user.created_at.strftime(" %b %d, %Y") %></p>
+<p>Joined<%= @user.created_at.strftime(" %b %d, %Y") %></p>
+</center>
 </div>
+</div>
+</div>
+</div>
+
+
+
+
 
 <br>
 <div class="container">
+<div class="col-md-10 col-md-offset-1">
+<div class="panel panel-default">
+
+
+<div class="panel-body">
 <% if @user == current_user %> 
-<h4>Your Listings:</h4>
+<h4>Your Listings</h4>
 <% else %>
 <h4>Jobs posted by <% @user.name %>
 <% end %>
 <table class="table table-borderless">
-<th></th>
-<th>Category</th>
-<th>Title</th>
-<th>City</th>
 
-<th></th>
 
 
 <% @user.jobs.empty?? 'User Has not posted any jobs' : @user.jobs.take(12).each do |job| %>
@@ -38,9 +55,56 @@
 <% end %>
 <% end %>
 </table>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<div class="container">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default">
+			<div class="panel-body">
 
 <h3> Reviews Posted  </h3>
 
+
+
+<% @user.reviews.empty?? 'User Has not posted any reviews' : @user.reviews.each do |review| %>
+
+<%= image_tag review.user.image, class: "img-circular" %>
+<div><h3><%= link_to review.job.title,  job_path(review) %></h3></div>
+<div class="review-rating" data-score="<%= review.rating %>"></div>
+
+<div><%= review.comment %></div>
+<br>
+
+
+
+
+
+<% if user_signed_in? %>
+
+<% if @user == current_user %>
+
+
+
+<div><%= link_to "Edit", edit_job_review_path(review.job, review) %>
+<%= link_to "Delete", job_review_path(review.job, review),method: :delete, data: { confirm: "Are you sure?"} %></div>
+
+
+<% end %>
+<% end %>
+
+
+<% end %>
+
+
+</div>
+	</div>
+		</div>
+			</div>
 
  
 
@@ -58,15 +122,6 @@ $('.review-rating').raty({
 
 </script>
 
-<script>
-	$('.average-review-rating').raty({
-		readOnly: true,
-		path: '/assets/',
-		score: function() {
-			return $(this).attr('data-score')
-		}
-	});
-</script>
 
 
 
