@@ -3,18 +3,89 @@
 <br>
 <div class= "container">
 <div class="row">
+  
 
-	<div class="col-md-6">
+	<div class="col-md-4 col-md-offset-1">
 	<br>
 	<div class="thumbnail">
     
     
 	<%= image_tag @job.image.url %>
 
-	</div>
 
 
 	</div>
+
+
+ <div class="col-md-14">
+		   <div class="panel panel-default">
+          <div class="panel-body">
+     
+     <center>
+   	<p>Posted by <%= link_to(@job.user.name, @job.user) %></p>
+	
+	<%= link_to (image_tag @job.user.image, :class=> "img-circular"), @job.user %>
+	
+
+	<p>Joined<%= @job.user.created_at.strftime(" %b %d, %Y") %></p>
+	<p><%= link_to("Seller's Profile", @job.user) %><p>
+
+     </center>
+	
+    </div>
+    </div>
+    </div>
+
+
+
+   <div class="col-md-14">
+		   <div class="panel panel-default">
+         
+         <div class="panel-body">
+         <center>
+     <h3>Contact</h3>
+	<p><span class="glyphicon glyphicon-earphone glyphicon-align-left" aria-hidden="true">&nbsp;</span><%= @job.phone %></p>
+   
+
+	<% unless @job.user_id == current_user.id %>
+    
+	<%= link_to "Message Seller", new_conversation_path(:recipient_id => @job.user.id), class: "btn btn-large btn-primary" %>
+	<% end %>
+	</center>
+    </div>
+    </div>
+    </div>
+
+
+
+ <div class="col-md-14">
+		   <div class="panel panel-default">
+          <div class="panel-body">
+     <center><h4>Share</h4></center>
+     <center>
+     <p><%= social_share_button_tag(@job.title) %></p>
+
+     </center>
+	
+    </div>
+    </div>
+    </div>
+
+
+
+
+   </div>
+	
+
+
+    
+
+
+
+
+
+
+
 	<div class="col-md-6">
     <br>
     <div class="panel panel-default">
@@ -26,18 +97,12 @@
 
 	<p><%= @job.description %></p>
 	<p><%= @job.category.try(:name)%></p>
-    <p><%= @job.city.try(:name) %></p>
+    <i class="fa fa-building-o"></i><p><%= @job.city.try(:name) %></p>
     <p><%= @job.url %><p>
-	<p><%= @job.phone %><p>
-	<p>Posted by <%= link_to(@job.user.name, @job.user) %></p>
 	
-	<%= link_to (image_tag @job.user.image, :class=> "img-circular"), @job.user %>
-
-	<p>Member since <%= @job.user.created_at.strftime(" %b %d, %Y") %></p>
-	<p><%= link_to("Seller's Profile", @job.user) %><p>
 
 	<p>
-    Views: <%= @job.impressionist_count %>
+    Views&nbsp;<span class="glyphicon glyphicon-eye-open glyphicon-align-left" aria-hidden="true"></span>&nbsp;<%= @job.impressionist_count %>
 
 	</p>
 
@@ -53,7 +118,7 @@
 <% else %>
 
 
-<%= link_to "Message This User", new_conversation_path(:recipient_id => @job.user.id), class: "btn btn-large btn-primary" %>
+
 
 
 
@@ -69,7 +134,7 @@
 
 <div><%= link_to "Write A Review", new_job_review_path(@job) %> </div>
 <% end %>
-<p><%= social_share_button_tag(@job.title) %></p>
+
 	</center>
 	</div>
 	</div>

@@ -1,57 +1,27 @@
 
 
-
-
-<% if user_signed_in? %>
-
-<% else %>
-
-        
-            
-
-
-
-
-        
+<br>
+<br>
  <div class="jumbotron text-center">
       <div class="container-fluid ">
         <h1 class="jumbotron-heading">Welcome</h1>
-        <p class="lead text-muted">Find service providers or request</p>
+        <p class="lead text-muted">Find service providers or request a task to be completed</p>
        
-       
+       <% if user_signed_in? %>
+       <% else %>
+       <center>
           <%= link_to "Sign Up", user_session_path, class: "btn btn-primary" %></a>
+         <% end %>
+          </center>
+       <div class="col-md-6 col-md-offset-3">
 
 
-
-          
-       
-      </div>
-    </div>
-
-    <% end %>
-
-
-
-
-        
-
-
-
-<br>
-<br>
-<br>
-<br>
-<center>
-<div class= "container">
-<div class="row">
-
-<div class="panel panel-default">
 
 <div class="panel-body">
 
 
 <%= form_tag search_jobs_path, method: :get do |f| %>
-<h3>Browse A Service In Your Area</h3>
+
 <div class="input-group">
 <%= text_field_tag :search, params[:search], :size=> "50", placeholder: "Search For A Service or Request", class: 'form-control' %>
  <span class="input-group-btn">
@@ -61,19 +31,30 @@
 </span>
   <% end %>
    
-<br>
-<br>
-<br>
 
-
-</div>
-</div>
 
 
 
 </div>
 </div>
-</center>
+
+
+       
+      </div>
+    </div>
+
+    
+
+
+
+
+        
+
+
+
+
+
+
 
 
 
@@ -84,7 +65,7 @@
 <div class="panel panel-primary">
  
 
-  <div class="panel-heading"><center>Latest Services</center></div>
+<div class="panel-body"><center><h4>Latest Services</h4> </center></div>
   <div class="panel-body">
   
   
@@ -93,17 +74,18 @@
 
 <div id="gallery">
 
-	<% @jobs.take(12).each do |job| %>
- 		<div class="col-md-3">
- 		
-      			<%= link_to (image_tag job.image.url(:medium)), job_path(job), :class=> "thumbnail" %>
-      			<div class="caption">
+  <% @jobs.take(12).each do |job| %>
+    <div class="col-md-3">
+    
+            <%= link_to (image_tag job.image.url(:medium)), job_path(job), :class=> "thumbnail" %>
+            <div class="caption">
+
             
-       			 <h4><%= link_to job.title, job_path(job) %></h4>
+             <h4><%= link_to job.title, job_path(job) %></h4>
 
              <p><%= job.category.try(:name)%></p>
 
-        			<p><%= job.city.try(:name) %><br></p>
+              <p><%= job.city.try(:name) %><br><i class="fa fa-building-o"></i></p>
 
 
 
@@ -111,12 +93,12 @@
           
                
               <p><div class="average-review-rating" data-score=<%= job.average_review %>></div> <p>   
-              <span class="number-of-reviews">Based on <%= job.reviews.count %>  reviews</span>    			
-      		
-    	
+              <span class="number-of-reviews">Based on <%= job.reviews.count %>  reviews</span>         
+          
+      
         </div>
      
-  		</div>
+      </div>
    <% end %>
    <p align="right">
 <%= link_to "View all >", jobs_all_path , class: "btn btn-link" %>
@@ -133,39 +115,61 @@
 
 
 
+<br>
+
+
+        
+ <div class="jumbotron jumbotron-custom">
+      <div class="container-fluid ">
+        <h1 class="jumbotron-custom-heading">Complete requests and make money</h1>
+        
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+     
+    </div>
+    </div>
 
 <br>
+<br>
+<br>
+
 <div class="container">
 
 <div class="panel panel-primary">
   <!-- Default panel contents -->
 
   
-  <div class="panel-heading"><center>Latest Requests</center></div>
+  <div class="panel-body"><center><h4><i class= "fa fa-handshake" ></i>&nbsp;Latest Requests</h4> </center></div>
  
 
-<table class="table table-default">
+<table class="table table-hover">
 
 
-<th>Requested by</th>
-<th>Category</th>
-
-<th>Description</th>
-<th>Location</th>
-<th>Payout</th>
-<th></th>
 
 
+<div class="panel-body">
 <% @requests.take(12).each do |request| %>
+</div>
+
+
+
 
 <tr>
-<td><%= image_tag request.user.image, :class=> "img-circular"  %></td>
+
+
+
+<td><%= image_tag request.user.image, :class=> "img-circular"  %>&nbsp;<%= request.user.name %></td>
 <td><%= request.category.try(:name)%></td>
 
 <td><%= request.body %></td>
 <td><%= request.city.try(:name) %></td>
 <td><%= request.budget %></td>
 <td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-primary" %></td>
+
+
 </tr>
 
 

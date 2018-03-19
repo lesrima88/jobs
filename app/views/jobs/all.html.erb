@@ -1,6 +1,22 @@
 
 <br>
+<br>
+<br>
+<br>
+
+<div class= "container">
+<div class="panel panel-primary">
+ 
+
+<div class="panel-body"><center><h4><i class= "fa fa-wrench" ></i>&nbsp;Latest Services</h4> </center></div>
+  <div class="panel-body">
+  
+  
+
+
+
 <div id="gallery">
+
   <% @jobs.each do |job| %>
     <div class="col-md-3">
     
@@ -9,13 +25,35 @@
             
              <h4><%= link_to job.title, job_path(job) %></h4>
 
-              <p><%= job.city.try(:name) %><br></p>
-              
-          
-        </div>
+             <p><%= job.category.try(:name)%></p>
 
+              <p><%= job.city.try(:name) %><br></p>
+
+
+
+
+          
+               
+              <p><div class="average-review-rating" data-score=<%= job.average_review %>></div> <p>   
+              <span class="number-of-reviews">Based on <%= job.reviews.count %>  reviews</span>         
+          
+      
+        </div>
+     
       </div>
    <% end %>
 
 
-  </div>
+
+
+
+
+   <script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
