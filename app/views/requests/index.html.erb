@@ -1,39 +1,19 @@
 
-
+<br>
+<br>
+<br>
+<br>
 
 
 <div class="container">
-<center>
-<div class="browse">
-
- <div class="panel panel-default">
-    <div class="panel-body">
 
 
-<h3>Browse A Service In Your Area</h3>
-
-<%= form_tag search_jobs_path, method: :get do |f| %>
-
-<%= select_tag(:category ,options_for_select(Category.all.map{ |c| [c.name, c.id]}),:prompt=>"Select A Service",class: "indexdropdown" )%>
-
-<%= select_tag(:city, options_for_select(City.all.map{ |c|[c.name, c.id]}), :prompt=>"Select Your City") %>
 
 
-<%= submit_tag 'Search', class: "btn-custom" %>
-<% end %>
-</div>
-</div>
-</center>
-</div>
-</div>
-
-<p>Will an immature empire perceive a chalk? The repeated envelope references a zone. When will each expressway complain before a wary union? A worst overflows opposite the asterisk! A landscape trails opposite a slice. The ancestor sells another legitimate atheist around the soap.</p>
-
-<br>
 <div class="container">
 <div class="panel panel-default">
- <div class="panel-body">
-<table class="table table-striped">
+ <div class="panel-body"><center><h4><i class= "fa fa-handshake" ></i>&nbsp;All Requests</h4> </center>
+<table class="table table-hover">
     
 <th>Requested by</th>
 <th>Category</th>
@@ -59,6 +39,9 @@
 
 
 <% end %>
+
 </table>
+<p align="right"><%= link_to 'Back' , root_path %></p>
 </div>
+
 

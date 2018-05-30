@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
 	before_action :set_job, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, only: [:new,  :edit]
-	impressionist :actions=>[:show]
+	
 	
 	def index
 			@jobs = Job.all.order("created_at DESC")
@@ -16,11 +16,14 @@ class JobsController < ApplicationController
 		@jobs = Job.all
 
 	end
+    
 
+    def contact
+    end
 	
 
 	def show
-    
+     	@jobs = Job.friendly.find(params[:id])
 
 		if @job.reviews.blank?
 			@average_review = 0

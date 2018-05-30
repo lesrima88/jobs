@@ -28,6 +28,8 @@
 	
 
 	<p>Joined<%= @job.user.created_at.strftime(" %b %d, %Y") %></p>
+	<div>Verified Accounts</div>
+	<%= image_tag "fb.png", size: "40x40" %>
 	<p><%= link_to("Seller's Profile", @job.user) %><p>
 
      </center>
@@ -46,10 +48,14 @@
      <h3>Contact</h3>
 	<p><span class="glyphicon glyphicon-earphone glyphicon-align-left" aria-hidden="true">&nbsp;</span><%= @job.phone %></p>
    
+    <% if user_signed_in? %>
+   
+	<%if @job.user_id == current_user.id %>
 
-	<% unless @job.user_id == current_user.id %>
+	<% else %>
     
 	<%= link_to "Message Seller", new_conversation_path(:recipient_id => @job.user.id), class: "btn btn-large btn-primary" %>
+	<% end %>
 	<% end %>
 	</center>
     </div>
@@ -129,10 +135,32 @@
 
 	<h4>Average Rating</h4>
 <div class="average-review-rating" data-score=<%= @average_review %>></div>
-<span class="number-of-reviews">Based on <%= @job.reviews.count %>  reviews</span>
-<% unless @job.user_id == current_user.id %>
+<% if @job.user_id == current_user.id %>
+<% if @job.reviews.empty? %>
+
+<p> No one has reviewed your service yet </p>
+
+<% else %>
+
+<% if @job.reviews.empty? %>
+
+
+<p>No reviews have been added yet <%= link_to 'be the first',  new_job_review_path(@job)  %> </p>
+<% else %>
+<span class="number-of-reviews">Based on <%= @job.reviews.count%>&nbsp;<%= "Review".pluralize(@job.reviews.count) %> </span>  
+
+<% end %>
+<% end %>
+<% end %>
+
+
+<% if user_signed_in? %>
+<% if @job.user_id == current_user.id %>
+
+<% else %>
 
 <div><%= link_to "Write A Review", new_job_review_path(@job) %> </div>
+<% end %>
 <% end %>
 
 	</center>

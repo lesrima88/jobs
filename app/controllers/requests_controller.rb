@@ -36,6 +36,7 @@ class RequestsController < ApplicationController
 		
   def show
 	@requests = Request.friendly.find(params[:id])
+  #@relative_requests = @request.category.request
   end 
   
 

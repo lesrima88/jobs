@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   
-
+  has_many :notifications, foreign_key: :recipient_id
 	has_many :jobs
   has_many :requests
 	has_many :reviews

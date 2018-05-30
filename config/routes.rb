@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'requests/new'
   get 'jobs/all'
 
+
+
   get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
 
   get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
@@ -22,8 +24,10 @@ Rails.application.routes.draw do
   get 'conversations/index'
   get 'jobs/search' => 'jobs#search', as: 'search_jobs'
 
+  get 'jobs/contact' => 'jobs#contact'
 
-   
+
+
 
 
   

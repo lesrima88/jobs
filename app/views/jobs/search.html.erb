@@ -1,47 +1,124 @@
+
+
+<br>
+<br>
+<br>
+<br>
+
 <div class="container">
 
-<% if @jobs.empty? %>
+<% if @jobs.empty?  %>
 
-<h3> No services Found </h3>
+<h3> No services found </h3>
 
-
+</div>
 
 
 
 <% else %>
 <h1> Search Results </h1>
+ <br>
+<div class= "container">
+<div class="panel panel-primary">
+ 
 
-<tbody>
-
-  <h3> Services:! </h3>
+<div class="panel-body"><center><h4>Services Found</h4> </center></div>
+  <div class="panel-body">
   
-   <% @jobs.each do |job| %>
-
-     <tr>
-        <td><%= link_to job.title, job %></td>
-        <p><%= job.city.try(:name) %><br></p>
-     
-       
+  
 
 
+
+<div id="gallery">
+
+  <% @jobs.each do |job| %>
+    <div class="col-md-3">
     
-    <% end %>
-    <% end %>
+            <%= link_to (image_tag job.image.url(:medium)), job_path(job), :class=> "thumbnail" %>
+            <div class="caption">
+
+            
+             <h4><%= link_to job.title, job_path(job) %></h4>
+
+             <p><%= job.category.try(:name)%></p>
+
+              <p><%= job.city.try(:name) %><br><i class="fa fa-building-o"></i></p>
+
+
+
+
+          
+               
+              <p><div class="average-review-rating" data-score=<%= job.average_review %>></div></p>   
+              <span class="number-of-reviews">Based on <%= job.reviews.count %>  reviews</span>         
+          
+      
+        </div>
+     
+      </div>
+   <% end %>
+
+
+
+   <% end %>
+   </div>
+   </div>
+   </div>
+   </div>
+
+
+
+<% if @requests.empty? %>
+
+<center><h3> No Requests found </h3></center>
+
+<% else %>
+<div class="container">
+<div class="panel panel-primary">
+<table class="table table-hover">
+<div class="panel-body"><center><h4><i class= "fa fa-handshake" ></i>&nbsp;Requests Found</h4> </center></div>
+<div class="col-md-3">
 
     <% @requests.each do |request| %>
 
-    <h3> Requests: </h3>
+  
 
-     <tr>
-        <td><%= link_to request.title, request %></td>
-        <td><%= request.body %></td>
-        <br><%= request.city.try(:name) %><br>
+    
+<tr>
 
 
 
+<td><%= image_tag request.user.image, :class=> "img-circular"  %>&nbsp;<%= request.user.name %></td>
+<td><%= request.category.try(:name)%></td>
 
-    <% end %>
+<td><%= request.body %></td>
+<td><%= request.city.try(:name) %></td>
+<td><%= request.budget %></td>
+<td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-primary" %></td>
 
-   </tr>
- </tbody>
- </div>
+<% end %>
+<% end %>
+
+
+</tr>
+</div>
+</div>
+</div>
+
+</table>
+
+
+
+
+
+
+ <script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
+

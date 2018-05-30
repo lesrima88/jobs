@@ -1,16 +1,25 @@
-
+<div class="col-md-6 col-md-offset-3">
+<div class="panel panel default">
+<div class="panel panel-body">
 <%= simple_form_for([@job, @job.reviews.build]) do |f| %>
 <div id="rating-form">
 <label>Rating</label>
-
 </div>
+</div>
+
 <%= f.input :comment %>
 <%= f.button :submit %>
+
+</div>
+</div>
+
 <% end %>
 
 <script>
+
 	$('#rating-form').raty({
 		path: '/assets/',
 		scoreName: 'review[rating]'
 	});
+
 </script>

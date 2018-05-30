@@ -1,4 +1,4 @@
-
+<center>
 <div class="row">
   <div class="col-md-12 ">
 
@@ -6,7 +6,7 @@
     <div class="panel-body">
   
 <H3>Customer Reviews</H3>
-<p><%= image_tag review.user.image, class: "img-circular" %></p>
+<p><%= image_tag review.user.image, class: "img-circular small" %></p>
 
 <p>By <%= link_to(review.user.name, review.user) %> on<%= review.created_at.strftime(" %b %d, %Y") %></p>
 <div class="review-rating" data-score="<%= review.rating %>"></div>
@@ -26,7 +26,7 @@
 <% else %>
 
 <%= link_to "Edit", edit_job_review_path(review.job, review) %>
-<%= link_to "Delete", job_review_path(review.job, review),method: :delete, data: { confirm: "Are you sure?"} %>
+<%= link_to "Delete", job_review_path(review.job, review),method: :delete, data: { confirm: "Are you sure you want to permanently delete your review?"} %>
 
 
 <% end %>
@@ -35,3 +35,4 @@
 
 </div>
 </div>
+</center>

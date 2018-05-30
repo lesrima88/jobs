@@ -12,6 +12,9 @@
 <p><%= image_tag @user.image, class: "img-circular" %></p>
 <%= @user.name %>
 <p>Joined<%= @user.created_at.strftime(" %b %d, %Y") %></p>
+<p>Verified Accounts:</p>
+<%= image_tag "fb.png", size: "50x50" %>
+
 </center>
 </div>
 </div>
@@ -30,9 +33,9 @@
 
 <div class="panel-body">
 <% if @user == current_user %> 
-<h4>Your Listings</h4>
+<center><h4>Your Listings</h4></center>
 <% else %>
-<h4>Jobs posted by <% @user.name %>
+<center><h4>Jobs posted by <%= @user.name %></h4></center>
 <% end %>
 <table class="table table-borderless">
 
@@ -40,7 +43,7 @@
 
 <% @user.jobs.empty?? 'User Has not posted any jobs' : @user.jobs.take(12).each do |job| %>
 <tr>
-<td><%= image_tag job.image, :class=> "img-circular" %></td>
+<td><%= image_tag job.image, size: "70x70" %></td>
 <td><%= job.category.try(:name)%></td>
 <td><%= job.description %></td>
 <td><%= job.city.try(:name) %></td>
@@ -63,10 +66,10 @@
 
 
 <div class="container">
-	<div class="col-md-10 col-md-offset-1">
+	<div class="col-md-6 col-md-offset-1">
 		<div class="panel panel-default">
 			<div class="panel-body">
-			<div class="panel-heading"><H3>Reviews Posted</h3></div>
+			<div class="panel-heading"><center><H3>Reviews Posted</h3></center></div>
 
 
 
@@ -74,11 +77,11 @@
 
 <% @user.reviews.empty?? 'User Has not posted any reviews' : @user.reviews.each do |review| %>
 
-<%= image_tag review.user.image, class: "img-circular" %>
+<center><%= image_tag review.user.image, class: "img-circular" %>
 <div><h3><%= link_to review.job.title,  job_path(review) %></h3></div>
 <div class="review-rating" data-score="<%= review.rating %>"></div>
 
-<div><%= review.comment %></div>
+<div><%= review.comment %></div></center>
 <br>
 
 
@@ -91,8 +94,8 @@
 
 
 
-<div><%= link_to "Edit", edit_job_review_path(review.job, review) %>
-<%= link_to "Delete", job_review_path(review.job, review),method: :delete, data: { confirm: "Are you sure?"} %></div>
+<div><p align="right"><%= link_to "Edit", edit_job_review_path(review.job, review) %>
+<%= link_to "Delete", job_review_path(review.job, review),method: :delete, data: { confirm: "Are you sure?"} %><p></div>
 
 
 <% end %>

@@ -88,20 +88,26 @@
               <p><%= job.city.try(:name) %><br><i class="fa fa-building-o"></i></p>
 
 
+       <% if job.reviews.empty? %>
+        <p><div class="average-review-rating" data-score=<%= job.average_review %>></div> <p>  
+        No Reviews Yet
 
+       <% else %>
 
           
                
               <p><div class="average-review-rating" data-score=<%= job.average_review %>></div> <p>   
-              <span class="number-of-reviews">Based on <%= job.reviews.count %>  reviews</span>         
+              <span class="number-of-reviews">Based on  <%= job.reviews.count%>&nbsp;<%= "Review".pluralize(job.reviews.count) %>  </span>  
+
           
-      
+      <% end %>
         </div>
      
       </div>
    <% end %>
+
    <p align="right">
-<%= link_to "View all >", jobs_all_path , class: "btn btn-link" %>
+<%= link_to "View all Services >", jobs_all_path , class: "btn btn-link" %>
 </p>
 
 
@@ -164,9 +170,9 @@
 <td><%= image_tag request.user.image, :class=> "img-circular"  %>&nbsp;<%= request.user.name %></td>
 <td><%= request.category.try(:name)%></td>
 
-<td><%= request.body %></td>
+<td><p><%= request.body %></p></td>
 <td><%= request.city.try(:name) %></td>
-<td><%= request.budget %></td>
+<td>Ksh  <%= number_with_delimiter(request.budget, :delimiter => ',') %>/-</td>
 <td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-primary" %></td>
 
 
@@ -177,7 +183,7 @@
 
 </table>
 <p align="right">
-<%= link_to "View all >", requests_index_path , class: "btn btn-link" %>
+<%= link_to "View all Requests >", requests_index_path , class: "btn btn-link" %>
 </p>
 </div>
 </div>

@@ -1,7 +1,9 @@
 class Job < ActiveRecord::Base
 	extend FriendlyId
+	friendly_id :title, use: :slugged
 	is_impressionable
 
+	
 	has_attached_file :image, styles: { medium: "300x300", thumb: "100x100" }, default_url: "missing"
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
@@ -37,17 +39,24 @@ end
 
 
 def self.search(search)
+	
 	if search
-		where(["title LIKE ? OR description LIKE ?", "%{search}%" , "%{search}%"])
+		joins(:category).where(["categories.name like ? OR title LIKE ? OR description LIKE ?","%#{search}%", "%#{search}%" , "%#{search}%"])
 	else
-		all
+		
 
 	end
 
-
-
-
 end
+
+
+
+#def self.search(search)
+  #joins(:category).where(
+   # ["categories.name like ? OR title LIKE ? OR description LIKE ?",
+    # search, search, search]
+ # )
+#end
 
 
 

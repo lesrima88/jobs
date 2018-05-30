@@ -1,6 +1,7 @@
 class Request < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :title, use: :slugged
+	is_impressionable
 
 	has_attached_file :image, styles: { medium: "250x", thumb: "50x" }, default_url: "missing2"
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
@@ -28,15 +29,20 @@ class Request < ActiveRecord::Base
 
 
 
+
+
+
+
 def self.search(search)
+	
 	if search
-		where(["title LIKE ? OR body LIKE ?", "%#{search}%" , "%#{search}%"])
+		joins(:category).where(["categories.name like ? OR title LIKE ? OR body LIKE ?","%#{search}%", "%#{search}%" , "%#{search}%"])
 	else
+		
 
 	end
 
 end
-
 
 
 end 
