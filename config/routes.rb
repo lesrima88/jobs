@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'requests/new'
   get 'jobs/all'
+  get 'categories/show'
 
 
 

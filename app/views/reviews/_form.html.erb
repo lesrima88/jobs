@@ -4,12 +4,13 @@
 <%= simple_form_for([@job, @job.reviews.build]) do |f| %>
 <div id="rating-form">
 <label>Rating</label>
-</div>
-</div>
+<div class="form-group mb-3">
 
 <%= f.input :comment %>
 <%= f.button :submit %>
-
+</div>
+</div>
+</div>
 </div>
 </div>
 

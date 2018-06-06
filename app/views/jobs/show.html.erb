@@ -28,7 +28,7 @@
 	
 
 	<p>Joined<%= @job.user.created_at.strftime(" %b %d, %Y") %></p>
-	<div>Verified Accounts</div>
+	<div>Verified Accounts:</div>
 	<%= image_tag "fb.png", size: "40x40" %>
 	<p><%= link_to("Seller's Profile", @job.user) %><p>
 
@@ -103,6 +103,7 @@
 
 	<p><%= @job.description %></p>
 	<p><%= @job.category.try(:name)%></p>
+	<p>Pricing: <%= @job.price.try(:name) %>
     <i class="fa fa-building-o"></i><p><%= @job.city.try(:name) %></p>
     <p><%= @job.url %><p>
 	

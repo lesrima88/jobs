@@ -5,10 +5,10 @@
 <br>
 
 
+
 <div class="container">
 
-
-
+<td><%= link_to Category.find(@request.category_id).name, category_path(@request.category_id) %></td>
 
 <div class="container">
 <div class="panel panel-default">
@@ -26,12 +26,12 @@
 
 <% @requests.take(12).each do |request| %>
 <tr>
-<td><%= image_tag request.user.image, :class=> "img-circular" %></td>
+<td><%= image_tag request.user.image %></td>
 <td><%= request.category.try(:name)%></td>
 <td><%= request.title %></td>
 <td><%= request.body %></td>
 <td><%= request.city.try(:name) %></td>
-<td><%= request.budget %></td>
+<td><font color="#3A74DA"><b>Ksh <%= number_with_delimiter(request.budget, :delimiter => ',') %></b> </td>
 <td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-primary" %></td>
 </tr>
 </div>
