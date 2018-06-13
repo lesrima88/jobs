@@ -36,7 +36,18 @@ body {
 }
 
 
+.navbar .navbar-btn{
 
+ margin-right:5px;
+ margin-bottom:-40px;
+
+
+
+}
+
+.dropdown-menu{
+
+}
 
 
 .table {
@@ -102,9 +113,7 @@ background: #3680f7;  }
 }
 
 
- .dropdown-menu>li >a:hover, .dropdown-menu > li > a:focus {
-            background-image:none !important;
- }
+ 
  
 .nav>li>a:focus, .nav>li>a:hover {
         text-decoration: none;
@@ -114,9 +123,14 @@ background: #3680f7;  }
 
 .navbar .navbar-brand {
 	font-family: guardian-egyptt, georgia, serif;
-	font-weight: 400;
+	font-weight: 700;
 	font-size: 30px;
+  margin-top: 18px;
 }
+
+button.navbar-btn{
+      margin-top:25px
+    } 
 
 .img-circular{
  width: 75px;
@@ -195,6 +209,7 @@ background: #3680f7;  }
  .navbar-header {
   text-shadow: 2px 2px #000000;
   font-style: italic;
+  font-color: #FFFFFF;
  }
 
  .jumbotron p {
@@ -206,11 +221,16 @@ background: #3680f7;  }
 
 
  }
-
+.navbar-brand>img {
+  height: 50px;
+  margin-top: -16px;
+  
+  
+}
 
 .navbar {
     color: #FFFFFF;
-    background-color: #3A74DA;
+    background-color: #FFFFFF;
        margin-bottom: 0 !important;
        -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -229,10 +249,7 @@ background:#30ff00;
 
 
 
-.dropdown:hover .dropdown-content {
-    display: block;
-    background-color: #3A74DA;
-}
+
 
 .form-control{
   -webkit-border-radius: 0;

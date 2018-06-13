@@ -4,6 +4,13 @@
 <br>
 <br>
 
+<% Category.all.each do |category| %>
+              
+ <li class="list-group-item"><%= link_to category.name, categories_show_path(category: category.name) %></li>
+          
+      
+            <% end %>
+
 <div class= "container">
 <div class="panel panel-primary">
  
@@ -22,7 +29,7 @@
     
             <%= link_to (image_tag job.image.url(:medium)), job_path(job), :class=> "thumbnail" %>
             <div class="caption">
-            <font color="#3A74DA">
+        </b>
              <h4><%= link_to job.title, job_path(job) %></h4>
 
              <p><%= job.category.try(:name)%></p>

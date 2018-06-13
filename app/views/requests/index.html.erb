@@ -4,11 +4,17 @@
 <br>
 <br>
 
-
+<% Category.all.each do |category| %>
+              
+ <li class="list-group-item"><%= link_to category.name, requests_index_path(category: category.name) %></li>
+          
+      
+            <% end %>
+            </ul>
 
 <div class="container">
 
-<td><%= link_to Category.find(@request.category_id).name, category_path(@request.category_id) %></td>
+
 
 <div class="container">
 <div class="panel panel-default">

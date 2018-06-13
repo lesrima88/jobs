@@ -3,14 +3,77 @@
 <br>
 <br>
 <br>
+<ul class="list-group list-group-flush">
 
-<h3> Jobs under this category </h3>
-<% @jobs.each do |job| %>
-<li> <%= job.title %> </li>
-<% end %>
+ 
+<% Category.all.each do |category| %>
+              
+ <li class="list-group-item"><%= link_to category.name, categories_show_path(category: category.name) %></li>
+          
+      
+            <% end %>
+            </ul>
+      
+
+<div class= "container">
+<div class="panel panel-primary">
+ 
+
+<div class="panel-body"><center><h4>All <%= (params[:category] ).titleize %> Services</h4> </center></div>
+  <div class="panel-body">
 
 
 
-<% @requests.each do |request| %>
-<%= request.title %> 
-<% end %>
+
+<div id="gallery">
+
+  <% @jobs.each do |job| %>
+
+    <div class="col-md-3">
+    
+            <%= link_to (image_tag job.image.url(:medium)), job_path(job), :class=> "thumbnail" %>
+            <div class="caption">
+
+            
+             <h4><%= link_to job.title, job_path(job) %></h4>
+
+             <p><%= job.category.try(:name)%></p>
+
+              <p><%= job.city.try(:name) %><br><i class="fa fa-building-o"></i></p>
+
+
+       <% if job.reviews.empty? %>
+        <p><div class="average-review-rating" data-score=<%= job.average_review %>></div> <p>  
+        No Reviews Yet
+
+       <% else %>
+
+          
+               
+              <p><div class="average-review-rating" data-score=<%= job.average_review %>></div> <p>   
+              <span class="number-of-reviews">Based on  <%= job.reviews.count%>&nbsp;<%= "Review".pluralize(job.reviews.count) %>  </span>  
+
+          
+      <% end %>
+        </div>
+     
+      </div>
+   <% end %>
+
+
+
+
+
+
+
+
+
+   <script>
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+</script>
