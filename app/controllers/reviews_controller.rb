@@ -16,15 +16,10 @@ def create
 	if @review.save
 		redirect_to job_path(@job)
 
-		@job.users.each do |user|
-		Notification.create(recipient: user, actor: current_user, action: "posted", notifiable: @job)
-	end 
-
 	else
 		render 'new'
 
 	end
-
 end
 
 def edit

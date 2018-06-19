@@ -51,11 +51,11 @@
     </ul>
 
   <ul class="nav navbar-nav navbar-right">
-   <button type="button" class="btn btn-primary btn-xs navbar-btn"><li><%= link_to new_job_path do %><i class= "fa fa-wrench" ></i> List your service<% end %></li></button>
-   <button type="button" class="btn btn-success btn-xs navbar-btn"><li><%= link_to requests_new_path  do %><i class= "far fa-handshake" ></i> Request a task<% end %></li></button>
+  <li><%= link_to new_job_path , class: "btn btn-primary  navbar-btn" do %><i class= "fa fa-wrench" ></i> List your service<% end %></li>
+  <li><%= link_to requests_new_path , class: "btn btn-success  navbar-btn"  do %><i class= "far fa-handshake" ></i> Request a task<% end %></li>
    
-        <button type="button" class="btn btn-info btn-xs dropdown-toggle navbar-btn"><li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=  "Hello, #{current_user.name}" %> Your Account
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=  "Hello, #{current_user.name}"  %> Your Account
         <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "View Profile", current_user %></li>
@@ -63,8 +63,7 @@
             <li><%= link_to "Account Settings", edit_user_registration_path(@user)%></li>
             <li><%= link_to "Favorites" ,  users_favorite_path(@user) %></li>
         </li>
-      <li><%= link_to "Log out", destroy_user_session_path,method: :delete %></li></button>
-   </ul>
+      <li><%= link_to "Log out", destroy_user_session_path,method: :delete %></li>
 
 
   <% else %>
@@ -72,9 +71,9 @@
    
    <ul class="nav navbar-nav navbar-right">
     
-    <button type="button" class="btn btn-primary navbar-btn"><li><%= link_to new_job_path do %><i class= "fa fa-wrench" ></i> List your service<% end %></li></button>
-    <button type="button" class="btn btn-success navbar-btn"><li><%= link_to requests_new_path do %><i class= "far fa-handshake" ></i> Request a task<% end %></li></button>
-   <button type="button" class="btn btn-danger navbar-btn"><li><%= link_to user_session_path do %><i class= "fa fa-user-plus" %></i> Log In<% end %></li></button>
+    <li><%= link_to new_job_path , class: "btn btn-primary  navbar-btn" do %><i class= "fa fa-wrench" ></i> List your service<% end %></li>
+    <li><%= link_to requests_new_path ,  class: "btn btn-success  navbar-btn" do %><i class= "far fa-handshake" ></i> Request a task<% end %></li>
+    <li><%= link_to user_session_path ,  class: "btn btn-danger  navbar-btn" do %><i class= "fa fa-user-plus" %></i> Log In<% end %></li>
 
 
    
@@ -124,8 +123,10 @@
 
 
 
-
 </body>
+
+
 </html>
+
 
 

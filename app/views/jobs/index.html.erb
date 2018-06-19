@@ -49,22 +49,23 @@
 
 
 <br>
-        <div class= "container">
-<div class="panel panel-primary">
-<div class="panel-body">
-<div class="col-md-3">
-
-
-<% Category.all.each do |category| %>
-              
-  <h3><%= link_to category.name, categories_show_path(category: category.name) %></h3>
-             
-            <% end %>
-
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <div class='row'>
+       <% Category.all.take(6).each do |category| %>
+         <div class="col-md-2"> 
+           <h4><%= link_to category.name, categories_show_path(category: category.name) %></h4>
+         </div>
+       <% end %>
+          <p align="right">
+          <%= link_to "View all  ", jobs_all_path , class: "btn btn-link" %>
+          </p>
+     </div>
+   </div>
+ </div>
 </div>
-</div>
-</div>
-</div>
+       
 
 
 

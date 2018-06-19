@@ -30,6 +30,30 @@ body {
 
 }
 
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+   background-color: #00AEFE;
+}
+
+.navbar .dropdown {
+  
+
+  margin-top: 11px;
+   background-color: #ef2b2b;
+   padding: 0px;
+
+    
+}
+.footer {
+  
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
 .thumbnail img {
     height:200px;
     width:100%;
@@ -38,16 +62,18 @@ body {
 
 .navbar .navbar-btn{
 
- margin-right:5px;
+ margin-right:12px;
  margin-bottom:-40px;
+ 
+ display: inline-block;
 
+ 
 
 
 }
 
-.dropdown-menu{
 
-}
+
 
 
 .table {
@@ -276,7 +302,10 @@ navbar>a:hover{
 .for
 
 
-
+.sidenav h4 {
+  
+  margin-left: 50px;
+}
 
 
 
@@ -322,6 +351,42 @@ footer p {
     border: none;
 }
 
+body {
+    font-family: "Lato", sans-serif;
+}
 
+.sidenav {
+    
+    margin-top: 61px;
+    width: 130px;
+    position: fixed;
+    z-index: 1;
+    top: 20px;
+    left: 10px;
+    background: #FFFFFF;
+    overflow-x: hidden;
+    padding: 8px 0;
+}
 
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+  
+    color: #2196F3;
+    display: block;
+}
 
+.sidenav a:hover {
+    color: #064579;
+}
+
+.main {
+    margin-left: 140px; /* Same width as the sidebar + left position in px */
+  
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}

@@ -60,12 +60,12 @@
  <% else %> 
 
  
- <%= link_to "Send Message", new_conversation_path(:recipient_id => @request.user.id), class: "btn btn-large btn-primary"%>
- <span class="glyphicon glyphicon-envelope"></span>
+ <center><%= link_to "Send Message", new_conversation_path(:recipient_id => @request.user.id), class: "btn btn-large btn-primary"%></center>
+
 
 
 <%#= link_to :recipient_id => @request.user.id(type: "submit", class: "btn btn-primary") do %>
-  <span><i class="glyphicon glyphicon-wrench"></i> Send Message </span>
+
 
  
 
@@ -117,6 +117,7 @@
     </div>
     </div>
     </div>
+
 
 
 

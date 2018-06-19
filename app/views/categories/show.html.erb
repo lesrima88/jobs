@@ -3,31 +3,39 @@
 <br>
 <br>
 <br>
-<ul class="list-group list-group-flush">
 
- 
+
+<div class="sidenav">
+
+<div><h4> Categories </h4></div>
+
 <% Category.all.each do |category| %>
               
- <li class="list-group-item"><%= link_to category.name, categories_show_path(category: category.name) %></li>
-          
+<%= link_to category.name, categories_show_path(category: category.name) %>
       
             <% end %>
-            </ul>
-      
+   
+       </div>
 
 <div class= "container">
+<div class="main">
 <div class="panel panel-primary">
  
+
 
 <div class="panel-body"><center><h4>All <%= (params[:category] ).titleize %> Services</h4> </center></div>
   <div class="panel-body">
 
 
 
-
 <div id="gallery">
 
-  <% @jobs.each do |job| %>
+
+<% unless @jobs.blank? %>
+
+  <%  @jobs.each do |job| %>
+
+
 
     <div class="col-md-3">
     
@@ -40,6 +48,8 @@
              <p><%= job.category.try(:name)%></p>
 
               <p><%= job.city.try(:name) %><br><i class="fa fa-building-o"></i></p>
+
+           
 
 
        <% if job.reviews.empty? %>
@@ -55,11 +65,21 @@
 
           
       <% end %>
+    
+
         </div>
      
       </div>
-   <% end %>
+  
+<% end %>
 
+<% else %>
+<center>No  <%= (params[:category] ).titleize  %> services found</center>
+
+<% end %>
+
+
+</div>
 
 
 
