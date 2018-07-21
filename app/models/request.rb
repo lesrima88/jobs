@@ -23,9 +23,10 @@ class Request < ActiveRecord::Base
    validates :contact, presence: true , numericality: true, length:{minimum: 8, maximum: 10}
 
 
- def complete?
+ def completed?
  	!completed_at.blank?
  end
+
 
 
 

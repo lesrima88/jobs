@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
 	before_action :set_request, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, only: [:new,  :edit]
+  before_action :has_request, only: [:new]
   def index
   	@requests = Request.all
   end
@@ -13,6 +14,10 @@ class RequestsController < ApplicationController
 
   def search
 
+  end 
+
+  def complete
+    @request.update_attribute(:completed_at, Time.now)
   end 
 
   def create
@@ -64,13 +69,17 @@ class RequestsController < ApplicationController
   end
 
   def complete
-    @request = Request.find(params[:id])
+    @request = Request.friendly.find(params[:id])
     @request.update_attribute(:completed_at, Time.now)
     redirect_to root_path
   end 
 
 
   private 
+
+  def has_request
+  redirect_to root_path, alert: "You can only post one request at a time" if current_user.requests.exists?
+  end
 
 	def request_params
 		params.require(:request).permit(:title, :body, :budget, :category_id, :city_id, :search, :contact, :request_id)

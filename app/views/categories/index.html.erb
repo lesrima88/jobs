@@ -17,20 +17,15 @@
    
        </div>
 
-<div class= "container">
-<div class="main">
-<div class="panel panel-primary">
- 
 
 
-
-
-
-<div class="container">
+ <div class="container">
 <div class="main">
 <div class="panel panel-default">
  <div class="panel-body"><center><h4>All <%= (params[:category] ).titleize %> Requests</h4> </center></div>
 <table class="table table-hover">
+
+<% unless @requests.blank? %>
     
 <th>Requested by</th>
 <th>Category</th>
@@ -57,9 +52,16 @@
 
 <% end %>
 
+
+
 </table>
 <p align="right"><%= link_to 'Back' , root_path %></p>
 </div>
 
+<% else %>
+
+<center><p> No  <%= (params[:category] ).titleize  %> requests found </p></center>
+
+<% end %>
 
 

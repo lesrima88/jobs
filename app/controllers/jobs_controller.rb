@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
 	before_action :set_job, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, only: [:new,  :edit]
+	before_action :has_job, only: [:new]
 	
 	
 	def index
@@ -104,6 +105,10 @@ class JobsController < ApplicationController
 
 	
    private 
+
+   def has_job
+  redirect_to root_path, alert: "You can only post one service at a time" if current_user.jobs.exists?
+   end
 
 	def jobs_params
 		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :price_id,:image, :search, :phone, :job_id, :favorite_id)

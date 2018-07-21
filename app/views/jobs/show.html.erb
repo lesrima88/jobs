@@ -46,7 +46,13 @@
          <div class="panel-body">
          <center>
      <h3>Contact</h3>
+     <% if user_signed_in? %>
 	<p><span class="glyphicon glyphicon-earphone glyphicon-align-left" aria-hidden="true">&nbsp;</span><%= @job.phone %></p>
+	<% else %>
+
+	<p> <%= link_to "Sign in" , user_session_path %> to view contact information </p>
+
+	<% end %>
    
     <% if user_signed_in? %>
    
@@ -136,6 +142,7 @@
 
 	<h4>Average Rating</h4>
 <div class="average-review-rating" data-score=<%= @average_review %>></div>
+<% if user_signed_in? %>
 <% if @job.user_id == current_user.id %>
 <% if @job.reviews.empty? %>
 
@@ -150,6 +157,7 @@
 <% else %>
 <span class="number-of-reviews">Based on <%= @job.reviews.count%>&nbsp;<%= "Review".pluralize(@job.reviews.count) %> </span>  
 
+<% end %>
 <% end %>
 <% end %>
 <% end %>

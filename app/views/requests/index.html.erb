@@ -35,23 +35,58 @@
 
 
 <% @requests.take(12).each do |request| %>
+
+
+<% if request.completed? %>
+
+
 <tr>
-<td><%= image_tag request.user.image %></td>
-<td><%= request.category.try(:name)%></td>
-<td><%= request.title %></td>
-<td><%= request.body %></td>
-<td><%= request.city.try(:name) %></td>
-<td><font color="#3A74DA"><b>Ksh <%= number_with_delimiter(request.budget, :delimiter => ',') %></b> </td>
-<td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-primary" %></td>
+
+
+
+<td><strike><%= image_tag request.user.image %>&nbsp;<%= request.user.name %></strike></td>
+<td><b><strike><%= request.category.try(:name)%><strike></b></td>
+
+<stike><td><p><strike><%= request.body %></stike></p></td>
+<td><strike><%= request.city.try(:name) %></strike></td>
+<td><strike><font color="#3A74DA"><b>Ksh  <%= number_with_delimiter(request.budget, :delimiter => ',') %> </b></font></strike></td>
+<strike><td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-success" %></td></strike>
+
+
+
+</p>
 </tr>
-</div>
-</div>
+
+
+<% else %>
+
+<tr>
+
+
+
+<td><%= image_tag request.user.image %>&nbsp;<%= request.user.name %></td>
+<td><b><%= request.category.try(:name)%></b></td>
+
+<td><p><%= request.body %></p></td>
+<td><%= request.city.try(:name) %></td>
+<td><font color="#3A74DA"><b>Ksh  <%= number_with_delimiter(request.budget, :delimiter => ',') %> </b></font></td>
+<td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-primary" %></td></td>
+
+
+</tr>
 
 
 <% end %>
+<% end %>
 
 </table>
-<p align="right"><%= link_to 'Back' , root_path %></p>
+
+
+</table>
+<p align="right">
+<%= link_to "View all Requests >", requests_index_path , class: "btn btn-link" %>
+</p>
+</div>
 </div>
 
 

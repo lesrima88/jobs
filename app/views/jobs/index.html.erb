@@ -10,7 +10,7 @@
        <% if user_signed_in? %>
        <% else %>
        <center>
-          <%= link_to "Sign Up", user_session_path, class: "btn btn-primary" %></a>
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %></a>
          <% end %>
           </center>
        <div class="col-md-6 col-md-offset-3">
@@ -175,8 +175,28 @@
 <% @requests.take(12).each do |request| %>
 
 
+<% if request.completed? %>
 
 
+<tr>
+
+
+
+<td><strike><%= image_tag request.user.image %>&nbsp;<%= request.user.name %></strike></td>
+<td><b><strike><%= request.category.try(:name)%><strike></b></td>
+
+<stike><td><p><strike><%= request.body %></stike></p></td>
+<td><strike><%= request.city.try(:name) %></strike></td>
+<td><strike><font color="#3A74DA"><b>Ksh  <%= number_with_delimiter(request.budget, :delimiter => ',') %> </b></font></strike></td>
+<strike><td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-success" %></td></strike>
+
+
+
+</p>
+</tr>
+
+
+<% else %>
 
 <tr>
 
@@ -188,13 +208,17 @@
 <td><p><%= request.body %></p></td>
 <td><%= request.city.try(:name) %></td>
 <td><font color="#3A74DA"><b>Ksh  <%= number_with_delimiter(request.budget, :delimiter => ',') %> </b></font></td>
-<td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-primary" %></td>
+<td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-primary" %></td></td>
 
 
 </tr>
 
 
 <% end %>
+<% end %>
+
+</table>
+
 
 </table>
 <p align="right">

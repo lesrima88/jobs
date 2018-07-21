@@ -42,7 +42,7 @@ body {
    background-color: #ef2b2b;
    padding: 0px;
 
-    
+  
 }
 .footer {
   
@@ -323,6 +323,13 @@ navbar>a:hover{
   margin-bottom: 2rem;
   border: 0;
 }
+
+  .alert-success{
+    color: green;
+  }
+  .alert-danger{
+    color: red;
+  }
 
 .card > img {
   margin-bottom: .75rem;

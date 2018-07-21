@@ -78,7 +78,7 @@
 <% @user.reviews.empty?? 'User Has not posted any reviews' : @user.reviews.each do |review| %>
 
 <center><%= image_tag review.user.image, class: "img-circular" %>
-<div><h3><%= link_to review.job.title,  job_path(review) %></h3></div>
+<div><h3><%= review.job.title %></h3></div>
 <div class="review-rating" data-score="<%= review.rating %>"></div>
 
 <div><%= review.comment %></div></center>
@@ -125,6 +125,8 @@ $('.review-rating').raty({
 	});
 
 </script>
+
+
 
 
 
