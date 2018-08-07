@@ -9,8 +9,17 @@
 
 <div class="panel-body">
 <center>
-<p><%= image_tag @user.image, class: "img-circular" %></p>
+<p><%= image_tag @user.avatar, class: "img-circular" %></p>
+
+<% if @user.name.blank? %>
+<%= @user.first_name %> <%= @user.last_name %>
+<% else %>
 <%= @user.name %>
+<%# else %>
+
+<% end %>
+
+
 <p>Joined<%= @user.created_at.strftime(" %b %d, %Y") %></p>
 <p>Verified Accounts:</p>
 <%= image_tag "fb.png", size: "50x50" %>
@@ -35,7 +44,7 @@
 <% if @user == current_user %> 
 <center><h4>Your Listings</h4></center>
 <% else %>
-<center><h4>Jobs posted by <%= @user.name %></h4></center>
+<center><h4>Jobs posted by <%= @user.first_name %> <%= @user.last_name %><%= @user.name %></h4></center>
 <% end %>
 <table class="table table-borderless">
 

@@ -18,7 +18,8 @@ class Job < ActiveRecord::Base
 	has_many :favorites, as: :favorited
     has_many :fans, through: :favorites, source: :user
     has_many :comments 
-   
+    validates_presence_of  :description 
+    validates_presence_of  :title
 
 	
   
