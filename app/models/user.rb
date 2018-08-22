@@ -11,9 +11,15 @@ class User < ActiveRecord::Base
     
   
   acts_as_messageable 
-	#as_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
+  if @avatar.blank?
+	has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.jpg"
   has_attached_file :avatar, default_url: "missing.jpg"
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  else 
+    has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }
+    validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  end
+ 
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

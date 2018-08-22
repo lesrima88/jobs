@@ -42,9 +42,18 @@
 	
 	<%= f.input :phone, as: :integer, required: true, label: "Enter your phone Number",placeholder: "eg 0722456456"%>
   
+	<% if @job.image.blank? %>
+
    <h5> Upload Image </h5>
 	<%= f.file_field :image, label: "Ayoo" %>
 	<br>
+	<% else %>
+	<p> Current image: </p>
+	<%= image_tag @job.image.url ,size: "70x70"  %>
+   <p><h5> Change Image: </h5>
+	<%= f.file_field :image, label: "Ayoo" %></p>
+	<br>
+	<% end %>
 <center>
 	<%= button_tag(type: "submit", class: "btn btn-primary") do %>
   	<span><i class="glyphicon glyphicon-wrench"></i> List Service</span>

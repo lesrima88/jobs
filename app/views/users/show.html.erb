@@ -9,7 +9,11 @@
 
 <div class="panel-body">
 <center>
+<%if @user.provider=='facebook' %>
+<p><%= image_tag @user.image, class: "img-circular" %></p>
+<% else %>
 <p><%= image_tag @user.avatar, class: "img-circular" %></p>
+<% end %>
 
 <% if @user.name.blank? %>
 <%= @user.first_name %> <%= @user.last_name %>
@@ -22,7 +26,11 @@
 
 <p>Joined<%= @user.created_at.strftime(" %b %d, %Y") %></p>
 <p>Verified Accounts:</p>
+<%if user_signed_in? && current_user.provider=='facebook' %>
 <%= image_tag "fb.png", size: "50x50" %>
+<% else %>
+
+<% end %>
 
 </center>
 </div>
@@ -50,7 +58,7 @@
 
 
 
-<% @user.jobs.empty?? 'User Has not posted any jobs' : @user.jobs.take(12).each do |job| %>
+<% @user.jobs.empty?? 'User has not posted any jobs' : @user.jobs.take(12).each do |job| %>
 <tr>
 <td><%= image_tag job.image, size: "70x70" %></td>
 <td><%= job.category.try(:name)%></td>
@@ -84,9 +92,13 @@
 
 
 
-<% @user.reviews.empty?? 'User Has not posted any reviews' : @user.reviews.each do |review| %>
-
+<% @user.reviews.empty?? 'User has not posted any reviews' : @user.reviews.each do |review| %>
+ <%if @user.provider=='facebook' %>
 <center><%= image_tag review.user.image, class: "img-circular" %>
+	<% else %>
+	<center><%= image_tag review.user.avatar, class: "img-circular" %>
+		<% end %>
+
 <div><h3><%= review.job.title %></h3></div>
 <div class="review-rating" data-score="<%= review.rating %>"></div>
 

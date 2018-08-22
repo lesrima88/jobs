@@ -14,7 +14,7 @@
     <%= f.email_field :email, autofocus: true  %>
   </div>
 
-  
+
 <% if @user.name.blank? %>
 
 
@@ -30,6 +30,7 @@
       <%= f.text_field :last_name, class: 'form-control' %>
     </div>
   
+  <p>Current Avatar:<%= image_tag @user.avatar, class: "img-circular" %></p>
    <div class="field">
     <%= f.label :avatar do %>
       <%= f.file_field :avatar %>

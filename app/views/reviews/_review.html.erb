@@ -6,10 +6,20 @@
     <div class="panel-body">
   
 <H3>Customer Reviews</H3>
+<% if review.user.provider=='facebook' %>
 <p><%= image_tag review.user.image, class: "img-circular small" %></p>
 
 <p>By <%= link_to(review.user.name, review.user) %> on<%= review.created_at.strftime(" %b %d, %Y") %></p>
 <div class="review-rating" data-score="<%= review.rating %>"></div>
+
+<% else %>
+
+<p><%= image_tag review.user.avatar, class: "img-circular small" %></p>
+
+<p>By <%= link_to(review.user.first_name, review.user) %> on<%= review.created_at.strftime(" %b %d, %Y") %></p>
+<div class="review-rating" data-score="<%= review.rating %>"></div>
+
+<% end %>
 
 
 <p><%= review.comment %></p>

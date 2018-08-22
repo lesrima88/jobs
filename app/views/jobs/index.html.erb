@@ -149,8 +149,23 @@
        <br>
      
     </div>
-    </div>
-
+    </div><br>
+ <div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <div class='row'>
+       <% Category.all.take(6).each do |category| %>
+         <div class="col-md-2"> 
+           <h4><%= link_to category.name, categories_index_path(category: category.name) %></h4>
+         </div>
+       <% end %>
+          <p align="right">
+          <%= link_to "View all  ", requests_index_path , class: "btn btn-link" %>
+          </p>
+     </div>
+   </div>
+ </div>
+</div>
 <br>
 <br>
 <br>
@@ -180,9 +195,18 @@
 
 <tr>
 
-
-
+<%if request.user.provider=='facebook' %>
 <td><strike><%= image_tag request.user.image %>&nbsp;<%= request.user.name %></strike></td>
+        
+      
+      <% else %>
+      <td><strike><%= image_tag request.user.avatar %>&nbsp;<%= request.user.first_name %></strike></td>
+      <% end %>
+        
+
+ 
+
+
 <td><b><strike><%= request.category.try(:name)%><strike></b></td>
 
 <stike><td><p><strike><%= request.body %></stike></p></td>
@@ -201,8 +225,13 @@
 <tr>
 
 
-
-<td><%= image_tag request.user.image %>&nbsp;<%= request.user.name %></td>
+<%if request.user.provider=='facebook' %>
+<td><%= image_tag request.user.image, class: "img-circular" %>&nbsp;<%= request.user.name %></td>
+        
+      
+      <% else %>
+      <td><%= image_tag request.user.avatar, :class=> "img-circular" %>&nbsp;<%= request.user.first_name %></td>
+      <% end %>
 <td><b><%= request.category.try(:name)%></b></td>
 
 <td><p><%= request.body %></p></td>
