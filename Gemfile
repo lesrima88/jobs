@@ -20,6 +20,7 @@ gem 'impressionist'
 gem 'envyable'
 gem 'authy'
 
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-script-source', '1.8.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -39,8 +40,7 @@ gem 'devise', '~> 4.1', '>= 4.1.1'
 gem 'rake','12.0.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'social-share-button'
-gem 'rails_admin', '~> 0.8.1'
-gem "rails_admin_import", "~> 1.2"
+
 gem 'friendly_id', '~> 5.1'
 gem 'mailboxer' 
 gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'

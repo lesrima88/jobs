@@ -39,7 +39,8 @@
   <div class="form-actions">
     <%= f.button :submit, "Log in" %>
   </div>
- 
+  <br>
+ <p>Don't have an account?<p> <%= link_to "Sign Up" ,new_user_registration_path, class: "btn btn-primary" %>
   <br><p>Or</p>
 <p class="message" style="margin-bottom:-15px;"><a> <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>

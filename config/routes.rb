@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   get 'requests/index'
 
   get 'requests/show'
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
 
   get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+ 
   get 'users/show'
 
   get 'favorite_jobs/index'
