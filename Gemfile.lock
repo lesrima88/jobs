@@ -158,7 +158,7 @@ GEM
       mimemagic (~> 0.3.0)
     pesapal (2.0.0)
       htmlentities
-    pg (1.0.0)
+    pg (0.21.0)
     rack (1.6.9)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -266,7 +266,7 @@ DEPENDENCIES
   omniauth-twitter
   paperclip (~> 5.0.0)
   pesapal
-  pg
+  pg (~> 0.20)
   rails (= 4.2.8)
   rails_12factor
   rake (= 12.0.0)
