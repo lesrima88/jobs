@@ -19,7 +19,8 @@ gem 'searchkick'
 gem 'impressionist'
 gem 'envyable'
 gem 'authy'
-gem 'ruby' , '2.2.6'
+
+
 
 
 # Use CoffeeScript for .coffee assets and views
