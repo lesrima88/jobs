@@ -1,6 +1,22 @@
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+    resources :impressions
+    resources :users
+    resources :categories
+    resources :cities
+    resources :comments
+    resources :favorites
+    resources :jobs
+    resources :notifications
+    resources :prices
+    resources :requests
+    resources :reviews
+
+    root to: "impressions#index"
+  end
+
   get 'requests/index'
 
   get 'requests/show'

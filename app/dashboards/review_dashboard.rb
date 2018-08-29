@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class FavoriteDashboard < Administrate::BaseDashboard
+class ReviewDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,9 +8,11 @@ class FavoriteDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    job: Field::BelongsTo,
     user: Field::BelongsTo,
-    favorited: Field::Polymorphic,
     id: Field::Number,
+    rating: Field::Number,
+    comment: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -21,18 +23,20 @@ class FavoriteDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :job,
     :user,
-    :favorited,
     :id,
-    :created_at,
+    :rating,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :job,
     :user,
-    :favorited,
     :id,
+    :rating,
+    :comment,
     :created_at,
     :updated_at,
   ].freeze
@@ -41,14 +45,16 @@ class FavoriteDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :job,
     :user,
-    :favorited,
+    :rating,
+    :comment,
   ].freeze
 
-  # Overwrite this method to customize how favorites are displayed
+  # Overwrite this method to customize how reviews are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(favorite)
-  #   "Favorite ##{favorite.id}"
+  # def display_resource(review)
+  #   "Review ##{review.id}"
   # end
 end

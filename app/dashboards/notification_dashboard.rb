@@ -1,12 +1,6 @@
 require "administrate/base_dashboard"
 
 class NotificationDashboard < Administrate::BaseDashboard
-  READ_ONLY_ATTRIBUTES = [
-    :id,
-    :created_at,
-    :updated_at,
-  ]
-
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -24,21 +18,52 @@ class NotificationDashboard < Administrate::BaseDashboard
     action: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-  }
+  }.freeze
 
-  # TABLE_ATTRIBUTES
+  # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
   #
   # By default, it's limited to four items to reduce clutter on index pages.
-  # Feel free to remove the limit or customize the returned array.
-  TABLE_ATTRIBUTES = ATTRIBUTE_TYPES.keys.first(4)
+  # Feel free to add, remove, or rearrange items.
+  COLLECTION_ATTRIBUTES = [
+    :recipient,
+    :actor,
+    :notifiable,
+    :id,
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :recipient,
+    :actor,
+    :notifiable,
+    :id,
+    :recipient_id,
+    :actor_id,
+    :read_at,
+    :action,
+    :created_at,
+    :updated_at,
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = ATTRIBUTE_TYPES.keys - READ_ONLY_ATTRIBUTES
+  FORM_ATTRIBUTES = [
+    :recipient,
+    :actor,
+    :notifiable,
+    :recipient_id,
+    :actor_id,
+    :read_at,
+    :action,
+  ].freeze
+
+  # Overwrite this method to customize how notifications are displayed
+  # across all pages of the admin dashboard.
+  #
+  # def display_resource(notification)
+  #   "Notification ##{notification.id}"
+  # end
 end

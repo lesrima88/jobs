@@ -1,12 +1,6 @@
 require "administrate/base_dashboard"
 
 class UserDashboard < Administrate::BaseDashboard
-  READ_ONLY_ATTRIBUTES = [
-    :id,
-    :created_at,
-    :updated_at,
-  ]
-
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -47,22 +41,101 @@ class UserDashboard < Administrate::BaseDashboard
     provider: Field::String,
     uid: Field::String,
     name: Field::String,
-    image: Field::String,
-  }
+    image: Field::Text,
+  }.freeze
 
-  # TABLE_ATTRIBUTES
+  # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
   #
   # By default, it's limited to four items to reduce clutter on index pages.
-  # Feel free to remove the limit or customize the returned array.
-  TABLE_ATTRIBUTES = ATTRIBUTE_TYPES.keys.first(4)
+  # Feel free to add, remove, or rearrange items.
+  COLLECTION_ATTRIBUTES = [
+    :notifications,
+    :jobs,
+    :requests,
+    :reviews,
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :notifications,
+    :jobs,
+    :requests,
+    :reviews,
+    :favorites,
+    :favorite_jobs,
+    :messages,
+    :receipts,
+    :id,
+    :email,
+    :encrypted_password,
+    :reset_password_token,
+    :reset_password_sent_at,
+    :remember_created_at,
+    :sign_in_count,
+    :current_sign_in_at,
+    :last_sign_in_at,
+    :current_sign_in_ip,
+    :last_sign_in_ip,
+    :created_at,
+    :updated_at,
+    :admin,
+    :first_name,
+    :last_name,
+    :user,
+    :experience,
+    :avatar_file_name,
+    :avatar_content_type,
+    :avatar_file_size,
+    :avatar_updated_at,
+    :provider,
+    :uid,
+    :name,
+    :image,
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = ATTRIBUTE_TYPES.keys - READ_ONLY_ATTRIBUTES
+  FORM_ATTRIBUTES = [
+    :notifications,
+    :jobs,
+    :requests,
+    :reviews,
+    :favorites,
+    :favorite_jobs,
+    :messages,
+    :receipts,
+    :email,
+    :encrypted_password,
+    :reset_password_token,
+    :reset_password_sent_at,
+    :remember_created_at,
+    :sign_in_count,
+    :current_sign_in_at,
+    :last_sign_in_at,
+    :current_sign_in_ip,
+    :last_sign_in_ip,
+    :admin,
+    :first_name,
+    :last_name,
+    :user,
+    :experience,
+    :avatar_file_name,
+    :avatar_content_type,
+    :avatar_file_size,
+    :avatar_updated_at,
+    :provider,
+    :uid,
+    :name,
+    :image,
+  ].freeze
+
+  # Overwrite this method to customize how users are displayed
+  # across all pages of the admin dashboard.
+  #
+  # def display_resource(user)
+  #   "User ##{user.id}"
+  # end
 end

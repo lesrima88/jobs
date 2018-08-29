@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class JobDashboard < Administrate::BaseDashboard
+class RequestDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -10,31 +10,26 @@ class JobDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     impressions: Field::HasMany,
     user: Field::BelongsTo,
-    price: Field::BelongsTo,
     category: Field::BelongsTo,
     city: Field::BelongsTo,
-    reviews: Field::HasMany,
     favorites: Field::HasMany,
     fans: Field::HasMany.with_options(class_name: "User"),
     comments: Field::HasMany,
     id: Field::Number,
     title: Field::String,
-    description: Field::Text,
-    company: Field::String,
-    url: Field::String,
+    price: Field::Number,
+    body: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    job_img_file_name: Field::String,
-    job_img_content_type: Field::String,
-    job_img_file_size: Field::Number,
-    job_img_updated_at: Field::DateTime,
-    add_user_id_to_jobs: Field::String,
-    phone: Field::String,
     slug: Field::String,
+    contact: Field::Number,
+    price_id: Field::Number,
+    budget: Field::String,
     image_file_name: Field::String,
     image_content_type: Field::String,
     image_file_size: Field::Number,
     image_updated_at: Field::DateTime,
+    completed_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -45,8 +40,8 @@ class JobDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :impressions,
     :user,
-    :price,
     :category,
+    :city,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -54,31 +49,26 @@ class JobDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :impressions,
     :user,
-    :price,
     :category,
     :city,
-    :reviews,
     :favorites,
     :fans,
     :comments,
     :id,
     :title,
-    :description,
-    :company,
-    :url,
+    :price,
+    :body,
     :created_at,
     :updated_at,
-    :job_img_file_name,
-    :job_img_content_type,
-    :job_img_file_size,
-    :job_img_updated_at,
-    :add_user_id_to_jobs,
-    :phone,
     :slug,
+    :contact,
+    :price_id,
+    :budget,
     :image_file_name,
     :image_content_type,
     :image_file_size,
     :image_updated_at,
+    :completed_at,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -87,34 +77,29 @@ class JobDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :impressions,
     :user,
-    :price,
     :category,
     :city,
-    :reviews,
     :favorites,
     :fans,
     :comments,
     :title,
-    :description,
-    :company,
-    :url,
-    :job_img_file_name,
-    :job_img_content_type,
-    :job_img_file_size,
-    :job_img_updated_at,
-    :add_user_id_to_jobs,
-    :phone,
+    :price,
+    :body,
     :slug,
+    :contact,
+    :price_id,
+    :budget,
     :image_file_name,
     :image_content_type,
     :image_file_size,
     :image_updated_at,
+    :completed_at,
   ].freeze
 
-  # Overwrite this method to customize how jobs are displayed
+  # Overwrite this method to customize how requests are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(job)
-  #   "Job ##{job.id}"
+  # def display_resource(request)
+  #   "Request ##{request.id}"
   # end
 end
