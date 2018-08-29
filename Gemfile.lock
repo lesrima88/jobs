@@ -159,6 +159,7 @@ GEM
     pesapal (2.0.0)
       htmlentities
     pg (0.21.0)
+    puma (3.12.0)
     rack (1.6.9)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -267,6 +268,7 @@ DEPENDENCIES
   paperclip (~> 5.0.0)
   pesapal
   pg (~> 0.20)
+  puma
   rails (= 4.2.8)
   rails_12factor
   rake (= 12.0.0)

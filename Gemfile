@@ -20,7 +20,7 @@ gem 'impressionist'
 gem 'envyable'
 gem 'authy'
 
-
+gem 'puma'
 
 
 # Use CoffeeScript for .coffee assets and views
