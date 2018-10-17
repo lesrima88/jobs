@@ -18,7 +18,7 @@ gem 'pesapal'
 gem 'searchkick'
 gem 'impressionist'
 gem 'envyable'
-gem "administrate"
+
 
 gem 'puma'
 
