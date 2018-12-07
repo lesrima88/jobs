@@ -57,6 +57,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :jobs
+  resources :contacts, only: [:new, :create]
 
   resources :requests 
 

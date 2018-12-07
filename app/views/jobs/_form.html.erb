@@ -16,48 +16,61 @@
 <div class="panel-body">
 
     <%= simple_form_for(@job, html: {multipart: true}) do |f| %>
-	<%=f.collection_select :category_id,Category.all, :id ,:name, {:prompt=> "Select Category" ,:required=> true} %>
-	<%=f.collection_select :city_id, City.all, :id ,:name,:prompt=> "Select City" %>
+	<%#f.collection_select :category_id,Category.all, :id ,:name, {:prompt=> "Select Category" ,:required=> true} %>
+	<%#f.collection_select :city_id, City.all, :id ,:name,:prompt=> "Select City" %>
+
+	<%= f.collection_select(:category_id,Category.all, :id ,:name, {:prompt=> "Select Category"} ,{:required=> true}) %>
+	<%= f.collection_select(:city_id, City.all, :id, :name, {:prompt => 'Choose a city'}, {:required => true}) %>
 
 	
 	<div class="form-group mb-3">
 	<br>
-	<%= f.input :title,required: true,label: "Your Business Name" %>
-	<%= f.input :description,required: true,label: "Tell Us About Your Service" %>
+	<%= f.input :title,required: true,label: "Your Business Name (required)" %>
+	<%= f.input :description,required: true,label: "Tell Us About Your Service (required)" %>
 	</div>
 
 
 
     <h5>Choose Pricing:</h5>
 
-	<div><%=f.collection_select :price_id, Price.all, :id ,:name,:prompt=> "Select Pricing" %><div>
+	<div><%#f.collection_select :price_id, Price.all, :id ,:name,:prompt=> "Select Pricing (required)" %><div>
+		<%= f.collection_select(:price_id, Price.all, :id, :name, {:prompt => 'Select Pricing'}, {:required => true}) %>
+
 	<br>
 
 	
 
 
-     <%= f.input :url, required: false,label: "Website:" %>
-	    
 
-
-
-	
-
-	
-	<%= f.input :phone, as: :integer, required: true, label: "Enter your phone Number",placeholder: "eg 0722456456"%>
+<%= f.input :url, required: false,label: "Website (optional)" %>
+<div class= "field">
   
-	<% if @job.image.blank? %>
+  <%= f.input :image, as: :hidden, input_html: { value: @job.cached_image_data } %>
+  <%= f.input :image, as: :file %>
+ </div>
 
-   <h5> Upload Image </h5>
-	<%= f.file_field :image, label: "Ayoo" %>
+<div class= "actions">
+  <%#= f.button :submit %>
+</div>
+
+
+	
+	<%= f.input :phone, as: :integer, required: true, label: "Enter your phone Number (required)",placeholder: "eg 0722456456"%>
+  
+	<%# if @job.image.blank? %>
+	<%#if @job.cached_image_data.blank? %>
+ 
+
+	<%# f.file_field :image, label: "Ayoo" %>
 	<br>
-	<% else %>
+	<%#else %>
 	<p> Current image: </p>
-	<%= image_tag @job.image.url ,size: "70x70"  %>
+	<%# image_tag @job.cached_image_data ,size: "70x70"  %>
+	<%# image_tag @job.image.url ,size: "70x70"  %>
    <p><h5> Change Image: </h5>
-	<%= f.file_field :image, label: "Ayoo" %></p>
+	<%#= f.file_field :image, label: "Ayoo" %></p>
 	<br>
-	<% end %>
+	<%# end %>
 <center>
 	<%= button_tag(type: "submit", class: "btn btn-primary") do %>
   	<span><i class="glyphicon glyphicon-wrench"></i> List Service</span>

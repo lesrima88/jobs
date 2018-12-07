@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.8'
+#gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 
 # Use sqlite3 as the database for Active Record
 
@@ -13,12 +14,14 @@ gem 'uglifier', '>= 1.3.0'
 gem 'gravatarify', '~> 3.0.0'
 gem 'font-awesome-sass'
 gem 'omniauth-facebook'
-gem 'omniauth-twitter' 
-gem 'pesapal'
+
+
 gem 'searchkick'
 gem 'impressionist'
 gem 'envyable'
-
+gem "shrine", "~> 2.0"
+gem "aws-sdk-s3", "~> 1.2" # for AWS S3 storage
+gem 'mpesa_connect'
 
 gem 'puma'
 
@@ -28,7 +31,7 @@ gem 'coffee-script-source', '1.8.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'simple_form'
-gem 'haml', '~> 4.0', '>= 4.0.7'
+
 gem 'bootstrap-sass'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -38,12 +41,13 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'devise', '~> 4.1', '>= 4.1.1'
-gem 'rake','12.0.0'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'devise'
+gem 'rake'
+gem 'coffee-rails'
 gem 'social-share-button'
+gem 'mail_form'
 
-gem 'friendly_id', '~> 5.1'
+gem 'friendly_id'
 gem 'mailboxer' 
 gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
 

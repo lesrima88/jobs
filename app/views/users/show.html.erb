@@ -52,28 +52,64 @@
 <% if @user == current_user %> 
 <center><h4>Your Listings</h4></center>
 <% else %>
-<center><h4>Jobs posted by <%= @user.first_name %> <%= @user.last_name %><%= @user.name %></h4></center>
+ <%if @user.provider=='facebook' %>
+<center><h4>Jobs posted by <%= @user.name %></h4></center>
+<% else %>
+<center><h4>Jobs posted by <%= @user.first_name %> <%= @user.last_name %></h4></center>
+<% end %>
 <% end %>
 <table class="table table-borderless">
 
 
 
-<% @user.jobs.empty?? 'User has not posted any jobs' : @user.jobs.take(12).each do |job| %>
+<% if @user != current_user && @user.jobs.empty? %>
+	
+<center><p> User has not posted any jobs</p></center>
+
+<% else %>
+
+
+<% if @user == current_user && @user.jobs.empty? %>
+
+<center><p> You have not posted any jobs</p></center>
+
+
+
+<% else %>
+
+	
+<%  @user.jobs.each do |job| %>
 <tr>
-<td><%= image_tag job.image, size: "70x70" %></td>
+	<%# if job.image.present? %>
+	
+  <td><%= image_tag job.image_url, size: "70x70" %></td>
+
+
+	 <%# else %>
+
+
+<%# link_to (image_tag "missing.jpg", size:"70x70" ), job_path(job) %>
+
 <td><%= job.category.try(:name)%></td>
 <td><%= job.description %></td>
 <td><%= job.city.try(:name) %></td>
 
 <td><%= link_to "View Service" , job_path(job), class: "btn btn-md btn-primary" %></td>
-<% if @user == current_user %>
-<td><%= link_to "Delete Service", job_path(@user), method: :delete, data: { confirm: "The Listed Service will be permanently deleted from your profile & Listings,Are you Sure?" }, class: "btn btn-md btn-danger" %></td>
+
+
+<%# if @user == current_user %>
+<td><%# link_to "Delete Service", job_path(job), method: :delete, data: { confirm: "The Listed Service will be permanently deleted from your profile & Listings,Are you Sure?" }, class: "btn btn-md btn-danger" %></td>
 
 </tr>
 
+<%# end %>
 
+<%# end %>
 <% end %>
 <% end %>
+<% end %>
+
+
 </table>
 </div>
 
@@ -89,15 +125,32 @@
 			<div class="panel-heading"><center><H3>Reviews Posted</h3></center></div>
 
 
+<% if @user != current_user && @user.reviews.empty? %>
+	
+<center><p> User has not posted any reviews</p></center>
+
+<% else %>
+
+
+<% if @user == current_user && @user.reviews.empty? %>
+
+<center><p> You have not posted any reviews</p></center>
+
+
+<% @user.reviews.each do |review| %>
 
 
 
-<% @user.reviews.empty?? 'User has not posted any reviews' : @user.reviews.each do |review| %>
+
+
+
  <%if @user.provider=='facebook' %>
+
 <center><%= image_tag review.user.image, class: "img-circular" %>
 	<% else %>
 	<center><%= image_tag review.user.avatar, class: "img-circular" %>
 		<% end %>
+
 
 <div><h3><%= review.job.title %></h3></div>
 <div class="review-rating" data-score="<%= review.rating %>"></div>
@@ -123,6 +176,8 @@
 <% end %>
 
 
+<% end %>
+<% end %>
 <% end %>
 
 

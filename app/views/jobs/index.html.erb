@@ -4,7 +4,7 @@
 <br>
  <div class="jumbotron text-center">
       <div class="container-fluid ">
-        <h1 class="jumbotron-heading">Welcome to Kazii</h1>
+        <h1 class="jumbotron-heading">Welcome to Kazi</h1>
         <p class="lead text-muted">Find service providers or request a task to be completed</p>
        
        <% if user_signed_in? %>
@@ -89,8 +89,19 @@
 
   <% @jobs.take(12).each do |job| %>
     <div class="col-md-3">
-    
-            <%= link_to (image_tag job.image.url(:medium)), job_path(job), :class=> "thumbnail" %>
+            <% if job.image.present? %>
+             <%= link_to (image_tag job.image_url), job_path(job), :class=> "thumbnail" %>
+  
+      <% else %>
+            
+           
+           <%= link_to (image_tag "missing.jpg"), job_path(job), :class=> "thumbnail" %>
+        
+
+
+            <%# link_to (image_tag job.image(:medium)), job_path(job), :class=> "thumbnail" %>
+ <% end %>
+
             <div class="caption">
 
             
@@ -113,6 +124,7 @@
               <span class="number-of-reviews">Based on  <%= job.reviews.count%>&nbsp;<%= "Review".pluralize(job.reviews.count) %>  </span>  
 
           
+     
       <% end %>
         </div>
      
@@ -200,7 +212,7 @@
         
       
       <% else %>
-      <td><strike><%= image_tag request.user.avatar %>&nbsp;<%= request.user.first_name %></strike></td>
+      <td><strike><%= image_tag request.user.avatar , class: "img-circular" %>&nbsp;<%= request.user.first_name %></strike></td>
       <% end %>
         
 
@@ -230,7 +242,7 @@
         
       
       <% else %>
-      <td><%= image_tag request.user.avatar, :class=> "img-circular" %>&nbsp;<%= request.user.first_name %></td>
+      <td><%= image_tag request.user.avatar, class: "img-circular" %>&nbsp;<%= request.user.first_name %></td>
       <% end %>
 <td><b><%= request.category.try(:name)%></b></td>
 

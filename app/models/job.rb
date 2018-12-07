@@ -1,11 +1,19 @@
-class Job < ActiveRecord::Base
+ class Job < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 	is_impressionable
 
+	#include ImageUploader[:image]
+	include ImageUploader::Attachment.new(:image) # adds an `image` virtual attribute
 	
-	has_attached_file :image, styles: { medium: "300x300", thumb: "100x100" }, default_url: "spanner"
-	validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
+   #if   @image.blank?
+   #has_attached_file :image, default_url: "missing.jpg"
+   #end
+     
+	
+	#has_attached_file :image, styles: { medium: "300x300", thumb: "100x100" }, default_url: "spanner"
+	#validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
 
 
@@ -18,13 +26,14 @@ class Job < ActiveRecord::Base
 	has_many :favorites, as: :favorited
     has_many :fans, through: :favorites, source: :user
     has_many :comments 
-    validates_presence_of  :description 
-    validates_presence_of  :title
+    has_many :images
+   
+
 
 	
   
 	   
-	validates_presence_of :title , :description, :price_id, :phone, :category_id, :city_id
+validates_presence_of :title , :description, :price, :phone, :category_id, :city_id
 
  def average_review
   if reviews.blank?

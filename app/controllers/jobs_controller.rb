@@ -63,7 +63,7 @@ class JobsController < ApplicationController
         if @job.save
 			redirect_to @job
 		else
-			render "New"
+			render :new
 		end
 	end
 
@@ -88,9 +88,9 @@ class JobsController < ApplicationController
 	end
 
 
-
 	def destroy
 		@job.destroy
+
 		redirect_to root_path, notice: 'Your listing was successfully removed.'
 	end
 
@@ -111,7 +111,7 @@ class JobsController < ApplicationController
    end
 
 	def jobs_params
-		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :price_id,:image, :search, :phone, :job_id, :favorite_id)
+		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :price_id, :image, :search, :phone, :job_id, :favorite_id)
 	end
 
 	def set_job 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180824110936) do
+ActiveRecord::Schema.define(version: 20181102115001) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -108,6 +108,10 @@ ActiveRecord::Schema.define(version: 20180824110936) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.text     "image_date"
+    t.string   "name"
+    t.string   "photo"
+    t.string   "image_data"
   end
 
   add_index "jobs", ["slug"], name: "index_jobs_on_slug", unique: true

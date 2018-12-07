@@ -13,8 +13,11 @@
 
 <%= simple_form_for(@request, html: {multipart: true}) do |f| %>
 
-<h5>Select Category:<%=f.collection_select :category_id,Category.all, :id ,:name, {:prompt=> "Select Category" ,:required=> true} %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Select Location:<%=f.collection_select :city_id, City.all, :id ,:name,:prompt=> "Select City" %></h5>
+<h5>Select Category:
+
+	<%= f.collection_select(:category_id,Category.all, :id ,:name, {:prompt=> "Select Category"} ,{:required=> true}) %>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<%= f.collection_select(:city_id, City.all, :id, :name, {:prompt => 'Choose a city'}, {:required => true}) %>
 
 <br>
 
