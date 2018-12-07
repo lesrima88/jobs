@@ -50,8 +50,7 @@ gem 'mail_form'
 gem 'friendly_id'
 
 gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
-
-
+gem 'mailboxer'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
