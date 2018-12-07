@@ -48,7 +48,7 @@ gem 'social-share-button'
 gem 'mail_form'
 
 gem 'friendly_id'
-gem 'mailboxer' 
+
 gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
 
 
