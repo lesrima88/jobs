@@ -208,11 +208,11 @@
 <tr>
 
 <%if request.user.provider=='facebook' %>
-<td><strike><%= image_tag request.user.image %>&nbsp;<%= request.user.name %></strike></td>
+<td><%= image_tag request.user.image, class: "img-circular" %>&nbsp;<br><%= request.user.name %></td>
         
       
       <% else %>
-      <td><strike><%= image_tag request.user.avatar , class: "img-circular" %>&nbsp;<%= request.user.first_name %></strike></td>
+      <td><%= image_tag request.user.avatar , class: "img-circular" %>&nbsp;<%= request.user.first_name %></td>
       <% end %>
         
 

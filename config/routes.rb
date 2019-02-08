@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   get 'jobs/search' => 'jobs#search', as: 'search_jobs'
 
   get 'jobs/contact' => 'jobs#contact'
+  get 'jobs/tos'
+  get 'jobs/aboutus'
 
 
 
@@ -59,8 +61,8 @@ Rails.application.routes.draw do
   resources :jobs
   resources :contacts, only: [:new, :create]
 
-  resources :requests 
-
+  resources :requests
+ 
 
   resources :favorite_jobs, only: [:create,:destroy] 
 

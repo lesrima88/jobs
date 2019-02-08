@@ -60,7 +60,7 @@
          <center><h3><b><%= @request.title %></b></h3></center>
 
 			
-			<p><%= @request.body    %></p>
+			<center><p><%= @request.body    %></p></center>
     
 		 
 
@@ -90,7 +90,7 @@
 
 
 
-  <p align="center"><p>Location: <%=  @request.city.try(:name)    %></p>
+  <p align="center"><p></p>
 
     
 
@@ -104,7 +104,7 @@
 
 
 <p style="text-align:left;">
-Views&nbsp;<span class="glyphicon glyphicon-eye-open glyphicon-align-left" aria-hidden="true"></span>&nbsp;<%= @request.impressionist_count %>
+&nbsp;<span class="glyphicon glyphicon-eye-open glyphicon-align-left" aria-hidden="true"></span>&nbsp;<%=  @request.city.try(:name)    %>
 <span style="float:right;"><%= @request.created_at.strftime(" %b %d, %Y") %></span>
 </p>
 </div>
@@ -114,7 +114,7 @@ Views&nbsp;<span class="glyphicon glyphicon-eye-open glyphicon-align-left" aria-
 </div>
 
 
-
+<% if user_signed_in? %>
 
 <% if @request.user_id == current_user.id %>
 
@@ -132,6 +132,7 @@ Views&nbsp;<span class="glyphicon glyphicon-eye-open glyphicon-align-left" aria-
          </div>
          </div>
   <% end %>
+  <% end %>
 
 
  <% if @request.completed? %>
@@ -142,11 +143,16 @@ Views&nbsp;<span class="glyphicon glyphicon-eye-open glyphicon-align-left" aria-
 		   <div class="panel panel-default">
          
          <div class="panel-body">
-         <center><h3>Payout</h3></center>
-   <p> Earn Ksh  <%= number_with_delimiter(@request.budget, :delimiter => ',') %>/- if you complete this request</p>
+         <center><h3><b>Payout</b></h3></center>
+         <%if @request.user.provider=='facebook' %>
+
+         <p> <%= @request.user.name %> is offering  <%= number_with_delimiter(@request.budget, :delimiter => ',') %>/- if you complete this request</p>
+         <% else %>
+   <p> <%= @request.user.first_name %> is offering  <%= number_with_delimiter(@request.budget, :delimiter => ',') %>/- if you complete this request</p>
          </div>
          </div>
          </div>
+         <% end %>
 
 
 
@@ -159,7 +165,7 @@ Views&nbsp;<span class="glyphicon glyphicon-eye-open glyphicon-align-left" aria-
          <div class="panel-body">
          <center>
          
-     <h3>Contact</h3>
+     <b><h3>Contact</h3></b>
      <p>Can you fullfill this request?<p>
 	<p><span class="glyphicon glyphicon-earphone glyphicon-align-left" aria-hidden="true">&nbsp;</span><%= @request.contact %></p>
 

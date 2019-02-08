@@ -61,7 +61,7 @@ class JobsController < ApplicationController
 	def create
         @job = current_user.jobs.build(jobs_params)
         if @job.save
-			redirect_to @job
+			redirect_to @job, notice: 'Your listing was successfully updated.'
 		else
 			render :new
 		end

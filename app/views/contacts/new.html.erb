@@ -1,26 +1,52 @@
-<h1 class="page_title">Say Hello!</h1>
 
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container" >
+
+<H1> Contact Us </H1>
+<p> We'd love to hear your suggestions and feed back </p>
 
 <div class="skinny_wrapper wrapper_padding">
 	<%= form_for @contact do |f| %>
+	<div class="col-md-5">
+    <div class="form-area">  
+        <form role="form">
+
+
+	<div class="form-group">
 		<%= f.label :name %><br>
-		<%= f.text_field :name, required: true %>
+		<%= f.text_field :name, required: true , class: "form-control" %>
+	</div>
 
 		<br>
-
+     
+      <div class="form-group">
 		<%= f.label :email %><br>
-		<%= f.email_field :email, required: true %>
+		<%= f.email_field :email, required: true , class: "form-control" %>
+	</div>
 
 		<br>
 
+     <div class="form-group">
 		<%= f.label :message %><br>
-		<%= f.text_area :message, as: :text %>
+		<%= f.text_area :message, as: :text, class: "form-control" %>
+	</div>
 
+
+   <div class="form-group">
 		<div class="hidden">
 			<%= f.label :nickname %><br>
 			<%= f.text_field :nickname, hint: 'leave this field blank' %>
 		</div>
+	</div>
 
 		<%= f.submit 'Send Message', class: "button" %>
 	<% end %>
+</div>
+</div>
+</form>
+</div>
+</div>
+
+
 </div>
