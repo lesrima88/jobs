@@ -14,7 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'gravatarify', '~> 3.0.0'
 gem 'font-awesome-sass'
 gem 'omniauth-facebook'
-gem "shrine-memory"
+
 
 
 gem 'searchkick'
