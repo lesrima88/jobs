@@ -5,6 +5,12 @@
          <br>
            <br>
 	         <br>
+<br>
+   <br>
+      <br>
+         <br>
+           <br>
+           <br>
 
 <div class="container">
 	<div class="row">
@@ -176,12 +182,18 @@
    
 	<%if @request.user_id == current_user.id %>
 
+  <%if @request.completed %>
+
 	<% else %>
+
+
+
    <center><%= link_to "Send Message", new_conversation_path(:recipient_id => @request.user.id), class: "btn btn-large btn-primary"%></center>
     
 	<%#= link_to "Message Seller", new_conversation_path(:recipient_id => @request.user.id), class: "btn btn-large btn-primary" %>
 	<% end %>
 	<% end %>
+  <% end %>
 	</center>
 	</center>
     </div>
