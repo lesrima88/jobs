@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-  <title>Kazitest</title> 
+  <title>Kazify</title> 
   
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   
@@ -62,7 +62,7 @@
             <li><%= link_to "Favorites" ,  users_favorite_path(@user) %></li>
         </li>
       <li><%= link_to "Log out", destroy_user_session_path,method: :delete %></li>
-      <li><%= link_to "Contact us", contacts_new_path %>
+      <li><%= link_to "Contact us", new_contact_path %>
 
 
   <% else %>
