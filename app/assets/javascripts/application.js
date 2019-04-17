@@ -14,8 +14,11 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require semantic-ui
 //= require_tree .
 //= require conversations
+// Loads all Semantic javascripts
+
 #= require social-share-button
 
 

@@ -13,9 +13,13 @@
 
       
 
-<div class="panel panel-default">
- <div class="panel-heading panel-heading-custom"><center><h3>Sign Up</h3></center></div>
 
+<h4 class="ui center aligned medium icon header">
+  <i class="circular blue user tiny icon"></i>
+  Sign Up
+</h4>
+
+<div class="ui placeholder segment">
 <div class="panel-body">
 
 
@@ -51,11 +55,20 @@
       <br>
 
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<p class="message" style="margin-bottom:-15px;"><a> <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <center><%= link_to "Sign up with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) , class: "btn btn-primary" %><br /></center>
+  <p class="message" style="margin-bottom:-15px;"><a> <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+    
+
+
+ <%= link_to omniauth_authorize_path(resource_name, provider) do %> <button class="ui medium facebook button">
+  <i class="facebook icon"></i>Sign in with Facebook </button><% end %><br />
+   
     <br>
-  <% end -%>
+
+</a></p>
+
+
+<% end %>
 </a></p>
 <% end %>
 <% end -%>
@@ -69,5 +82,7 @@
 </div>
 </div>
 </div>
+<br>
+<br>
 
 

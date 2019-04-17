@@ -14,6 +14,7 @@
 <%= link_to category.name, categories_index_path(category: category.name) %>
       
             <% end %>
+            <%= link_to "View all Requests", requests_index_path , class: "ui tiny primary button" %>
    
        </div>
 
@@ -21,46 +22,54 @@
 
  <div class="container">
 <div class="main">
-<div class="panel panel-default">
- <div class="panel-body"><center><h4>All <%= (params[:category] ).titleize %> Requests</h4> </center></div>
-<table class="table table-hover">
+
+<center><h4>All <%= (params[:category] ).titleize %> Requests</h4> </center>
+<br>
+
 
 <% unless @requests.blank? %>
     
-<th>Requested by</th>
-<th>Category</th>
-<th>Title</th>
-<th>Description</th>
-<th>City</th>
-<th>Price</th>
-<th></th>
 
+<div class= "ui container">
+   <% @requests.all.take(6).each do | request | %>
+   <div class="ui segment">
+      <div class="ui divided items">
+        <div class="item">
+           <% if request.user.provider=='facebook' %>
+            <a class="ui tiny image">
+              <%= image_tag request.user.image, class: "img-circular" %>
+            </a>
+            <% else %>
+        
+        <%= link_to (image_tag request.user.avatar),request_path(request), class: "ui tiny image"  %>
+              
+              <% end %>
 
-<% @requests.each do |request| %>
-<tr>
-<td><%= image_tag request.user.image %></td>
-<td><%= request.category.try(:name)%></td>
-<td><%= request.title %></td>
-<td><%= request.body %></td>
-<td><%= request.city.try(:name) %></td>
-<td><font color="#3A74DA"><b>Ksh <%= number_with_delimiter(request.budget, :delimiter => ',') %></b> </td>
-<td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-primary" %></td>
-</tr>
-</div>
-</div>
+                <div class="content" >
+                  <a class="header"><%= link_to request.title, request_path(request) %></a>
+                          <div class=" description">
+                                  <%= request.body %>
+                                  <%= request.city.try(:name) %>
+                                  <%= request.category.try(:name) %>
+                                  <%= link_to "View Request", request_path(request), class: "ui button primary" ,style: "float: right;"%>
 
-
-<% end %>
+                                                </div>
+                                                    </div>
+                                                        </div>
+                                                            </div>
+                                                                </div>
+                                                                  <% end %>
 
 
 
 </table>
-<p align="right"><%= link_to 'Back' , root_path %></p>
+<p align="right"><%= link_to 'Back' , requests_index_path %></p>
 </div>
 
 <% else %>
 
 <center><p> No  <%= (params[:category] ).titleize  %> requests found </p></center>
+<p align="right"><%= link_to 'Back' , requests_index_path %></p>
 
 <% end %>
 

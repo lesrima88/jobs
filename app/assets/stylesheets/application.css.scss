@@ -19,17 +19,32 @@
 @import url(http://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,500); 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "semantic-ui";
+
+
+
+
+.ui.card {
+  height: 350px;
+
+}
+
 
 body {
 
  
- background-color:#F5F5F5;
+ background-color:#FFFFFF;
  
  color: #333333;
 
 
 }
 
+.city {
+  
+
+  vertical-align: bottom;
+}
 
 .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
    background-color: #00AEFE;
@@ -120,7 +135,9 @@ background: #3680f7;  }
 .panel {
     border: 0;
 }
-
+.panel-body {
+   background-color: #fff;
+}
 
 .jumbotron {
   

@@ -4,6 +4,7 @@
 <br>
 <br>
 
+
 <div class="sidenav">
 
 <div><h4> Categories </h4></div>
@@ -11,82 +12,52 @@
 <% Category.all.each do |category| %>
               
 <%= link_to category.name, categories_index_path(category: category.name) %>
+
       
             <% end %>
-   
+
        </div>
 
-
-
-
 <div class="container">
-<div class="main">
-<div class="panel panel-default">
- <div class="panel-body"><center><h4><i class= "fa fa-handshake" ></i>&nbsp;All Requests</h4> </center>
-<table class="table table-hover">
-    
-<th>Requested by</th>
-<th>Category</th>
-<th>Title</th>
-<th>Description</th>
-<th>City</th>
-<th>Price</th>
-<th></th>
 
 
-<% @requests.take(12).each do |request| %>
-
-
-<% if request.completed? %>
-
-
-<tr>
+<div class="ui four column grid">
 
 
 
-<td><strike><%= image_tag request.user.image %>&nbsp;<%= request.user.name %></strike></td>
-<td><b><strike><%= request.category.try(:name)%><strike></b></td>
 
-<stike><td><p><strike><%= request.body %></stike></p></td>
-<td><strike><%= request.city.try(:name) %></strike></td>
-<td><strike><font color="#3A74DA"><b>Ksh  <%= number_with_delimiter(request.budget, :delimiter => ',') %> </b></font></strike></td>
-<strike><td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-success" %></td></strike>
+<center><h4>Latest Requests</h4> </center>
+<div class= "ui container">
+   <% @requests.all.each do | request | %>
+   <div class="ui segment">
+      <div class="ui divided items">
+        <div class="item">
+           <% if request.user.provider=='facebook' %>
+            <a class="ui tiny image">
+              <%= image_tag request.user.image, class: "img-circular" %>
+            </a>
+            <% else %>
+        
+        <%= link_to (image_tag request.user.avatar),request_path(request), class: "ui tiny image"  %>
+              
+              <% end %>
 
+                <div class="content" >
+                  <a class="header"><%= link_to request.title, request_path(request) %></a>
+                          <div class=" description">
+                                  <%= request.body %>
+                                  <%= request.city.try(:name) %>
+                                  <%= link_to "View Request", request_path(request), class: "ui button primary" ,style: "float: right;"%>
 
+                                                </div>
+                                                    </div>
+                                                        </div>
+                                                            </div>
+                                                                </div>
+                                                                  <% end %>
+                                                               
 
-</p>
-</tr>
-
-
-<% else %>
-
-<tr>
-
-
-
-<td><%= image_tag request.user.image %>&nbsp;<%= request.user.name %></td>
-<td><b><%= request.category.try(:name)%></b></td>
-
-<td><p><%= request.body %></p></td>
-<td><%= request.city.try(:name) %></td>
-<td><font color="#3A74DA"><b>Ksh  <%= number_with_delimiter(request.budget, :delimiter => ',') %> </b></font></td>
-<td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-primary" %></td></td>
-
-
-</tr>
-
-
-<% end %>
-<% end %>
-
-</table>
-
-
-</table>
-<p align="right">
-<%= link_to "View all Requests >", requests_index_path , class: "btn btn-link" %>
-</p>
-</div>
+                                                                </div>
 </div>
 
 

@@ -88,6 +88,7 @@ class JobsController < ApplicationController
 	end
 
 
+
 	def destroy
 		@job.destroy
 
@@ -101,6 +102,11 @@ class JobsController < ApplicationController
 
 	Favorite.where(favorited_id: @job.id, user_id: current_user.id).first.destroy
     redirect_to @job, notice: 'Service succesfully removed from favorites'
+	
+	end
+
+	def test
+  @jobs = Job.all
 	end
 
 	

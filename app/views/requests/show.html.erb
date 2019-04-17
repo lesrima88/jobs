@@ -1,16 +1,10 @@
-
-<br>
-   <br>
+ <br>
       <br>
-         <br>
-           <br>
-	         <br>
-<br>
-   <br>
       <br>
-         <br>
-           <br>
-           <br>
+      <br>
+      <br>
+      <br>
+      <br>
 
 <div class="container">
 	<div class="row">
@@ -24,7 +18,8 @@
 
 
        <% if @request.completed? %>
-
+      
+     
 
       <h1> This request was completed  </h1>
 
@@ -175,8 +170,17 @@
      <p>Can you fullfill this request?<p>
 	<p><span class="glyphicon glyphicon-earphone glyphicon-align-left" aria-hidden="true">&nbsp;</span><%= @request.contact %></p>
 
-
+   <div class="ui primary circular segment">
+  <h2 class="ui header">
+    Contact
+    <div class="sub header"><%= @request.contact %></div>
+  </h2>
+</div>
    <% end %>
+
+
+
+
    
     <% if user_signed_in? %>
    

@@ -164,8 +164,10 @@
 	<% if user_signed_in? %>
 
 
-<% if @job.user_id == current_user.id %>
-<% if current_user.admin? %>
+<%# if @job.user_id == current_user.id %>
+ <% if current_user == @job.user %>
+
+
 
 
 
@@ -174,6 +176,10 @@
 
 <% else %>
 
+<% if current_user.admin? %>
+
+<%= link_to "Edit", edit_job_path(@job) ,class: "btn btn-md btn-primary"  %>
+<%= link_to "Delete", job_path(@job), method: :delete, data: { confirm: "Are you sure to permanently delete this listed service?" }, class: "btn btn-md btn-danger" %>
 
 
 
@@ -245,7 +251,7 @@
 <div class= "container">
 
 <br>
-<p>Report </p>
+<p><%# link_to 'Report' , report_path %> </p>
 </div>
 
 

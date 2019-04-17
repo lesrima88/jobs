@@ -14,7 +14,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'gravatarify', '~> 3.0.0'
 gem 'font-awesome-sass'
 gem 'omniauth-facebook'
-
+gem 'hirb', '~> 0.7.3'
+gem 'semantic-ui-sass'
+gem 'gravatar_image_tag'
 
 
 gem 'searchkick'

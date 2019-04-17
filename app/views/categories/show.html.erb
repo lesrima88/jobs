@@ -1,4 +1,6 @@
 
+
+
 <br>
 <br>
 <br>
@@ -11,43 +13,44 @@
 
 <% Category.all.each do |category| %>
               
-<%= link_to category.name, categories_show_path(category: category.name) %>
+<b><%= link_to category.name, categories_show_path(category: category.name) %></b>
       
             <% end %>
+           <%= link_to "View all Services ", jobs_all_path , class: "ui tiny primary button" %>
    
        </div>
 
-<div class= "container">
-<div class="main">
-<div class="panel panel-primary">
+
  
 
 
 <div class="panel-body"><center><h4>All <%= (params[:category] ).titleize %> Services</h4> </center></div>
-  <div class="panel-body">
-
-
-
-<div id="gallery">
+  
 
 
 <% unless @jobs.blank? %>
-
+<div class="ui grid">
   <%  @jobs.each do |job| %>
+   <div class="four wide column">
+
+<div class="ui card" >
 
 
 
-    <div class="col-md-3">
+
     
-            <%= link_to (image_tag job.image.url(:medium)), job_path(job), :class=> "thumbnail" %>
-            <div class="caption">
+
+    <% if job.image.present? %>
+<div class="image"><centre><%= link_to (image_tag job.image.url, size: "253x200"), job_path(job)   %></centre></div>
+<% else %>
+<div class="image"><center><%= link_to (image_tag "missing.jpg", size: "253x200"), job_path(job)   %></center></div>
+<% end %>
 
             
-             <h4><%= link_to job.title, job_path(job) %></h4>
-
-             <p><%= job.category.try(:name)%></p>
-
-              <p><%= job.city.try(:name) %><br><i class="fa fa-building-o"></i></p>
+       <div class="content">
+      <a class="header"><center><%= link_to job.title ,job_path(job) %></center></a>
+      <div class="description">
+        <%= job.description %>
 
            
 
@@ -67,9 +70,10 @@
       <% end %>
     
 
-        </div>
-     
-      </div>
+  </div> 
+</div>
+</div>
+</div>
   
 <% end %>
 
@@ -77,6 +81,7 @@
 <center>No  <%= (params[:category] ).titleize  %> services found</center>
 
 <% end %>
+
 
 
 </div>

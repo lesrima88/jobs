@@ -35,10 +35,13 @@
 
 <% else %>
 
+<% if review.user_id == current_user.id %>
+
 <%= link_to "Edit", edit_job_review_path(review.job, review) %>
 <%= link_to "Delete", job_review_path(review.job, review),method: :delete, data: { confirm: "Are you sure you want to permanently delete your review?"} %>
 
 
+<% end %>
 <% end %>
 
 <% end %>

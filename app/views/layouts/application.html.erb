@@ -1,149 +1,98 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <title>Kazify</title>
+    <%= csrf_meta_tags %>
+    <%# csp_meta_tag %>
 
 
-  <title>Kazify</title> 
-  
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  
-  <%= javascript_include_tag 'application', 'data-turbolinks-track':  'reload' %>
-  <%= csrf_meta_tags %>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
 
-
-
-</head>
-<body>
-
-
-
-<nav class="navbar navbar-fixed-top">
- <div class="container">
-<div class="navbar-header">
-
-
-     <%= link_to image_tag("kazi.png", alt: "logo"), '/', class: 'navbar-brand' %>
-
-
-
-   </div>
-      
+  <body>
+            <div class="ui white small inverted menu fixed">
+              <div class="ui container">
 
 
 
 
+          <%= link_to 'Home', root_path ,class: "item" %></a>
 
 
-
-
-
-<% if user_signed_in? %>
-
-
- 
-    <%#= image_tag(current_user.image) %>
-    </ul>
-
-  <ul class="nav navbar-nav navbar-right">
-  <li><%= link_to new_job_path , class: "btn btn-primary  navbar-btn" do %><i class= "fa fa-wrench" ></i> List your service<% end %></li>
-  <li><%= link_to requests_new_path , class: "btn btn-success  navbar-btn"  do %><i class= "far fa-handshake" ></i> Request a task<% end %></li>
+            <div class="right menu">
+              <div class= "item">
+         
+          <%= link_to "List Your Service", new_job_path, class: "ui inverted blue button" %>
+        </div>
+        <div class= "item">
+          <%= link_to "Request a task", new_request_path, class: "ui inverted teal button" %>
    
-        <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><% if current_user.provider=='facebook' %><%= "Hello, #{current_user.name}"  %> Your Account <% else %><%= "Hello, #{current_user.first_name}"  %> Your Account <% end %>
-        <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "View Profile", current_user %></li>
-            <li><%= link_to "Inbox", mailbox_inbox_path  %></li>
-            <li><%= link_to "Account Settings", edit_user_registration_path(@user)%></li>
-            <li><%= link_to "Favorites" ,  users_favorite_path(@user) %></li>
-        </li>
-      <li><%= link_to "Log out", destroy_user_session_path,method: :delete %></li>
-      <li><%= link_to "Contact us", new_contact_path %>
+               
+             </div>
 
 
-  <% else %>
- 
-   
-   <ul class="nav navbar-nav navbar-right">
-    
-    <li><%= link_to new_job_path , class: "btn btn-primary  navbar-btn" do %><i class= "fa fa-wrench" ></i> List your service<% end %></li>
-    <li><%= link_to requests_new_path ,  class: "btn btn-success  navbar-btn" do %><i class= "fa fa-handshake" ></i> Request a task<% end %></li>
-    <li><%= link_to user_session_path ,  class: "btn btn-primary  navbar-btn" do %><i class= "fa fa-user-plus" %></i> Log In<% end %></li>
-    <li><%= link_to  new_contact_path,  class: "btn btn-success  navbar-btn" do %> <i class= "fa fa-envelope" ></i> Contact Us<%end %></li>
+       
+
+         <% if user_signed_in? %>
+            <div class="ui dropdown item">
+              <button class="ui primary button">
+              Account <i class="dropdown icon"></i>
+            </button>
+              <div class="menu">
+
+              <%= link_to "Account Settings", edit_user_registration_path(@user), class: "item" %>
+              <%= link_to "Contact Us", new_contact_path, class: "item" %>
+
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "item" %>
 
 
-   
-  
-  </ul>
+              </div>
 
-
-
-
-
-
-<% end %>
-
-
-
-
-
-   
-  
-  
-
-</div>
- <center>
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-</center>
-
-<style type="text/css">
-  .alert-success{
-    color: green;
-  }
-  .alert-danger{
-    color: red;
-  }
-</style>
-
-
-
-</script>
-</nav>
-
-
-
-
-
-
-<%# this will be it nigga link_to "Terms of service", tos_path %> 
-
-
-
-
-
-
-
-<%= yield %>
-
-<%# render "layouts/footer" %>
-
-
-
-
-
-</body>
-
-
+              <% else %>
+              <div class="item">
+            <%= link_to "Log in", user_session_path, class: "ui inverted button" %>
+            <%# link_to "Contact Us", user_session_path, class: "ui inverted button" %>
+            <% end %>
+          </div>
+            </div>
+            <% if user_signed_in? %>
+            <% else %>
+            <div class="item">
+            <%= link_to "Sign Up", new_user_registration_path , class: "ui primary button" %></div>
+                <% end %>
+            </div>
+            </div>
+          </div>
+        </div>
+        
+    <%= yield %>
+  </div>
+  </body>
 </html>
 
 
+<script>
+$(document).on('turbolinks:load', function(){
+    $(".alert").delay(2000).slideUp(500, function(){
+          $(".alert").alert('close');
+      });
+    });
+</script>
 
+<script>
+$(document).on('turbolinks:load', function(){
+    $(".notice").delay(2000).slideUp(500, function(){
+          $(".alert").alert('close');
+      });
+    });
+</script>
+
+
+
+
+
+<script>
+$('.ui.dropdown')
+  .dropdown();
+</script>

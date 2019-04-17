@@ -9,104 +9,132 @@
 
 <% if @jobs.empty?  %>
 
-<h3> No services found </h3>
+<center><h3> No services found </h3></center>
+<br>
+<br>
 
 </div>
 
 
 
 <% else %>
-<h1> Search Results </h1>
+<center><h1> Search Results </h1></center>
  <br>
-<div class= "container">
-<div class="panel panel-primary">
+<div class= "ui container">
+
  
 
 <div class="panel-body"><center><h4>Services Found</h4> </center></div>
-  <div class="panel-body">
+ 
   
   
 
 
 
-<div id="gallery">
-
-  <% @jobs.each do |job| %>
-    <div class="col-md-3">
-    
-            <%= link_to (image_tag job.image.url(:medium)), job_path(job), :class=> "thumbnail" %>
-            <div class="caption">
-
-            
-             <h4><%= link_to job.title, job_path(job) %></h4>
-
-             <p><%= job.category.try(:name)%></p>
-
-              <p><%= job.city.try(:name) %><br><i class="fa fa-building-o"></i></p>
 
 
+  
+<div class="ui grid">
+<% @jobs.each do |job| %>
+ <div class="four wide column">
 
+<div class="ui card" >
+
+
+<% if job.image.present? %>
+<center><div class="image"><%= link_to (image_tag job.image.url, size: "253x200"), job_path(job)   %></div></center>
+<% else %>
+<center><div class="image"><%= link_to (image_tag "missing.jpg", size: "253x200"), job_path(job)  %></div></center>
+<% end %>
+
+
+
+
+
+  <div class="content">
+      <a class="header"><center><%= link_to job.title ,job_path(job) %></center></a>
+      <div class="description">
+        <%= job.description %>
+
+   
+          <% if job.reviews.empty? %>
+        <p><div class="average-review-rating" data-score=<%= job.average_review %>></div> <p>  
+        No Reviews Yet
+
+       <% else %>
 
           
                
-              <p><div class="average-review-rating" data-score=<%= job.average_review %>></div></p>   
-              <span class="number-of-reviews">Based on <%= job.reviews.count %>  reviews</span>         
+              <p><div class="average-review-rating" data-score=<%= job.average_review %>></div> <p>   
+              <span class="number-of-reviews">Based on  <%= job.reviews.count%>&nbsp;<%= "Review".pluralize(job.reviews.count) %>  </span>  
+
           
-      
-        </div>
+      <% end %>
+
      
-      </div>
-   <% end %>
 
 
 
-   <% end %>
-   </div>
-   </div>
-   </div>
-   </div>
 
-
+</div>
+</div>
+</div>
+</div>
+  
+    <% end %>
+  </div>
+<% end %>
 
 <% if @requests.empty? %>
-
+<br>
 <center><h3> No Requests found </h3></center>
 
 <% else %>
-<div class="container">
-<div class="panel panel-primary">
-<table class="table table-hover">
-<div class="panel-body"><center><h4><i class= "fa fa-handshake" ></i>&nbsp;Requests Found</h4> </center></div>
-<div class="col-md-3">
+<div class="ui container">
 
-    <% @requests.each do |request| %>
 
-  
-
-    
-<tr>
+<div class="ui four column grid">
 
 
 
-<td><%= image_tag request.user.image, :class=> "img-circular"  %>&nbsp;<%= request.user.name %></td>
-<td><%= request.category.try(:name)%></td>
-
-<td><%= request.body %></td>
-<td><%= request.city.try(:name) %></td>
-<td><%= request.budget %></td>
-<td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-primary" %></td>
-
-<% end %>
-<% end %>
 
 
-</tr>
+<div class= "ui container">
+  <div align="center"><h3>Requests Found</h3></div>
+   <% @requests.each do | request | %>
+   <div class="ui segment">
+      <div class="ui divided items">
+        <div class="item">
+           <% if request.user.provider=='facebook' %>
+            <a class="ui tiny image">
+              <%= image_tag request.user.image, class: "img-circular" %>
+            </a>
+            <% else %>
+        
+        <%= link_to (image_tag request.user.avatar),request_path(request), class: "ui tiny image"  %>
+              
+              <% end %>
+
+                <div class="content" >
+                  <a class="header"><%= link_to request.title, request_path(request) %></a>
+                          <div class=" description">
+                                  <%= request.body %>
+                                  <%= request.city.try(:name) %>
+                                  <%= request.category.try(:name) %>
+                                  <%= link_to "View Request", request_path(request), class: "ui button primary" ,style: "float: right;"%>
+
+                                                </div>
+                                                    </div>
+                                                        </div>
+                                                            </div>
+                                                                </div>
+                                                                  <% end %>
+                                                                 
+
+                                                                </div>
+                                                                <% end %>
+
 </div>
-</div>
-</div>
-
-</table>
-
 
 
 

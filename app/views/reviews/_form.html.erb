@@ -1,28 +1,58 @@
 <br>
 <br>
-<div class="col-md-6 col-md-offset-3">
-<div class="panel panel default">
-<div class="panel panel-body">
-<%= simple_form_for([@job, @job.reviews.build]) do |f| %>
-<div id="rating-form">
-<label>Rating</label>
-<script>
+<br>
+<br>
+<div class="container">
+<div class="ui segment">
+<div class="ui form">
 
+
+<%= simple_form_for([@job, @job.reviews.build]) do |f| %>
+
+
+<div id="rating-form">
+  <label>Rating</label>
+  </div>
+
+  <div class="field">
+<%= f.input :comment,placeholder:"Tell us your expirience with this provider, what did you like or dislike?",maxlength: @maximum_length, id: 'comment'  %>
+
+</div>
+<center>
+
+
+<%= f.button :submit,  class: "ui orange button" %>
+</center>
+<% end %>
+
+
+</div>
+</div>
+
+<script>
+  $(document).on('turbolinks:load',function() {
+
+
+         var val = $('#rating-form').val();
+         if(val == ''){
+            $('input[type=submit]').attr('disabled', true)
+         }
+    });
+</script>
+
+<script>
 	$('#rating-form').raty({
 		path: '/assets/',
 		scoreName: 'review[rating]'
+
+
+
 	});
 
+
+ $('input[name="#rating-form"]').attr('required', true);
+
 </script>
-<div class="form-group mb-3">
-
-<%= f.input :comment %>
-<center><%= f.button :submit %></center>
-</div>
-</div>
-</div>
-</div>
 </div>
 
-<% end %>
 

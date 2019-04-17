@@ -1,10 +1,9 @@
 
-
 <br>
 <br>
  <div class="jumbotron text-center">
       <div class="container-fluid ">
-        <h1 class="jumbotron-heading">Welcome to Kazi</h1>
+        <h1 class="jumbotron-heading">Welcome to kazify</h1>
         <p class="lead text-muted">Find service providers or request a task to be completed</p>
        
        <% if user_signed_in? %>
@@ -13,11 +12,12 @@
           <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %></a>
          <% end %>
           </center>
+          <br>
        <div class="col-md-6 col-md-offset-3">
 
 
 
-<div class="panel-body">
+
 
 
 <%= form_tag search_jobs_path, method: :get do |f| %>
@@ -36,7 +36,7 @@
 
 
 </div>
-</div>
+
 
 
        
@@ -49,23 +49,18 @@
 
 
 <br>
-<div class="container">
-  <div class="panel panel-primary">
-    <div class="panel-body">
-      <div class='row'>
+<div class="ui container">
+ <div class="ui message">
        <% Category.all.take(6).each do |category| %>
          <div class="col-md-2"> 
-           <h4><%= link_to category.name, categories_show_path(category: category.name) %></h4>
+           <h4><%= link_to category.name, categories_show_path(category: category.name), class: "ui primary button" %></h4>
          </div>
        <% end %>
           <p align="right">
           <%= link_to "View all  ", jobs_all_path , class: "btn btn-link" %>
           </p>
      </div>
-   </div>
  </div>
-</div>
-       
 
 
 
@@ -74,46 +69,40 @@
 
 <br>
 <br>
-<div class= "container">
-<div class="panel panel-primary">
- 
-
-<div class="panel-body"><center><h4>Latest Services</h4> </center></div>
-  <div class="panel-body">
-  
-  
 
 
 
-<div id="gallery">
+<div class="ui container">
 
-  <% @jobs.take(12).each do |job| %>
-    <div class="col-md-3">
-            <% if job.image.present? %>
-             <%= link_to (image_tag job.image_url), job_path(job), :class=> "thumbnail" %>
-  
-      <% else %>
-            
-           
-           <%= link_to (image_tag "missing.jpg"), job_path(job), :class=> "thumbnail" %>
-        
+<center><h4> Latest Services </h4></center>
+<br>
+
+ <div class="ui grid">
+<% @jobs.take(12).each do |job| %>
+ <div class="four wide column">
+
+<div class="ui card" >
 
 
-            <%# link_to (image_tag job.image(:medium)), job_path(job), :class=> "thumbnail" %>
- <% end %>
-
-            <div class="caption">
-
-            
-             <h4><%= link_to job.title, job_path(job) %></h4>
-
-             <p><%= job.category.try(:name)%></p>
-
-              <p><%= job.city.try(:name) %><br><i class="fa fa-building-o"></i></p>
+<% if job.image.present? %>
+<center><div class="image"><%= link_to (image_tag job.image.url, size: "253x200"), job_path(job)   %></div></center>
+<% else %>
+<center><div class="image"><%= link_to (image_tag "missing.jpg", size: "253x200"), job_path(job)  %></div></center>
+<% end %>
 
 
-       <% if job.reviews.empty? %>
-        <p><div class="average-review-rating" data-score=<%= job.average_review %>></div> <p>  
+
+
+
+  <div class="content">
+      <a class="header"><center><%= job.title %></center></a>
+      <div class="description">
+        <%# job.description %>
+        <%= h truncate(job.description, :length => 80) %>
+
+        <center>
+        <% if job.reviews.empty? %>
+        <p><div class="average-review-rating" data-score=<%= job.average_review %>></div><p>  
         No Reviews Yet
 
        <% else %>
@@ -124,21 +113,40 @@
               <span class="number-of-reviews">Based on  <%= job.reviews.count%>&nbsp;<%= "Review".pluralize(job.reviews.count) %>  </span>  
 
           
-     
       <% end %>
-        </div>
-     
-      </div>
-   <% end %>
+     </center>
 
+
+
+</div>
+</div>
+</div>
+</div>
+  
+    <% end %>
+
+  
+  </div>
    <p align="right">
 <%= link_to "View all Services >", jobs_all_path , class: "btn btn-link" %>
 </p>
 
+</div>
+ 
+<div class="ui grid"> 
+ <div class="four wide column"></div> 
+
+</div>
+
+ 
+
+
+
 
   </div>
   </div>
   </div>
+</div>
 
   </div>
 
@@ -162,120 +170,71 @@
      
     </div>
     </div><br>
- <div class="container">
-  <div class="panel panel-primary">
-    <div class="panel-body">
-      <div class='row'>
+
+    <div class= "ui container">
+ <div class="ui message">
        <% Category.all.take(6).each do |category| %>
          <div class="col-md-2"> 
-           <h4><%= link_to category.name, categories_index_path(category: category.name) %></h4>
+           <h4><%= link_to category.name, categories_index_path(category: category.name), class: "ui primary button" %></h4>
          </div>
        <% end %>
           <p align="right">
-          <%= link_to "View all  ", requests_index_path , class: "btn btn-link" %>
+          <%= link_to "View all Categories ", requests_index_path , class: "btn btn-link" %>
           </p>
-     </div>
-   </div>
- </div>
-</div>
-<br>
-<br>
-<br>
-
-<div class="container">
-
-<div class="panel panel-primary">
-  <!-- Default panel contents -->
-
-  
-  <div class="panel-body"><center></div>
+        </div>
+      </div>
  
-
-<table class="table table-hover">
-
-
-
-
-
-<center><h4><i class= "fa fa-handshake" ></i>&nbsp;Latest Requests</h4> </center>
 <br>
-<% @requests.take(12).each do |request| %>
+<br>
+<br>
 
 
-<% if request.completed? %>
+<div class="ui container">
 
 
-<tr>
+<div class="ui four column grid">
 
-<%if request.user.provider=='facebook' %>
-<td><%= image_tag request.user.image, class: "img-circular" %>&nbsp;<br><%= request.user.name %></td>
+
+
+
+
+<div class= "ui container">
+  <div align="center"><h4>Latest Requests</h4></div>
+   <% @requests.all.take(6).each do | request | %>
+   <div class="ui segment">
+      <div class="ui divided items">
+        <div class="item">
+           <% if request.user.provider=='facebook' %>
+            <a class="ui tiny image">
+              <%= image_tag request.user.image, class: "img-circular" %>
+            </a>
+            <% else %>
         
-      
-      <% else %>
-      <td><%= image_tag request.user.avatar , class: "img-circular" %>&nbsp;<%= request.user.first_name %></td>
-      <% end %>
-        
+        <%= link_to (image_tag request.user.avatar),request_path(request), class: "ui tiny image"  %>
+              
+              <% end %>
 
- 
+                <div class="content" >
+                  <h2><a class="header"><%= link_to request.title, request_path(request) %></a></h2>
+                          <div class=" description">
+                                  <%# request.body ,:length => 80) %>
+                                 <%= h truncate(request.body, :length => 280) %>
+                                 <div class="city"><b><%= request.city.try(:name) %> </b></div>
+                                  <%= link_to "View Request", request_path(request), class: "ui button primary" ,style: "float: right;"%>
 
+                                                </div>
+                                                    </div>
+                                                        </div>
+                                                            </div>
+                                                                </div>
+                                                                  <% end %>
+                                                                     <p align="right">
+                                                                      <%= link_to "View all requests ", requests_index_path , class: "btn btn-link" %>
+                                                                  </p>
 
-<td><b><strike><%= request.category.try(:name)%><strike></b></td>
+                                                                </div>
 
-<stike><td><p><strike><%= request.body %></stike></p></td>
-<td><strike><%= request.city.try(:name) %></strike></td>
-<td><strike><font color="#3A74DA"><b>Ksh  <%= number_with_delimiter(request.budget, :delimiter => ',') %> </b></font></strike></td>
-<strike><td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-success" %></td></strike>
-
-
-
-</p>
-</tr>
-
-
-<% else %>
-
-<tr>
-
-
-<%if request.user.provider=='facebook' %>
-<td><%= image_tag request.user.image, class: "img-circular" %>&nbsp;<%= request.user.name %></td>
-        
-      
-      <% else %>
-      <td><%= image_tag request.user.avatar, class: "img-circular" %>&nbsp;<%= request.user.first_name %></td>
-      <% end %>
-<td><b><%= request.category.try(:name)%></b></td>
-
-<td><p><%= request.body %></p></td>
-<td><%= request.city.try(:name) %></td>
-<td><font color="#3A74DA"><b>Ksh  <%= number_with_delimiter(request.budget, :delimiter => ',') %> </b></font></td>
-<td><%= link_to "View Request" , request_path(request), class: "btn btn-md btn-primary" %></td></td>
-
-
-</tr>
-
-
-<% end %>
-<% end %>
-
-</table>
-
-
-</table>
-<p align="right">
-<%= link_to "View all Requests >", requests_index_path , class: "btn btn-link" %>
-</p>
 </div>
-</div>
-
-
-  <br>
-  
-  
-  </div>
-
-
-
 
 
 

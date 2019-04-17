@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'jobs/all'
   get 'categories/show'
   get 'categories/index'
+  get 'jobs/test'
 
 
 
