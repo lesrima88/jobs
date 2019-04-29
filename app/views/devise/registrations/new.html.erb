@@ -50,29 +50,11 @@
     
  
     <center><%= f.submit "Create My Account", class: "btn btn-primary"%></center>
-    <br>
-      <center><p>Or</p></center>
-      <br>
-
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <p class="message" style="margin-bottom:-15px;"><a> <%- if devise_mapping.omniauthable? %>
-      <%- resource_class.omniauth_providers.each do |provider| %>
-    
-
-
- <%= link_to omniauth_authorize_path(resource_name, provider) do %> <button class="ui medium facebook button">
-  <i class="facebook icon"></i>Sign in with Facebook </button><% end %><br />
    
-    <br>
-
+     
 </a></p>
 
 
-<% end %>
-</a></p>
-<% end %>
-<% end -%>
-    
 
   <% end %>
 

@@ -147,9 +147,9 @@
          <center><h3><b>Payout</b></h3></center>
          <%if @request.user.provider=='facebook' %>
 
-         <p> <%= @request.user.name %> is offering  <%= number_with_delimiter(@request.budget, :delimiter => ',') %>/- if you complete this request</p>
+         <p> <%= @request.user.name %> is offering Ksh <%= number_with_delimiter(@request.budget, :delimiter => ',') %>/- if you complete this request</p>
          <% else %>
-   <p> <%= @request.user.first_name %> is offering  <%= number_with_delimiter(@request.budget, :delimiter => ',') %>/- if you complete this request</p>
+   <p> <%= @request.user.first_name %> is offering Ksh <%= number_with_delimiter(@request.budget, :delimiter => ',') %>/- if you complete this request</p>
          </div>
          </div>
          </div>
@@ -166,9 +166,9 @@
          <div class="panel-body">
          <center>
          
-     <b><h3>Contact</h3></b>
+     
      <p>Can you fullfill this request?<p>
-	<p><span class="glyphicon glyphicon-earphone glyphicon-align-left" aria-hidden="true">&nbsp;</span><%= @request.contact %></p>
+
 
    <div class="ui primary circular segment">
   <h2 class="ui header">
