@@ -113,8 +113,11 @@ class JobsController < ApplicationController
    private 
 
    def has_job
+   	if current_user.admin?
+   	else 
   redirect_to root_path, alert: "You can only post one service at a time" if current_user.jobs.exists?
    end
+end 
 
 	def jobs_params
 		params.require(:job).permit(:title, :description, :company, :url, :category_id, :city_id, :price_id, :image, :search, :phone, :job_id, :favorite_id)

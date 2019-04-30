@@ -56,24 +56,11 @@
 
 
 
-       <br>
-       <br>
-      
-      <p class="message" style="margin-bottom:-15px;"><a> <%- if devise_mapping.omniauthable? %>
-      <%- resource_class.omniauth_providers.each do |provider| %>
-    
-
-
- <%= link_to omniauth_authorize_path(resource_name, provider) do %> <button class="ui medium facebook button">
-  <i class="facebook icon"></i>Sign in with Facebook </button><% end %><br />
-   
-    <br>
-
+ 
 </a></p>
 
 
-<% end %>
-<% end %>
+
 
 
 
