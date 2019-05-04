@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require ahoy 
 //= require semantic-ui
 //= require_tree .
 //= require conversations

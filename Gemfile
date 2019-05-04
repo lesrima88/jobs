@@ -46,6 +46,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'rake'
+gem 'ahoy_matey'
 gem 'coffee-rails'
 gem 'social-share-button'
 gem 'mail_form'
