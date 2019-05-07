@@ -113,9 +113,8 @@ class JobsController < ApplicationController
    private 
 
    def has_job
-   	if current_user.admin?
-   	else 
-  redirect_to root_path, alert: "You can only post one service at a time" if current_user.jobs.exists?
+   
+  unless current_user.admin? redirect_to root_path, alert: "You can only post one service at a time" if current_user.jobs.exists?
    end
 end 
 
