@@ -31,7 +31,7 @@ else
   s3_options = {
     access_key_id:     "AKIAI5NUT3DO2I35AGZA",
     secret_access_key: "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",
-    region:            "eu-west-1",
+    region:            "eu-west-2",
     bucket:            "kazii"
   }
   Shrine.storages = {
