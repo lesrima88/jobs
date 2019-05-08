@@ -269,6 +269,8 @@ GEM
       sass (>= 3.2)
     shrine (2.13.0)
       down (~> 4.1)
+    shrine-memory (0.3.0)
+      shrine (~> 2.2)
     simple_form (4.0.0)
       actionpack (> 4)
       activemodel (> 4)
@@ -331,6 +333,7 @@ DEPENDENCIES
   searchkick
   semantic-ui-sass
   shrine (~> 2.0)
+  shrine-memory
   simple_form
   social-share-button
   sqlite3
