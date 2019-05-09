@@ -29,10 +29,7 @@ elsif Rails.env.test?
 else
   require "shrine/storage/s3"
   s3_options = {
-    access_key_id:     "AKIAI5NUT3DO2I35AGZA",
-    secret_access_key: "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",
-    region:            "eu-west-2",
-    bucket:            "kazii"
+   
   }
   Shrine.storages = {
     cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
@@ -42,9 +39,3 @@ end
 Shrine.plugin :activerecord
 
 
-#s3 = Shrine::Storage::S3.new(
- # bucket: "kazii", # required
-  #access_key_id: "AKIAI5NUT3DO2I35AGZA",
-  #secret_access_key: "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",
-  #region: "eu-west-1",
-#)
