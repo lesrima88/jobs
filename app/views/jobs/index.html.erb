@@ -51,11 +51,21 @@
 <br>
 <div class="ui container">
  <div class="ui message">
-       <% Category.all.take(6).each do |category| %>
-         <div class="col-md-2"> 
+  <div class= "ui grid">
+    <% Category.all.take(6).each do |category| %>
+  <div class="three wide column">
+
+       
+  
+
+        
            <h4><%= link_to category.name, categories_show_path(category: category.name), class: "ui primary button" %></h4>
+           
          </div>
-       <% end %>
+          <% end %>
+       
+       </div>
+
           <p align="right">
           <%= link_to "View all  ", jobs_all_path , class: "btn btn-link" %>
           </p>

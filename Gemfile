@@ -52,6 +52,7 @@ gem 'ahoy_matey'
 gem 'coffee-rails'
 gem 'social-share-button'
 gem 'mail_form'
+gem "shrine-google_cloud_storage"
 
 gem 'friendly_id'
 
